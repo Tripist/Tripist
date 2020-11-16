@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Tripist</string>
+    <string name="title_activity_museums">Map</string>
+    <string name="title_activity_historical__places">Map</string>
+    <string name="title_activity_parks">Map</string>
+    <string name="title_activity_island__beachs">Map</string>
+    <string name="title_activity_religions">Map</string>
+    <string name="title_activity_bazaar__markets">Map</string>
+    <string name="title_activity_my_locations">Map</string>
+    <string name="title_activity_my_favourites">Map</string>
+    <string name="title_activity_squares">Map</string>
 </resources>
