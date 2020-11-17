@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     Button button;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void nextPage(View view){
 
-        Intent intent = new Intent(this,Parks.class);
+        Intent intent = new Intent(this,Island_Beachs.class);
 
         startActivity(intent);
 

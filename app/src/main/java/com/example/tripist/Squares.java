@@ -2,6 +2,7 @@ package com.example.tripist;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Squares extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class Squares extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        databaseprepare();
     }
 
     /**
@@ -42,5 +46,22 @@ public class Squares extends FragmentActivity implements OnMapReadyCallback {
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    public void databaseprepare() {
+        try {
+            database = Squares.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+            database.execSQL("CREATE TABLE IF NOT EXISTS squares (id INTEGER PRIMARY KEY,name VARCHAR, latitude VARCHAR, longitude VARCHAR)");
+
+            //VERİ GİRİŞİ
+
+
+
+            //SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
+            //sqLiteStatement.execute();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
