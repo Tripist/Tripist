@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Database_Connection.add_mylocations(database);
         Database_Connection.add_parks(database);
         Database_Connection.add_squares(database);
+        Database_Connection.add_food(database);
     }
 
     public void nextPage(View view){

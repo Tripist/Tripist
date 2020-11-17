@@ -88,4 +88,11 @@ public class Database_Connection {
         //sqLiteStatement.execute();
 
     }
+    public static void add_food(SQLiteDatabase database) {
+
+        //String toCompile = "INSERT INTO religions (name, latitude, longitude) VALUES ('ayasofta','45','44') Select '1448523' Where not exists(select * from tablename where code='1448523') ";
+        //SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
+        //sqLiteStatement.execute();
+
+    }
 }
