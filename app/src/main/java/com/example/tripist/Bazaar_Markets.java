@@ -16,7 +16,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Bazaar_Markets extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +25,6 @@ public class Bazaar_Markets extends FragmentActivity implements OnMapReadyCallba
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        databaseprepare();
     }
 
     /**
@@ -47,29 +44,5 @@ public class Bazaar_Markets extends FragmentActivity implements OnMapReadyCallba
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
-
-
-    }
-
-    public void databaseprepare(){
-        try {
-            database = Bazaar_Markets.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            database.execSQL("CREATE TABLE IF NOT EXISTS bazaar_markets (id INTEGER PRIMARY KEY,name VARCHAR, latitude VARCHAR, longitude VARCHAR)");
-
-            //VERİ GİRİŞİ
-
-            String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES ('ayasofta','45','44')";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            System.out.println(":::::deneme");
-
-            SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-            sqLiteStatement.execute();
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
     }
 }

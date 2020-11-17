@@ -16,7 +16,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Historical_Places extends FragmentActivity implements OnMapReadyCallback  {
 
     private GoogleMap mMap;
-    SQLiteDatabase database;
 
 
     @Override
@@ -27,8 +26,6 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        databaseprepare();
     }
 
     /**
@@ -51,24 +48,5 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
 
     }
 
-    public void databaseprepare(){
-        try {
-            database = Historical_Places.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            database.execSQL("CREATE TABLE IF NOT EXISTS historical_places (id INTEGER PRIMARY KEY,name VARCHAR, latitude VARCHAR, longitude VARCHAR)");
 
-            //VERİ GİRİŞİ
-
-            String toCompile = "INSERT INTO historical_places (name, latitude, longitude) VALUES ('ayasofta','45','44')";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            System.out.println(":::::deneme");
-
-            SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-            sqLiteStatement.execute();
-
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }
