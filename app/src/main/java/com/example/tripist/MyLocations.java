@@ -2,6 +2,7 @@ package com.example.tripist;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;

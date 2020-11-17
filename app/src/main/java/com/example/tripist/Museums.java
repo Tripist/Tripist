@@ -2,6 +2,7 @@ package com.example.tripist;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,4 +44,6 @@ public class Museums extends FragmentActivity implements OnMapReadyCallback {
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
+
 }

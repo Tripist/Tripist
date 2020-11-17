@@ -2,6 +2,7 @@ package com.example.tripist;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,6 +16,7 @@ public class Religions extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,8 @@ public class Religions extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
     }
 
     /**
@@ -43,4 +47,6 @@ public class Religions extends FragmentActivity implements OnMapReadyCallback {
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
+
 }

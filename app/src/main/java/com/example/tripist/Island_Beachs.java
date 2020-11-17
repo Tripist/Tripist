@@ -2,6 +2,8 @@ package com.example.tripist;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,4 +45,7 @@ public class Island_Beachs extends FragmentActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
+
+
+
 }

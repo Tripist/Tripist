@@ -2,6 +2,8 @@ package com.example.tripist;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -11,9 +13,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Historical_Places extends FragmentActivity implements OnMapReadyCallback {
+public class Historical_Places extends FragmentActivity implements OnMapReadyCallback  {
 
     private GoogleMap mMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +45,8 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
     }
+
+
 }
