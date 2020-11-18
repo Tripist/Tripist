@@ -2,8 +2,6 @@ package com.example.tripist;
 
 import androidx.fragment.app.FragmentActivity;
 
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,7 +14,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Island_Beachs extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +23,6 @@ public class Island_Beachs extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        databaseprepare();
     }
 
     /**
@@ -47,28 +42,5 @@ public class Island_Beachs extends FragmentActivity implements OnMapReadyCallbac
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
-
-    public void databaseprepare() {
-        try {
-            database = Island_Beachs.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            database.execSQL("CREATE TABLE IF NOT EXISTS islands_beaches (id INTEGER PRIMARY KEY,name VARCHAR, latitude VARCHAR, longitude VARCHAR)");
-
-            //VERİ GİRİŞİ
-
-
-
-
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-
-
-            //SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-            //sqLiteStatement.execute();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
