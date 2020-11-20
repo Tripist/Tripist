@@ -4,26 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="showMyLocationsPage"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
+    <Button
+        android:id="@+id/IslandBeachs_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="showIsland_Beachs"
+        android:text="Island_Beachs"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/MyLocations_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="nextPage"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="showMy_Locations"
+        android:text="myloc"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Bazaar_Markets_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showBazaar_Markets"
+        android:text="Bazzar_Markets"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IslandBeachs_Button" />
+
+    <Button
+        android:id="@+id/HistoricalPlaces_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showHistorical_Places"
+        android:text="HistoricalPLaces"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Bazaar_Markets_Button" />
+
+    <Button
+        android:id="@+id/Parks_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showParks"
+        android:text="Parks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyLocations_Button" />
+
+    <Button
+        android:id="@+id/Religions_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showReligions"
+        android:text="Religions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Parks_Button" />
+
+    <Button
+        android:id="@+id/Squares_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showSquares"
+        android:text="Squares"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Religions_Button" />
+
+    <Button
+        android:id="@+id/Museums_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showMuseums"
+        android:text="Museums"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HistoricalPlaces_Button" />
+
+    <Button
+        android:id="@+id/MyLocationsPage_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showMyLocationsPage"
+        android:text="MyLocationsPage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/MyFavourites_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showMy_Favourites"
+        android:text="MYFAV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Squares_Button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
