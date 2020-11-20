@@ -9,4 +9,6 @@
     <string name="title_activity_my_locations">Map</string>
     <string name="title_activity_my_favourites">Map</string>
     <string name="title_activity_squares">Map</string>
+    <string name="title_activity_my__locations">Map</string>
+    <string name="title_activity_my__favourites">Map</string>
 </resources>

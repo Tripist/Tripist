@@ -32,31 +32,32 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Squares"
-            android:label="@string/title_activity_squares"></activity>
+            android:name=".maps.My_Favourites"
+            android:label="@string/title_activity_my__favourites"></activity>
+        <activity android:name=".MyLocationsPage" />
         <activity
-            android:name=".MyFavourites"
-            android:label="@string/title_activity_my_favourites" />
+            android:name=".maps.My_Locations"
+            android:label="@string/title_activity_my__locations" />
         <activity
-            android:name=".MyLocations"
-            android:label="@string/title_activity_my_locations" />
+            android:name=".maps.Squares"
+            android:label="@string/title_activity_squares" />
         <activity
-            android:name=".Bazaar_Markets"
+            android:name=".maps.Bazaar_Markets"
             android:label="@string/title_activity_bazaar__markets" />
         <activity
-            android:name=".Religions"
+            android:name=".maps.Religions"
             android:label="@string/title_activity_religions" />
         <activity
-            android:name=".Island_Beachs"
+            android:name=".maps.Island_Beachs"
             android:label="@string/title_activity_island__beachs" />
         <activity
-            android:name=".Parks"
+            android:name=".maps.Parks"
             android:label="@string/title_activity_parks" />
         <activity
-            android:name=".Historical_Places"
+            android:name=".maps.Historical_Places"
             android:label="@string/title_activity_historical__places" />
         <activity
-            android:name=".Museums"
+            android:name=".maps.Museums"
             android:label="@string/title_activity_museums" />
         <activity android:name=".MainActivity">
             <intent-filter>
