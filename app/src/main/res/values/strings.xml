@@ -11,4 +11,9 @@
     <string name="title_activity_squares">Map</string>
     <string name="title_activity_my__locations">Map</string>
     <string name="title_activity_my__favourites">Map</string>
+    <string name="title_activity_bottom_nav">MainActivity</string>
+    <string name="title_home">Anasayfa</string>
+    <string name="title_myfavourites">Favorilerim</string>
+    <string name="title_mylocations">Konumlarım</string>
+    <string name="title_settings">Ayarlar</string>
 </resources>
