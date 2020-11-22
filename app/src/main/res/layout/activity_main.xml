@@ -5,98 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="showMyLocationsPage"
-    tools:context=".MainActivity">
+    android:background="#882139">
 
-    <Button
-        android:id="@+id/IslandBeachs_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showIsland_Beachs"
-        android:text="Island_Beachs"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/MyLocations_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:onClick="showMy_Locations"
-        android:text="myloc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/Bazaar_Markets_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showBazaar_Markets"
-        android:text="Bazzar_Markets"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IslandBeachs_Button" />
-
-    <Button
-        android:id="@+id/HistoricalPlaces_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showHistorical_Places"
-        android:text="HistoricalPLaces"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bazaar_Markets_Button" />
-
-    <Button
-        android:id="@+id/Parks_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showParks"
-        android:text="Parks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MyLocations_Button" />
-
-    <Button
-        android:id="@+id/Religions_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showReligions"
-        android:text="Religions"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Parks_Button" />
-
-    <Button
-        android:id="@+id/Squares_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showSquares"
-        android:text="Squares"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Religions_Button" />
-
-    <Button
-        android:id="@+id/Museums_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showMuseums"
-        android:text="Museums"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/HistoricalPlaces_Button" />
-
-    <Button
-        android:id="@+id/MyLocationsPage_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="showMyLocationsPage"
-        android:text="MyLocationsPage"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="325dp"
+        android:layout_height="294dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginEnd="43dp"
+        android:layout_marginBottom="264dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/intro_logo" />
 
-    <Button
-        android:id="@+id/MyFavourites_Button"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="152dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="72dp"
+        android:text="Tripist"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="showMy_Favourites"
-        android:text="MYFAV"
+        android:text="Fuel your soul with travel"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Squares_Button" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
