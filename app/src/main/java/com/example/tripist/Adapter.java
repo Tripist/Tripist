@@ -25,7 +25,7 @@ public class Adapter extends ArrayAdapter<Places> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+            LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View customView = layoutInflater.inflate(R.layout.listview_my_locations,parent,false);
         TextView nameTextView = customView.findViewById(R.id.nameTextView);
         nameTextView.setText(placeList.get(position).name);

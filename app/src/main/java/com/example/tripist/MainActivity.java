@@ -1,12 +1,14 @@
 package com.example.tripist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.StrictMode;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -24,6 +26,20 @@ import com.example.tripist.maps.My_Locations;
 import com.example.tripist.maps.Parks;
 import com.example.tripist.maps.Religions;
 import com.example.tripist.maps.Squares;
+import com.example.tripist.ui.home.HomeFragment;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIMER = 5000;
@@ -32,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView image;
     TextView logo, slogan;
     SharedPreferences onBoardingScreen;
+    HomeFragment homeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-        /////////////////////77
+
     public void showMyLocationsPage(View view){
 
         Intent intent = new Intent(this,MyLocationsPage.class);
@@ -160,6 +177,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
+
+
+
+
+
+
 
 
 

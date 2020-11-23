@@ -1,6 +1,7 @@
 package com.example.tripist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,12 +16,14 @@ import com.example.tripist.maps.My_Locations;
 
 import java.util.ArrayList;
 
-public class MyLocationsPage extends AppCompatActivity {
+public class MyLocationsPage extends FragmentActivity {
     SQLiteDatabase database;
     Adapter adapter;
     ArrayList<Places> placeList = new ArrayList<>();
     ListView listView;
     Button map_Button;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
