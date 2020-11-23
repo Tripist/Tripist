@@ -16,7 +16,14 @@
     <string name="title_myfavourites">Favorilerim</string>
     <string name="title_mylocations">Konumlarım</string>
     <string name="title_settings">Ayarlar</string>
-
+    <string name="title_historical">Tarihi Yerler</string>
+    <string name="title_museum">Müzeler</string>
+    <string name="title_religions">İnanç</string>
+    <string name="title_parks">Parklar</string>
+    <string name="title_squares">Meydanlar</string>
+    <string name="title_markets">Pazarlar ve Marketler</string>
+    <string name="title_island">Adalar ve Plajlar</string>
+    <string name="title_foods">Yemekler</string>
     <string name="first_slide_titel">Explore Istanbul</string>
     <string name="second_slide_titel">Find Destination</string>
     <string name="third_slide_titel">Get Information</string>

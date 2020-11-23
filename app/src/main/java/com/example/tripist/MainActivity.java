@@ -19,7 +19,7 @@ import com.example.tripist.maps.Bazaar_Markets;
 import com.example.tripist.maps.Historical_Places;
 import com.example.tripist.maps.Island_Beachs;
 import com.example.tripist.maps.Museums;
-import com.example.tripist.maps.My_Favourites;
+
 import com.example.tripist.maps.My_Locations;
 import com.example.tripist.maps.Parks;
 import com.example.tripist.maps.Religions;
@@ -113,13 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showMy_Favourites(View view){
 
-        Intent intent = new Intent(this, My_Favourites.class);
-        intent.putExtra("info","new");
-        startActivity(intent);
-
-    }
 
     public void showBazaar_Markets(View view){
         Intent intent = new Intent(this, Bazaar_Markets.class);

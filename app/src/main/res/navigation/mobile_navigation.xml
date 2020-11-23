@@ -12,11 +12,6 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_setting"
-        android:name="com.example.tripist.ui.home.HomeFragment"
-        android:label="@string/title_settings"
-        tools:layout="@layout/fragment_home" />
-    <fragment
         android:id="@+id/navigation_myfavourites"
         android:name="com.example.tripist.ui.myfavourites.MyFavouritesFragment"
         android:label="@string/title_myfavourites"
@@ -27,4 +22,8 @@
         android:name="com.example.tripist.ui.mylocations.MyLocationsFragment"
         android:label="@string/title_mylocations"
         tools:layout="@layout/fragment_mylocations" />
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.example.tripist.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>
