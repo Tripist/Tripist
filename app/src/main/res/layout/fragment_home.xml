@@ -27,7 +27,6 @@
         android:id="@+id/imageView"
         android:layout_width="422dp"
         android:layout_height="268dp"
-        android:layout_marginTop="0dp"
         android:paddingTop="0dp"
         android:src="@drawable/ortakoy"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +49,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle"
             android:orientation="vertical"></LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <androidx.gridlayout.widget.GridLayout
@@ -220,4 +220,26 @@
             android:editable="false"
             android:text="@string/title_foods" />
     </androidx.gridlayout.widget.GridLayout>
+
+    <ImageView
+        android:id="@+id/weather_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/weather_text"
+        android:layout_width="121dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="88dp"
+        android:text="TextView"
+        android:textColor="#F81111"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

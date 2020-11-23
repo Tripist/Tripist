@@ -17,10 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OnBoarding"></activity>
+        <activity android:name=".OnBoarding" />
         <activity
             android:name=".BottomNav"
-            android:label="@string/title_activity_bottom_nav"></activity>
+            android:label="@string/title_activity_bottom_nav" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
