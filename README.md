@@ -15,12 +15,16 @@ Bevor wir uns auf eine Reise begeben, gibt es hierzu viele Websites, auf denen w
 
 ## Verwendete Werkzeuge
 ### Programmierung
-* Java
-* Android Studio
+* Sprache: Java
+* Platform: Android Studio
+### Database
+* SQLite
 
 ### Koordination
 * Github
 * Google Docs 
+* Google Slides
+* Google Sheets
 
 ### GUI Entwurf
 * Adobe XD
@@ -33,8 +37,13 @@ Bevor wir uns auf eine Reise begeben, gibt es hierzu viele Websites, auf denen w
 ### Quelle
 #### Icons
 * Flaticon
+* OpenWeather
 #### Illustrations
 * Freepik by Stories
+#### Fotos
+* Shutterstock
+* Pexels
+* Pixabays
 
 ## Projektmanagement
 | Abteilung | Abteilungsleiter |

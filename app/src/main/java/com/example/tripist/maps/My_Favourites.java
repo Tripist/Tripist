@@ -1,5 +1,6 @@
 package com.example.tripist.maps;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -222,3 +223,9 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
 
 
 }
+=======
+import android.app.Activity;
+
+public class My_Favourites extends Activity {
+}
+>>>>>>> 10787e005e5db027ccd9889d74c660c20c89153a
