@@ -39,7 +39,6 @@
         <activity
             android:name=".maps.My_Favourites"
             android:label="@string/title_activity_my__favourites" />
-        <activity android:name=".MyLocationsPage" />
         <activity
             android:name=".maps.My_Locations"
             android:label="@string/title_activity_my__locations" />

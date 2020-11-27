@@ -83,7 +83,7 @@ public class Database_Connection extends AppCompatActivity{
 
 
     }
-    public static void add_islandsandbeaches(SQLiteDatabase database) {
+    public static void add_islandsandbeachs(SQLiteDatabase database) {
 
         String toCompile = "INSERT INTO island_beaches (name, latitude, longitude) VALUES ('Büyükada', '40.856003', '29.119722'),('Heybeliada' ,'40.873304', '29.089633'),('Kınalıada', '40.909127', '29.053049'),('Sedef Island', '40.850309', '29.146068'),('Burgaz Island', '40.879934', '29.068489'),('Kınalıada Public Beach', '40.906846', '29.044361'),('Caddebostan Beach', '40.963336', '29.058661'),('Suma Beach', '41.246143', '29.004559')";
         SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);

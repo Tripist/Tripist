@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
+import com.example.tripist.R;
+import com.example.tripist.Places;
 import java.util.ArrayList;
 
 public class Adapter extends ArrayAdapter<Places> {
@@ -17,7 +18,7 @@ public class Adapter extends ArrayAdapter<Places> {
         Context context ;
 
     public Adapter(@NonNull Context context, ArrayList<Places> placesList) {
-        super(context, R.layout.listview_my_locations);
+        super(context, R.layout.listview_my_locations,placesList);
         this.placeList = placesList ;
         this.context = context;
     }
