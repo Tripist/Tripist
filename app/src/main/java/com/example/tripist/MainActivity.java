@@ -170,13 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showMyLocationsPage(View view){
 
-        Intent intent = new Intent(this,MyLocationsPage.class);
-
-        startActivity(intent);
-
-    }
 
 
 

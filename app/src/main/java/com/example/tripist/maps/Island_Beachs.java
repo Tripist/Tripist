@@ -170,7 +170,7 @@ public class Island_Beachs extends FragmentActivity implements OnMapReadyCallbac
             e.printStackTrace();
         }
 
-        // mMap.clear();
+
 
         mMap.addMarker(new MarkerOptions().title(address).position(latLng));
 
