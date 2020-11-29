@@ -21,14 +21,11 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.text.Editable;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.tripist.Adapter;
 import com.example.tripist.Places;
 import com.example.tripist.R;
-import com.example.tripist.ui.mylocations.MyLocationsFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
