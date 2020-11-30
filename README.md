@@ -48,13 +48,6 @@ Bevor wir uns auf eine Reise begeben, gibt es hierzu viele Websites, auf denen w
 * Pexels
 * Pixabays
 
-## Projektmanagement
-| Abteilung | Abteilungsleiter |
-| --- | --- |
-| Frontend | Büşra Sarı **(Teamsprecher)** |
-| Backend | Tuğba Öğünçmert, Kemal Berke Ak |
-| Dokumentation | Şevval Arslan |
-| Tester | Asım Tatar |
 
 # GUI ENTWURF
 ![logom](https://user-images.githubusercontent.com/61140841/99084270-ca782580-25d7-11eb-8216-f9d90ce363f5.png)

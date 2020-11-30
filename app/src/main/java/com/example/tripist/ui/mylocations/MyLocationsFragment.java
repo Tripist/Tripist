@@ -23,6 +23,7 @@ import com.example.tripist.Places;
 import com.example.tripist.R;
 import com.example.tripist.RecyclerViewAdapter;
 import com.example.tripist.maps.My_Locations;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class MyLocationsFragment extends Fragment  {
     RecyclerView myRecyclerView;
     ArrayList<Places> lstPlaces;
     ImageButton map_Buttonn;
+    FloatingActionButton mymap_fab;
     private MyLocationsViewModel myLocationsViewModel;
     Adapter recyclerViewAdapter;
             //todo refresh table
@@ -86,14 +88,23 @@ public class MyLocationsFragment extends Fragment  {
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
-        map_Buttonn = root.findViewById(R.id.map_Buttonn);
+        mymap_fab =root.findViewById(R.id.mymap_fab);
+        mymap_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMy_Locations();
+            }
+        });
+
+      // Berkeden anılar
+       /* map_Buttonn = root.findViewById(R.id.map_Buttonn);
         map_Buttonn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showMy_Locations();
             }
         });
-
+   */
         return root;
 
     }

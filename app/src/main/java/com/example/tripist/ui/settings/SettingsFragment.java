@@ -2,6 +2,7 @@ package com.example.tripist.ui.settings;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -34,5 +35,7 @@ public class SettingsFragment  extends Fragment {
         });
         return root;
     }
+
+
 }
 

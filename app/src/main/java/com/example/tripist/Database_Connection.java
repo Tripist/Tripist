@@ -2,18 +2,12 @@ package com.example.tripist;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.ByteArrayOutputStream;
-import java.sql.Blob;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Database_Connection extends AppCompatActivity{
-    
+
+
 
     public static void databaseprepare(SQLiteDatabase database) {
 

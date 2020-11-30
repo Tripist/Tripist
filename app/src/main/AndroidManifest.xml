@@ -17,6 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".categories.Bazaar_MarketsCategory"></activity>
+        <activity android:name=".categories.SquaresCategory" />
+        <activity android:name=".categories.ReligionsCategory" />
+        <activity android:name=".categories.ParksCategory" />
+        <activity android:name=".categories.FoodsCategory" />
+        <activity android:name=".categories.Island_BeachesCategory" />
+        <activity android:name=".categories.MuseumsCategory" />
+        <activity
+            android:name=".categories.HistoricalPlacesCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".OnBoarding" />
         <activity
             android:name=".BottomNav"

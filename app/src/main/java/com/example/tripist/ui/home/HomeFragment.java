@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tripist.MainActivity;
 import com.example.tripist.R;
+import com.example.tripist.categories.HistoricalPlacesCategory;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.jetbrains.annotations.NotNull;
@@ -63,11 +64,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
         return root;
     }
 
     public void showHistorical_Places() {
-        Intent intent = new Intent(getActivity(), MainActivity.class);
+        Intent intent = new Intent(getActivity(), HistoricalPlacesCategory.class);
         startActivity(intent);
     }
 

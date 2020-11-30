@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.mylocations.MyLocationsFragment" >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FADADA"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text_notifications"
         android:layout_width="match_parent"
@@ -22,23 +33,34 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
 
-    <ImageButton
-        android:id="@+id/map_Buttonn"
-        android:layout_width="88dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="315dp"
-        android:src="@drawable/d01d"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:paddingStart="15dp"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="411dp"
-        android:layout_height="502dp"
-        app:layout_constraintBottom_toTopOf="@+id/map_Buttonn"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mymap_fab"
+        android:layout_width="69dp"
+        android:layout_height="69dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="92dp"
+        android:background="#882139"
+        android:backgroundTint="#882139"
+        android:clickable="true"
+        android:foregroundTint="#882139"
+        android:src="@drawable/fabmapicon"
+        app:backgroundTint="#882139"
+        app:fabCustomSize="69dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:maxImageSize="30dp"
+        app:rippleColor="#882139" />
 </androidx.constraintlayout.widget.ConstraintLayout>
