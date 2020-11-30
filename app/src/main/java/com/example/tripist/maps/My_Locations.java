@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.tripist.Places;
 import com.example.tripist.R;
+import com.example.tripist.ui.mylocations.MyLocationsFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -402,8 +403,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
     }
-
-
 
 
 }

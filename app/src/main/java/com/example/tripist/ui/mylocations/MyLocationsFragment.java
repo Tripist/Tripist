@@ -3,10 +3,12 @@ package com.example.tripist.ui.mylocations;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -22,18 +24,20 @@ import com.example.tripist.R;
 import com.example.tripist.RecyclerViewAdapter;
 import com.example.tripist.maps.My_Locations;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class MyLocationsFragment extends Fragment {
+public class MyLocationsFragment extends Fragment  {
     SQLiteDatabase database;
     RecyclerView myRecyclerView;
-    List<Places> lstPlaces;
+    ArrayList<Places> lstPlaces;
     ImageButton map_Buttonn;
     private MyLocationsViewModel myLocationsViewModel;
-
+    Adapter recyclerViewAdapter;
+            //todo refresh table
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,7 @@ public class MyLocationsFragment extends Fragment {
 
     }
 
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myLocationsViewModel = new ViewModelProvider(this).get(MyLocationsViewModel.class);
@@ -81,7 +86,6 @@ public class MyLocationsFragment extends Fragment {
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
-
         map_Buttonn = root.findViewById(R.id.map_Buttonn);
         map_Buttonn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +99,13 @@ public class MyLocationsFragment extends Fragment {
     }
 
 
- public void showMy_Locations() {
+
+    public void showMy_Locations() {
         Intent intent = new Intent(getActivity(), My_Locations.class);
         intent.putExtra("info","new");
         startActivity(intent);
+
     }
+
 
 }
