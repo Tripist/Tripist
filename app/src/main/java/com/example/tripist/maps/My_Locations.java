@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.location.Address;
@@ -20,10 +21,12 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.tripist.Places;
 import com.example.tripist.R;
+import com.example.tripist.ui.mylocations.MyLocationsFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -35,7 +38,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class My_Locations extends FragmentActivity implements OnMapReadyCallback , GoogleMap.OnMapLongClickListener{
+public class My_Locations extends FragmentActivity implements OnMapReadyCallback , GoogleMap.OnMapLongClickListener {
 
     private GoogleMap mMap;
     SQLiteDatabase database;
@@ -57,9 +60,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-
-
-
+        add_marker();
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
@@ -108,6 +109,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -135,7 +137,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                             LatLng latLng = new LatLng(place.latitude, place.longitude);
                             String place_Name = place.name;
                             mMap.addMarker(new MarkerOptions().position(latLng).title(place_Name));
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+
                         }
 
                     }
@@ -176,28 +178,71 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         mMap.addMarker(new MarkerOptions().title(address).position(latLng));
 
-        Double latitude = latLng.latitude;
-        Double longitude = latLng.longitude;
+        final Double latitude = latLng.latitude;
+        final Double longitude = latLng.longitude;
 
 
         final Places place = new Places(address, latitude, longitude);
 
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(My_Locations.this);
-        alertDialog.setCancelable(false);
-        alertDialog.setTitle("Burayı Kaydetmek Ister Misin");
-        alertDialog.setMessage(place.name);
-        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //DATABASE ACMAK YADA OLUSTURMAK
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(My_Locations.this);
+        builder.setTitle(place.name);
+        builder.setCancelable(false);
+        builder.setItems(new CharSequence[]
+                        {"My Hotel", "My blabla", "My Airport", "Other"},
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String a = place.name;
+                        Double b = place.latitude;
+                        Double c = place.longitude;
+                        switch (which) {
+                            case 0:
+                                //  Toast.makeText(getApplicationContext(), "My Hotel", Toast.LENGTH_SHORT).show();
+                                String myhotel = "MY HOTEL";
+                                add_myhotel(myhotel, b, c);
+                               break;
+                            case 1:
+                                // Toast.makeText(getApplicationContext(), "My blabla", Toast.LENGTH_SHORT).show();
+                                String myblabla = "MY BLABLA";
+                                add_myblabla(myblabla, b, c);
+                                break;
+                            case 2:
+                                //  Toast.makeText(getApplicationContext(), "My Airport", Toast.LENGTH_SHORT).show();
+                                String myairport = "MY AİRPORT";
+                                add_myairport(myairport, b, c);
+                                break;
+                            case 3:
+                                //  Toast.makeText(getApplicationContext(), "Other", Toast.LENGTH_SHORT).show();
+                                add_others(a, b, c);
+                                break;
+                        }
+                    }
+                });
+
+        builder.create().show();
+    }
+
+    public void add_others(final String name, final Double latitude, final Double longitude) {
+
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        final EditText edittext = new EditText(My_Locations.this);
+        alert.setTitle(name);
+
+        alert.setView(edittext);
+
+        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                String UserLocationInput = edittext.getText().toString();
                 try {
                     database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
                     String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
 
                     SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-                    sqLiteStatement.bindString(1, place.name);
-                    sqLiteStatement.bindString(2, String.valueOf(place.latitude));
-                    sqLiteStatement.bindString(3, String.valueOf(place.longitude));
+                    sqLiteStatement.bindString(1, UserLocationInput.toUpperCase());
+                    sqLiteStatement.bindString(2, String.valueOf(latitude));
+                    sqLiteStatement.bindString(3, String.valueOf(longitude));
                     sqLiteStatement.execute();
 
                     Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
@@ -209,13 +254,162 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         });
-        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getApplicationContext(), "Kapattıldı", Toast.LENGTH_LONG);
 
+
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
             }
         });
-        alertDialog.show();
+
+        alert.show();
     }
+
+    public void add_myhotel(final String name, final Double latitude, final Double longitude) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(name);
+        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                try {
+                    database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+                    String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
+
+                    SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
+                    sqLiteStatement.bindString(1, name);
+                    sqLiteStatement.bindString(2, String.valueOf(latitude));
+                    sqLiteStatement.bindString(3, String.valueOf(longitude));
+                    sqLiteStatement.execute();
+
+                    Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+        });
+
+
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alert.show();
+    }
+
+    public void add_myblabla(final String name, final Double latitude, final Double longitude) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(name);
+        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+                try {
+                    database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+                    String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
+
+                    SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
+                    sqLiteStatement.bindString(1, name);
+                    sqLiteStatement.bindString(2, String.valueOf(latitude));
+                    sqLiteStatement.bindString(3, String.valueOf(longitude));
+                    sqLiteStatement.execute();
+
+                    Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+        });
+
+
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alert.show();
+    }
+
+    public void add_myairport(final String name, final Double latitude, final Double longitude) {
+
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(name);
+        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+
+
+                try {
+                    database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+                    String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
+
+                    SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
+                    sqLiteStatement.bindString(1, name);
+                    sqLiteStatement.bindString(2, String.valueOf(latitude));
+                    sqLiteStatement.bindString(3, String.valueOf(longitude));
+                    sqLiteStatement.execute();
+
+                    Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+        });
+
+
+        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        alert.show();
+    }
+
+    //kayıtlı konumları eklemek icin
+    public void add_marker() {
+        try {
+            mMap.clear();
+            database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+            Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
+
+            int nameIX = cursor.getColumnIndex("name");
+            int latitudeIX = cursor.getColumnIndex("latitude");
+            int longitudeIX = cursor.getColumnIndex("longitude");
+
+            while (cursor.moveToNext()) {
+                String nameFromDatabase = cursor.getString(nameIX);
+                String latitudeFromDatabase = cursor.getString(latitudeIX);
+                String longitudeFromDatabase = cursor.getString(longitudeIX);
+
+                Double latitude = Double.parseDouble(latitudeFromDatabase);
+                Double longitude = Double.parseDouble(longitudeFromDatabase);
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(latLng).title(nameFromDatabase));
+            }
+            cursor.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
+
+
+
+
+
+
+
