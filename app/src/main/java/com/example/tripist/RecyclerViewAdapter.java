@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripist.ui.mylocations.MyLocationsFragment;
@@ -41,7 +42,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(mContext).inflate(R.layout.item_mylocation, parent, false);
+        v = LayoutInflater.from(mContext).inflate(R.layout.carddesign_mylocation, parent, false);
+       // v = LayoutInflater.from(mContext).inflate(R.layout.item_mylocation, parent, false);
         final MyViewHolder vHolder = new MyViewHolder(v);
 
         //Dialog ini
@@ -64,7 +66,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.item_textView.setText(mList.get(position).name);
+        holder.text_mylocation.setText(mList.get(position).name);
+       // holder.item_textView.setText(mList.get(position).name);
 
     }
 
@@ -76,7 +79,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView text_mylocation;
+        public CardView item_mylocation;
 
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            item_mylocation = itemView.findViewById(R.id.item_mylocation);
+            text_mylocation = itemView.findViewById(R.id.text_mylocation);
+        }
+
+      /*
         private final TextView item_textView;
         private final Button button;
         private LinearLayout item_mylocation;
@@ -90,6 +103,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
         }
+        */
 
         }
         public void CallDialog(final int id,final String name){
