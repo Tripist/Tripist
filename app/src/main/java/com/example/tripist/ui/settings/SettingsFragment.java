@@ -17,14 +17,14 @@ import com.example.tripist.R;
 import com.example.tripist.ui.mylocations.MyLocationsViewModel;
 
 public class SettingsFragment  extends Fragment {
-    private MyLocationsViewModel settingsViewModel;
+    private SettingsViewModel settingsViewModel;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         settingsViewModel =
-                new ViewModelProvider(this).get(MyLocationsViewModel.class);
+                new ViewModelProvider(this).get(SettingsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
         final TextView textView = root.findViewById(R.id.text_settings);
         settingsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

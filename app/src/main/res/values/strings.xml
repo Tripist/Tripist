@@ -15,7 +15,11 @@
     <string name="title_home">Anasayfa</string>
     <string name="title_myfavourites">Favorilerim</string>
     <string name="title_mylocations">Konumlarım</string>
-    <string name="title_settings">Ayarlar</string>
+    <string name="title_settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="application_language1">English</string>
+    <string name="application_language2">Turkish</string>
+    <string name="application_usage">Application Usage</string>
     <string name="title_historical">Tarihi Yerler</string>
     <string name="title_museum">Müzeler</string>
     <string name="title_religions">İnanç</string>
