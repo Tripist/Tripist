@@ -3,13 +3,11 @@ package com.example.tripist.ui.mylocations;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toolbar;
 
@@ -26,9 +24,7 @@ import com.example.tripist.RecyclerViewAdapter;
 import com.example.tripist.maps.My_Locations;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -40,7 +36,9 @@ public class MyLocationsFragment extends Fragment  {
     FloatingActionButton mymap_fab;
     private MyLocationsViewModel myLocationsViewModel;
     Adapter recyclerViewAdapter;
-            //todo refresh table
+
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,11 +79,12 @@ public class MyLocationsFragment extends Fragment  {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         myLocationsViewModel = new ViewModelProvider(this).get(MyLocationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_mylocations, container, false);
 
         myRecyclerView = root.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         myRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
@@ -119,5 +118,60 @@ public class MyLocationsFragment extends Fragment  {
 
     }
 
+    @Override
+    public void onStart() {
+        getData();
+        super.onStart();
+
+    }
+
+
+
+
+
+
+    public void getData() {
+        lstPlaces.clear();
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
+        myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        myRecyclerView.setAdapter(recyclerViewAdapter);
+
+        try {
+
+            database = getActivity().openOrCreateDatabase("Places",MODE_PRIVATE,null);
+            Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
+
+            int nameIx = cursor.getColumnIndex("name");
+            int latitudeIx = cursor.getColumnIndex("latitude");
+            int longitudeIx = cursor.getColumnIndex("longitude");
+
+            while (cursor.moveToNext()) {
+
+                String nameFromDatabase = cursor.getString(nameIx);
+                String latitudeFromDatabase = cursor.getString(latitudeIx);
+                String longitudeFromDatabase = cursor.getString(longitudeIx);
+
+                Double latitude = Double.parseDouble(latitudeFromDatabase);
+                Double longitude = Double.parseDouble(longitudeFromDatabase);
+
+                Places place = new Places(nameFromDatabase,latitude,longitude);
+
+
+                lstPlaces.add(place);
+
+            }
+            recyclerViewAdapter.notifyDataSetChanged();
+            cursor.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        myRecyclerView.setAdapter(recyclerViewAdapter );
+
+
+
+    }
 
 }

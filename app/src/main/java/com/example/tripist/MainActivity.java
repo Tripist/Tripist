@@ -43,6 +43,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static int SPLASH_TIMER = 5000;
+    public static final String DATABASE_NAME = "Places";
     SQLiteDatabase database;
     Animation topAnim, bottomAnim;
     ImageView image;
@@ -99,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         //create table
-        database = MainActivity.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+        database = MainActivity.this.openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
+
         Database_Connection.databaseprepare(database);
 
         //add data
@@ -169,6 +171,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+  /*  private void createEmployeeTable() {
+        database.execSQL(
+                "CREATE TABLE IF NOT EXISTS my_locationss (\n" +
+                        "    name varchar(30) NOT NULL,\n" +
+                        "    latitude varchar(20) NOT NULL,\n" +
+                        "    longitude varchar(20) NOT NULL\n" +
+                        ");"
+        );
+    } */
 
 
 

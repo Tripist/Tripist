@@ -4,11 +4,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,12 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tripist.maps.My_Locations;
 import com.example.tripist.ui.mylocations.MyLocationsFragment;
-import com.google.android.gms.maps.model.LatLng;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -32,9 +31,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Dialog myDialog;
     SQLiteDatabase database;
 
-    public RecyclerViewAdapter(@NonNull Context mContext, ArrayList<Places> mList) {
+    public RecyclerViewAdapter(@NonNull Context mContext, ArrayList<Places> mList,SQLiteDatabase database) {
         this.mContext = mContext;
         this.mList = mList;
+        this.database = database;
     }
 
 
@@ -46,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
        // v = LayoutInflater.from(mContext).inflate(R.layout.item_mylocation, parent, false);
         final MyViewHolder vHolder = new MyViewHolder(v);
 
-        //Dialog ini
+        //Dialog init
 
 
         vHolder.item_mylocation.setOnClickListener(new View.OnClickListener() {
@@ -111,27 +111,74 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             myDialog.setContentView(R.layout.dialog_mylocations);
             Button dialog_update_button = myDialog.findViewById(R.id.item_update_button);
             Button dialog_delete_button = myDialog.findViewById(R.id.item_delete_button);
-
+            final EditText edittext = myDialog.findViewById(R.id.update_editText);
             dialog_delete_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //todo delete
+                    String sql = "DELETE FROM my_locations WHERE name = ?";
+                    database.execSQL(sql, new String[]{ name});
                     System.out.println(name);
                     mList.remove(id);
+                    myDialog.cancel();
                     notifyDataSetChanged();
                 }
             });
 
             dialog_update_button.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
-                    //todo update
-                    System.out.println(name);
+                    //todo refresh
+                    String newName = edittext.getText().toString().toUpperCase().trim();
+                    if (newName.isEmpty()) {
+                        edittext.setError("Name can't be blank");
+                        edittext.requestFocus();
+                        return;
+                    }
+
+                    String sql = "UPDATE my_locations \n" +
+                            "SET name = ? \n" +
+                            "WHERE name = ?;\n";
+
+                    database.execSQL(sql, new String[]{newName,name});
+                    refreshTable();
+                    Toast.makeText(mContext, "Employee Updated", Toast.LENGTH_SHORT).show();
                     notifyDataSetChanged();
+                     myDialog.cancel();
+
+
 
                 }
             });
             myDialog.show();
+        }
+
+
+        public void refreshTable(){
+            mList.clear();
+            Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
+
+            int nameIx = cursor.getColumnIndex("name");
+            int latitudeIx = cursor.getColumnIndex("latitude");
+            int longitudeIx = cursor.getColumnIndex("longitude");
+
+            while (cursor.moveToNext()) {
+
+                String nameFromDatabase = cursor.getString(nameIx);
+                String latitudeFromDatabase = cursor.getString(latitudeIx);
+                String longitudeFromDatabase = cursor.getString(longitudeIx);
+
+                Double latitude = Double.parseDouble(latitudeFromDatabase);
+                Double longitude = Double.parseDouble(longitudeFromDatabase);
+
+                Places place = new Places(nameFromDatabase,latitude,longitude);
+
+
+                mList.add(place);
+
+            }
+            notifyDataSetChanged();
+            cursor.close();
         }
 
 

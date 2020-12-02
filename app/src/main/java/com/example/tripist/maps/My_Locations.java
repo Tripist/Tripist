@@ -174,9 +174,11 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
 
-        // mMap.clear();
 
-        mMap.addMarker(new MarkerOptions().title(address).position(latLng));
+
+     // mMap.addMarker(new MarkerOptions().title(address).position(latLng));
+
+
 
         final Double latitude = latLng.latitude;
         final Double longitude = latLng.longitude;
@@ -199,23 +201,32 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                             case 0:
                                 //  Toast.makeText(getApplicationContext(), "My Hotel", Toast.LENGTH_SHORT).show();
                                 String myhotel = "MY HOTEL";
-                                add_myhotel(myhotel, b, c);
-                               break;
+                                if(DataExists(myhotel)== false){
+
+                                    add_myhotel(myhotel, b, c);
+                                }
+                                break;
                             case 1:
                                 // Toast.makeText(getApplicationContext(), "My blabla", Toast.LENGTH_SHORT).show();
                                 String myblabla = "MY BLABLA";
-                                add_myblabla(myblabla, b, c);
+                                if(DataExists(myblabla)== false){
+                                    add_myblabla(myblabla, b, c);
+                                }
                                 break;
                             case 2:
                                 //  Toast.makeText(getApplicationContext(), "My Airport", Toast.LENGTH_SHORT).show();
                                 String myairport = "MY AİRPORT";
-                                add_myairport(myairport, b, c);
+                                if(DataExists(myairport)== false){
+                                    add_myairport(myairport, b, c);
+                                }
+
                                 break;
                             case 3:
                                 //  Toast.makeText(getApplicationContext(), "Other", Toast.LENGTH_SHORT).show();
                                 add_others(a, b, c);
                                 break;
                         }
+
                     }
                 });
 
@@ -223,7 +234,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_others(final String name, final Double latitude, final Double longitude) {
-
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText edittext = new EditText(My_Locations.this);
@@ -233,7 +243,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
                 String UserLocationInput = edittext.getText().toString();
                 try {
                     database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
@@ -266,6 +277,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_myhotel(final String name, final Double latitude, final Double longitude) {
+        LatLng latLng = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
         alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
@@ -302,6 +315,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_myblabla(final String name, final Double latitude, final Double longitude) {
+        LatLng latLng = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
         alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
@@ -338,7 +353,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_myairport(final String name, final Double latitude, final Double longitude) {
-
+        LatLng latLng = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
@@ -403,6 +419,22 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
     }
+
+    public  boolean DataExists(String fieldValue) {
+        database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+        String Query = "Select * from my_locations where name ='" + fieldValue + "'";
+        Cursor cursor = database.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+
+            return false;
+
+        }
+        cursor.close();
+        Toast.makeText(getApplicationContext(), fieldValue + " zaten mevcut", Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
 
 
 }
