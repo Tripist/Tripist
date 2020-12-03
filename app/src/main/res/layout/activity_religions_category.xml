@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".categories.ReligionsCategory">
+    tools:context=".views.categories.ReligionsCategory">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/religionmapbutton"
@@ -22,7 +22,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:rippleColor="#882139"
-        app:srcCompat="@drawable/fabmapicon" />
+        app:srcCompat="@drawable/fabmapicon"
+        android:onClick="showReligionsMap"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/religion_toolbar"

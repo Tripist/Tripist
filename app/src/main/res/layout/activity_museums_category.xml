@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".categories.MuseumsCategory">
+    tools:context=".views.categories.MuseumsCategory">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -23,7 +23,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:rippleColor="#882139"
-        app:srcCompat="@drawable/fabmapicon" />
+        app:srcCompat="@drawable/fabmapicon"
+        android:onClick="showMuseumsMap"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/museum_toobar"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".categories.Island_BeachesCategory">
+    tools:context=".views.categories.Island_BeachesCategory">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -34,7 +34,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:rippleColor="#882139"
-        app:srcCompat="@drawable/fabmapicon" />
+        app:srcCompat="@drawable/fabmapicon"
+        android:onClick="showIsland_Beachs_Map"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/island_rv"

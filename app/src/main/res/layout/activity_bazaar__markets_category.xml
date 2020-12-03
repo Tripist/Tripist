@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".categories.Bazaar_MarketsCategory">
+    tools:context=".views.categories.Bazaar_MarketsCategory">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/bazaar_fab"
@@ -22,7 +22,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:rippleColor="#882139"
-        app:srcCompat="@drawable/fabmapicon" />
+        app:srcCompat="@drawable/fabmapicon"
+        android:onClick="showBazaar_Markets_Map"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/bazaar_toolbar"

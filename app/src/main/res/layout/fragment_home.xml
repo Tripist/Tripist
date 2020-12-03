@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".views.home.HomeFragment">
 
     <TextView
         android:id="@+id/text_home"
@@ -104,7 +104,7 @@
             app:maxImageSize="38dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton4"
+            android:id="@+id/parks_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="41dp"
@@ -114,7 +114,7 @@
             app:maxImageSize="30dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton5"
+            android:id="@+id/squares_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -127,7 +127,7 @@
             app:maxImageSize="30dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton6"
+            android:id="@+id/bazaar_markets_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="41dp"
@@ -137,7 +137,7 @@
             app:maxImageSize="30dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton7"
+            android:id="@+id/island_beaches_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="41dp"
@@ -147,7 +147,7 @@
             app:maxImageSize="30dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton8"
+            android:id="@+id/foods_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="41dp"

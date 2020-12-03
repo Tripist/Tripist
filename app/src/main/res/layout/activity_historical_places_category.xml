@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".categories.HistoricalPlacesCategory">
+    tools:context=".views.categories.HistoricalPlacesCategory">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/historical_fab"
@@ -22,7 +22,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
         app:rippleColor="#882139"
-        app:srcCompat="@drawable/fabmapicon" />
+        app:srcCompat="@drawable/fabmapicon"
+        android:onClick="showHistorical_Places_Map"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/historical_toolbar"
