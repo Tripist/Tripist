@@ -23,6 +23,9 @@ Bevor wir uns auf eine Reise begeben, gibt es hierzu viele Websites, auf denen w
 ### Database
 * SQLite
 
+### Architektur
+* MVC (Model-View-Controller)
+
 ### Koordination
 * Github
 * Google Docs 
