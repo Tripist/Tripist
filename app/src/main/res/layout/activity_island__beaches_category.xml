@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.categories.Island_BeachesCategory">
+    tools:context=".controller.categories.Island_BeachesCategory">
 
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/island_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FADADA"
+        android:background="#F3E8EB"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,11 +41,22 @@
         android:id="@+id/island_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="15dp"
-        android:paddingTop="10dp"
         android:layout_marginTop="?actionBarSize"
+        android:layout_gravity="center"
+        android:paddingTop="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/island_toolbar" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/island_toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/island_toolbar"
+        app:srcCompat="@drawable/beach" />
 </androidx.constraintlayout.widget.ConstraintLayout>

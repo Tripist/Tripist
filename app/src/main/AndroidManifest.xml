@@ -18,32 +18,32 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".views.categories.Bazaar_MarketsCategory"
+            android:name=".controller.categories.Bazaar_MarketsCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name=".views.categories.SquaresCategory"
+            android:name=".controller.categories.SquaresCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name=".views.categories.ReligionsCategory"
+            android:name=".controller.categories.ReligionsCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name=".views.categories.ParksCategory"
+            android:name=".controller.categories.ParksCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name=".views.categories.FoodsCategory"
+            android:name=".controller.categories.FoodsCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name=".views.categories.Island_BeachesCategory"
+            android:name=".controller.categories.Island_BeachesCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
-            android:name=".views.categories.MuseumsCategory"
+            android:name=".controller.categories.MuseumsCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
-            android:name=".views.categories.HistoricalPlacesCategory"
+            android:name=".controller.categories.HistoricalPlacesCategory"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".views.onboarding.OnBoarding" />
+        <activity android:name=".controller.OnBoarding" />
         <activity
-            android:name=".views.BottomNav"
+            android:name=".controller.BottomNav"
             android:label="@string/title_activity_bottom_nav" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -61,33 +61,33 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".views.maps.My_Favourites"
+            android:name=".controller.maps.My_Favourites"
             android:label="@string/title_activity_my__favourites" />
         <activity
-            android:name=".views.maps.My_Locations"
+            android:name=".controller.maps.My_Locations"
             android:label="@string/title_activity_my__locations" />
         <activity
-            android:name=".views.maps.Squares"
+            android:name=".controller.maps.Squares"
             android:label="@string/title_activity_squares" />
         <activity
-            android:name=".views.maps.Bazaar_Markets"
+            android:name=".controller.maps.Bazaar_Markets"
             android:label="@string/title_activity_bazaar__markets" />
         <activity
-            android:name=".views.maps.Religions"
+            android:name=".controller.maps.Religions"
             android:label="@string/title_activity_religions" />
         <activity
-            android:name=".views.maps.Island_Beachs"
+            android:name=".controller.maps.Island_Beachs"
             android:label="@string/title_activity_island__beachs" />
         <activity
-            android:name=".views.maps.Parks"
+            android:name=".controller.maps.Parks"
             android:label="@string/title_activity_parks" />
         <activity
-            android:name=".views.maps.Historical_Places"
+            android:name=".controller.maps.Historical_Places"
             android:label="@string/title_activity_historical__places" />
         <activity
-            android:name=".views.maps.Museums"
+            android:name=".controller.maps.Museums"
             android:label="@string/title_activity_museums" />
-        <activity android:name=".views.SplashScreen">
+        <activity android:name=".controller.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

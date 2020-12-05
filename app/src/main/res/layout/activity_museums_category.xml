@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.categories.MuseumsCategory">
+    tools:context=".controller.categories.MuseumsCategory">
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -30,7 +30,7 @@
         android:id="@+id/museum_toobar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FADADA"
+        android:background="#F3E8EB"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,11 +41,22 @@
         android:id="@+id/museum_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="15dp"
-        android:paddingTop="10dp"
         android:layout_marginTop="?actionBarSize"
+        android:layout_gravity="center"
+        android:paddingTop="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/museum_toobar" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/museum_toobar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/museum" />
 </androidx.constraintlayout.widget.ConstraintLayout>

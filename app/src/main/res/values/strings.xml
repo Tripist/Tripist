@@ -12,22 +12,22 @@
     <string name="title_activity_my__locations">Map</string>
     <string name="title_activity_my__favourites">Map</string>
     <string name="title_activity_bottom_nav">MainActivity</string>
-    <string name="title_home">Anasayfa</string>
-    <string name="title_myfavourites">Favorilerim</string>
-    <string name="title_mylocations">Konumlarım</string>
+    <string name="title_home">Homepage</string>
+    <string name="title_myfavourites">My Favourites</string>
+    <string name="title_mylocations">My Locations</string>
     <string name="title_settings">Settings</string>
     <string name="language">Language</string>
-    <string name="application_language1">English</string>
-    <string name="application_language2">Turkish</string>
+    <string name="application_language1">Türkçe</string>
+    <string name="application_language2">English</string>
     <string name="application_usage">Application Usage</string>
-    <string name="title_historical">Tarihi Yerler</string>
-    <string name="title_museum">Müzeler</string>
-    <string name="title_religions">İnanç</string>
-    <string name="title_parks">Parklar</string>
-    <string name="title_squares">Meydanlar</string>
-    <string name="title_markets">Pazarlar ve Marketler</string>
-    <string name="title_island">Adalar ve Plajlar</string>
-    <string name="title_foods">Yemekler</string>
+    <string name="title_historical">Historical Places</string>
+    <string name="title_museum">Museums</string>
+    <string name="title_religions">Religions</string>
+    <string name="title_parks">Parks</string>
+    <string name="title_squares">Squares</string>
+    <string name="title_markets">Bazaar &amp; Markets</string>
+    <string name="title_island">Islands &amp; Beaches</string>
+    <string name="title_foods">Foods</string>
     <string name="first_slide_titel">Explore Istanbul</string>
     <string name="second_slide_titel">Find Destination</string>
     <string name="third_slide_titel">Get Information</string>
@@ -45,6 +45,7 @@
     <string name="fifth_slide_desc">You can get suggestions for events according to the weather of Istanbul.</string>
 
     <string name="next_btn">Next</string>
+    <string name="lets_startes">Let\'s Start</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

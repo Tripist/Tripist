@@ -12,14 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="200dp"
+        android:fontFamily="@font/nunito_bold"
         android:text="@string/title_settings"
-        android:textColor="@color/colorToolbar"
-        android:textSize="36sp"
+        android:textColor="#000000"
+        android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,7 +34,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"
-        android:layout_width="0dp"
+        android:layout_width="360dp"
         android:layout_height="168dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
@@ -50,13 +52,14 @@
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="359dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="17dp"
+                android:fontFamily="@font/nunito_bold"
                 android:text="@string/language"
-                android:textColor="@color/colorToolbar"
-                android:textSize="24sp"
+                android:textColor="#000000"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +72,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:background="#cccccc"
-                android:backgroundTint="@color/colorToolbar"
+                android:backgroundTint="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView10">
@@ -92,16 +95,22 @@
                     android:id="@+id/radioButton"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:layout_marginStart="10sp"
+                    android:buttonTint="#A32746"
+                    android:fontFamily="@font/nunito"
                     android:text="@string/application_language1"
-                    android:textColor="@color/colorToolbar"
+                    android:textColor="#000000"
                     android:textSize="17sp" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
+                    android:layout_marginStart="10sp"
+                    android:buttonTint="#A32746"
+                    android:fontFamily="@font/nunito"
                     android:text="@string/application_language2"
-                    android:textColor="@color/colorToolbar"
+                    android:textColor="#000000"
                     android:textSize="17sp" />
             </RadioGroup>
 
@@ -111,8 +120,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
-        android:layout_width="390dp"
-        android:layout_height="83dp"
+        android:layout_width="360dp"
+        android:layout_height="70dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="15dp"
@@ -128,9 +137,11 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF"
             android:backgroundTint="@color/colorwhite"
+            android:fontFamily="@font/nunito_bold"
+            android:textAllCaps="false"
             android:text="@string/application_usage"
-            android:textColor="@color/colorToolbar"
-            android:textSize="18sp" />
+            android:textColor="#000000"
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.Guideline

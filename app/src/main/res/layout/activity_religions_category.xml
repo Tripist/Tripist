@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.categories.ReligionsCategory">
+    tools:context=".controller.categories.ReligionsCategory">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/religionmapbutton"
@@ -29,7 +29,7 @@
         android:id="@+id/religion_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FADADA"
+        android:background="#F3E8EB"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,13 +40,24 @@
         android:id="@+id/religion_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="15dp"
-        android:paddingTop="10dp"
         android:layout_marginTop="?actionBarSize"
+        android:layout_gravity="center"
+        android:paddingTop="7dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/religion_toolbar" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/religion_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bluemosque" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
