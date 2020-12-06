@@ -6,6 +6,10 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="color">#882139</item>
+
+    </style>
+    <style name="NunitoBoldFont">
+        <item name="android:fontFamily">@font/nunito_bold</item>
     </style>
 
 
