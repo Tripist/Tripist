@@ -39,6 +39,7 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
         toolbar.setTitle(R.string.title_historical);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
+        toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
 
         // TODO Database işlemleri
 

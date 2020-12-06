@@ -35,7 +35,7 @@ public class SquaresCategory extends AppCompatActivity {
         toolbar.setTitle(R.string.title_squares);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
-        // TODO Sağ taraftaki icon hatası
+        toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
 
         // TODO Database işlemleri
 
