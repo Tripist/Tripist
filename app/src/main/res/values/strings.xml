@@ -33,6 +33,10 @@
     <string name="third_slide_titel">Get Information</string>
     <string name="fourth_slide_titel">Add Favourite List</string>
     <string name="fifth_slide_titel">Get Suggestions</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="new_name">Enter the new name</string>
+    <string name="edit">Edit</string>
 
     <string name="first_slide_desc">You can see the touristic places in Istanbul according to their categories.
         You can also discover the dishes that should be eaten in Istanbul.</string>
