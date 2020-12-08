@@ -30,9 +30,8 @@ public class MyLocationsFragment extends Fragment  {
     SQLiteDatabase database;
     RecyclerView myRecyclerView;
     ArrayList<Places> lstPlaces;
-    ImageButton map_Buttonn;
     FloatingActionButton mymap_fab;
-    Adapter recyclerViewAdapter;
+
 
 
 

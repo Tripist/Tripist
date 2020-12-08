@@ -22,6 +22,11 @@ public class Places implements Serializable {
         this.image = image;
     }
 
+    public Places(String name, String image) {
+        this.name = name;
+        this.image = image;
+    }
+
     public String getName() {
         return name;
     }
