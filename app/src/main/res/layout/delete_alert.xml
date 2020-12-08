@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_gravity="center"
+    android:background="@drawable/radius_alert"
+    android:textAlignment="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/radius_alert"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/delete_question"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="160dp"
+            android:layout_height="50dp">
+
+            <Button
+                android:id="@+id/deleteCancel_button"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/radius_cancel"
+                android:text="@string/cancel"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/deleteYes_button"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/radius"
+                android:text="@string/yes"
+                android:textColor="#000000"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

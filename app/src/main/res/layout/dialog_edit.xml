@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:background="@drawable/radius_alert"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
@@ -34,7 +35,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/editYes_button"
                 android:layout_width="90dp"
                 android:layout_height="39dp"
                 android:layout_marginEnd="24dp"
@@ -46,7 +47,7 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/editCancel_button"
                 android:layout_width="90dp"
                 android:layout_height="39dp"
                 android:layout_marginStart="32dp"

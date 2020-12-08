@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
     Context mContext;
     ArrayList<Places> mList;
-    Dialog myDialog;
+    Dialog myDialog ,dialog_edit, delete_alert;
     SQLiteDatabase database;
 
     public RecyclerViewAdapter(@NonNull Context mContext, ArrayList<Places> mList,SQLiteDatabase database) {
@@ -41,8 +41,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         v = LayoutInflater.from(mContext).inflate(R.layout.carddesign_mylocation, parent, false);
        // v = LayoutInflater.from(mContext).inflate(R.layout.item_mylocation, parent, false);
         final MyViewHolder vHolder = new MyViewHolder(v);
-
         //Dialog init
+
+
 
 
         vHolder.item_mylocation.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 int position = vHolder.getAdapterPosition();
                 String name = mList.get(position).name;
                 CallDialog(vHolder.getAdapterPosition(),name);
+
             }
         });
 
@@ -105,18 +107,53 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void CallDialog(final int id,final String name){
             myDialog = new Dialog(mContext);
             myDialog.setContentView(R.layout.dialog_mylocations);
+            TextView dialog_loc_textview = myDialog.findViewById(R.id.konum_textview);
+            dialog_loc_textview.setText(name);
             Button dialog_update_button = myDialog.findViewById(R.id.item_update_button);
             Button dialog_delete_button = myDialog.findViewById(R.id.item_delete_button);
+            Button dialog_cancel_button = myDialog.findViewById(R.id.item_cancel_button);
             final EditText edittext = myDialog.findViewById(R.id.update_editText);
+
+            dialog_edit = new Dialog(mContext);
+            dialog_edit.setContentView(R.layout.dialog_edit);
+            final Button editCancel_button = dialog_edit.findViewById(R.id.editCancel_button);
+            final Button editYes_button = dialog_edit.findViewById(R.id.editYes_button);
+            delete_alert = new Dialog(mContext);
+            delete_alert.setContentView(R.layout.delete_alert);
+            final Button deleteCancel_button = delete_alert.findViewById(R.id.deleteCancel_button);
+            final Button deleteYes_button = delete_alert.findViewById(R.id.deleteYes_button);
+
+
+            dialog_cancel_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    myDialog.cancel();
+                }
+            });
+
             dialog_delete_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String sql = "DELETE FROM my_locations WHERE name = ?";
-                    database.execSQL(sql, new String[]{ name});
-                    System.out.println(name);
-                    mList.remove(id);
                     myDialog.cancel();
-                    notifyDataSetChanged();
+                    delete_alert.show();
+                    deleteYes_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                                              /*
+                            String sql = "DELETE FROM my_locations WHERE name = ?";
+                            database.execSQL(sql, new String[]{ name});
+                            System.out.println(name);
+                            mList.remove(id);
+                            delete_alert.cancel();
+                            notifyDataSetChanged();*/
+                        }
+                    });
+                    deleteCancel_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            delete_alert.cancel();
+                        }
+                    });
                 }
             });
 
@@ -124,23 +161,38 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 @Override
                 public void onClick(View v) {
-                    //todo refresh
-                    String newName = edittext.getText().toString().toUpperCase().trim();
-                    if (newName.isEmpty()) {
-                        edittext.setError("Name can't be blank");
-                        edittext.requestFocus();
-                        return;
-                    }
+                    myDialog.cancel();
+                    dialog_edit.show();
+                    editCancel_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog_edit.cancel();
+                        }
+                    });
+                    editYes_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                                                /*
+                            //todo refresh
+                            String newName = edittext.getText().toString().toUpperCase().trim();
+                            if (newName.isEmpty()) {
+                                edittext.setError("Name can't be blank");
+                                edittext.requestFocus();
+                                return;
+                            }
 
-                    String sql = "UPDATE my_locations \n" +
-                            "SET name = ? \n" +
-                            "WHERE name = ?;\n";
+                            String sql = "UPDATE my_locations \n" +
+                                    "SET name = ? \n" +
+                                    "WHERE name = ?;\n";
 
-                    database.execSQL(sql, new String[]{newName,name});
-                    refreshTable();
-                    Toast.makeText(mContext, "Employee Updated", Toast.LENGTH_SHORT).show();
-                    notifyDataSetChanged();
-                     myDialog.cancel();
+                            database.execSQL(sql, new String[]{newName,name});
+                            refreshTable();
+                            Toast.makeText(mContext, "Employee Updated", Toast.LENGTH_SHORT).show();
+                            notifyDataSetChanged();*/
+                             dialog_edit.cancel();
+                        }
+                    });
+
 
 
 
