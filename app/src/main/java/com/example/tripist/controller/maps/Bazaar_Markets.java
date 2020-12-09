@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.location.Address;
@@ -59,7 +60,7 @@ public class Bazaar_Markets extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-
+        add_marker();
 
 
 
@@ -227,6 +228,33 @@ public class Bazaar_Markets extends FragmentActivity implements OnMapReadyCallba
             }
         });
         alertDialog.show();
+    }
+    //kayıtlı konumları eklemek icin
+    public void add_marker() {
+        try {
+            mMap.clear();
+            database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+            Cursor cursor = database.rawQuery("SELECT * FROM bazaar_markets", null);
+
+            int nameIX = cursor.getColumnIndex("name");
+            int latitudeIX = cursor.getColumnIndex("latitude");
+            int longitudeIX = cursor.getColumnIndex("longitude");
+
+            while (cursor.moveToNext()) {
+                String nameFromDatabase = cursor.getString(nameIX);
+                String latitudeFromDatabase = cursor.getString(latitudeIX);
+                String longitudeFromDatabase = cursor.getString(longitudeIX);
+
+                Double latitude = Double.parseDouble(latitudeFromDatabase);
+                Double longitude = Double.parseDouble(longitudeFromDatabase);
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(latLng).title(nameFromDatabase));
+            }
+            cursor.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
