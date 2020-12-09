@@ -199,7 +199,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                         switch (which) {
                             case 0:
                                 //  Toast.makeText(getApplicationContext(), "My Hotel", Toast.LENGTH_SHORT).show();
-                                String myhotel = "MY HOTEL";
+                                String myhotel = "My Hotel";
                                 if(DataExists(myhotel)== false){
 
                                     add_myhotel(myhotel, b, c);
@@ -207,14 +207,14 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                 break;
                             case 1:
                                 // Toast.makeText(getApplicationContext(), "My blabla", Toast.LENGTH_SHORT).show();
-                                String myhome = "MY HOME";
+                                String myhome = "My Home";
                                 if(DataExists(myhome)== false){
                                     add_myblabla(myhome, b, c);
                                 }
                                 break;
                             case 2:
                                 //  Toast.makeText(getApplicationContext(), "My Airport", Toast.LENGTH_SHORT).show();
-                                String myairport = "MY AİRPORT";
+                                String myairport = "My Airport";
                                 if(DataExists(myairport)== false){
                                     add_myairport(myairport, b, c);
                                 }
@@ -250,7 +250,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                     String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
 
                     SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-                    sqLiteStatement.bindString(1, UserLocationInput.toUpperCase());
+                    sqLiteStatement.bindString(1, UserLocationInput.substring(0,1).toUpperCase() + UserLocationInput.substring(1));
                     sqLiteStatement.bindString(2, String.valueOf(latitude));
                     sqLiteStatement.bindString(3, String.valueOf(longitude));
                     sqLiteStatement.execute();

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -112,7 +113,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             Button dialog_update_button = myDialog.findViewById(R.id.item_update_button);
             Button dialog_delete_button = myDialog.findViewById(R.id.item_delete_button);
             Button dialog_cancel_button = myDialog.findViewById(R.id.item_cancel_button);
-            final EditText edittext = myDialog.findViewById(R.id.update_editText);
 
             dialog_edit = new Dialog(mContext);
             dialog_edit.setContentView(R.layout.dialog_edit);
@@ -120,6 +120,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             final Button editYes_button = dialog_edit.findViewById(R.id.editYes_button);
             delete_alert = new Dialog(mContext);
             delete_alert.setContentView(R.layout.delete_alert);
+            final EditText edittext = dialog_edit.findViewById(R.id.editTextTextPersonName2);
             final Button deleteCancel_button = delete_alert.findViewById(R.id.deleteCancel_button);
             final Button deleteYes_button = delete_alert.findViewById(R.id.deleteYes_button);
 
@@ -139,13 +140,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     deleteYes_button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                                              /*
+
                             String sql = "DELETE FROM my_locations WHERE name = ?";
                             database.execSQL(sql, new String[]{ name});
                             System.out.println(name);
                             mList.remove(id);
                             delete_alert.cancel();
-                            notifyDataSetChanged();*/
+                            notifyDataSetChanged();
                         }
                     });
                     deleteCancel_button.setOnClickListener(new View.OnClickListener() {
@@ -172,9 +173,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     editYes_button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                                                /*
                             //todo refresh
-                            String newName = edittext.getText().toString().toUpperCase().trim();
+                            String newName = edittext.getText().toString().substring(0,1).toUpperCase().trim()
+                                    + edittext.getText().toString().substring(1).trim();
+                            System.out.println(newName);
                             if (newName.isEmpty()) {
                                 edittext.setError("Name can't be blank");
                                 edittext.requestFocus();
@@ -188,7 +190,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                             database.execSQL(sql, new String[]{newName,name});
                             refreshTable();
                             Toast.makeText(mContext, "Employee Updated", Toast.LENGTH_SHORT).show();
-                            notifyDataSetChanged();*/
+                            notifyDataSetChanged();
                              dialog_edit.cancel();
                         }
                     });
