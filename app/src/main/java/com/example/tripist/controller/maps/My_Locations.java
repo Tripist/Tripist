@@ -190,7 +190,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         builder.setTitle(place.name);
         builder.setCancelable(false);
         builder.setItems(new CharSequence[]
-                        {"My Hotel", "My blabla", "My Airport", "Other"},
+                        {"My Hotel", "My Home", "My Airport", "Other"},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String a = place.name;
@@ -207,9 +207,9 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                 break;
                             case 1:
                                 // Toast.makeText(getApplicationContext(), "My blabla", Toast.LENGTH_SHORT).show();
-                                String myblabla = "MY BLABLA";
-                                if(DataExists(myblabla)== false){
-                                    add_myblabla(myblabla, b, c);
+                                String myhome = "MY HOME";
+                                if(DataExists(myhome)== false){
+                                    add_myblabla(myhome, b, c);
                                 }
                                 break;
                             case 2:

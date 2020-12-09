@@ -12,6 +12,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.location.Address;
@@ -65,7 +66,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-
+        add_marker();
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {
@@ -115,27 +116,6 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
     }
 
 
-
-    public void databaseprepare() {
-        try {
-            database = Historical_Places.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            database.execSQL("CREATE TABLE IF NOT EXISTS bazaar_markets (id INTEGER PRIMARY KEY,name VARCHAR, latitude VARCHAR, longitude VARCHAR)");
-
-            //VERİ GİRİŞİ
-
-            String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES ('ayasofta','45','44')";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            //String toCompile = "INSERT INTO bazaar_markets (name, latitude, longitude) VALUES (?, ?, ?)";
-            System.out.println(":::::deneme");
-
-            SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-            sqLiteStatement.execute();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
 
     // izne göre kontrol yapmak
@@ -248,5 +228,32 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
             }
         });
         alertDialog.show();
+    }
+    //kayıtlı konumları eklemek icin
+    public void add_marker() {
+        try {
+            mMap.clear();
+            database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+            Cursor cursor = database.rawQuery("SELECT * FROM historical_places", null);
+
+            int nameIX = cursor.getColumnIndex("name");
+            int latitudeIX = cursor.getColumnIndex("latitude");
+            int longitudeIX = cursor.getColumnIndex("longitude");
+
+            while (cursor.moveToNext()) {
+                String nameFromDatabase = cursor.getString(nameIX);
+                String latitudeFromDatabase = cursor.getString(latitudeIX);
+                String longitudeFromDatabase = cursor.getString(longitudeIX);
+
+                Double latitude = Double.parseDouble(latitudeFromDatabase);
+                Double longitude = Double.parseDouble(longitudeFromDatabase);
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().position(latLng).title(nameFromDatabase));
+            }
+            cursor.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
