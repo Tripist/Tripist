@@ -36,9 +36,9 @@ public class OnBoarding extends AppCompatActivity {
         //Hooks
         viewPager =  findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
-        letsGetStarted = findViewById(R.id.next_button);
-        next = findViewById(R.id.next_btn);
-        skip = findViewById(R.id.skip_button);
+        letsGetStarted = (Button) findViewById(R.id.next_button);
+        next = (Button)findViewById(R.id.next_btn);
+        skip = (Button) findViewById(R.id.skip_button);
 
         //Call Adapter
         sliderAdapter = new SliderAdapter(this);
@@ -125,6 +125,5 @@ public class OnBoarding extends AppCompatActivity {
         }
     };
 
-    private class BottomNav {
-    }
+
 }
