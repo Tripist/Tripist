@@ -1,6 +1,8 @@
 package com.example.tripist.adapters;
 
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
@@ -54,7 +56,12 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
             @Override
             public void onClick(View v) {
                 String name = cardviewPlaceHolder.isim.getText().toString();
-                System.out.println(name);
+                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                //  String term = googleText.getText().toString();
+                String term = name;
+                System.out.println(term);
+                intent.putExtra(SearchManager.QUERY, term);
+                v.getContext().startActivity(intent);
             }
         });
         cardviewPlaceHolder.fav.setOnClickListener(new View.OnClickListener() {

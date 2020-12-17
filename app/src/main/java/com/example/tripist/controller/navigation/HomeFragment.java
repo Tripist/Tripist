@@ -28,6 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -41,7 +42,7 @@ public class HomeFragment extends Fragment {
     FloatingActionButton bazaar_markets_button,island_beaches_button,foods_button;
     ImageView weather_image;
     TextView weather_text;
-
+    TextView notification_text;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,7 +53,7 @@ public class HomeFragment extends Fragment {
         // burası değişecek  buttona onClickMethodu tanımlanacak
         weather_image = root.findViewById(R.id.weather_image);
         weather_text = root.findViewById(R.id.weather_text);
-
+        notification_text = root.findViewById(R.id.notification_text);
 
         historical_button = (FloatingActionButton) root.findViewById(R.id.historical_button);
         historical_button.setOnClickListener(new View.OnClickListener() {
@@ -110,7 +111,7 @@ public class HomeFragment extends Fragment {
                 showFoods();
             }
         });
-
+        setNotification_text();
         return root;
     }
 
@@ -250,6 +251,11 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+    public void setNotification_text(){
+        int currentHour = Calendar.getInstance().getTime().getHours()+ 3;
+        notification_text.setText(String.valueOf(currentHour));
     }
 }
 
