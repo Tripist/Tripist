@@ -1,23 +1,19 @@
 package com.example.tripist.controller.categories;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.SearchManager;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.tripist.adapters.CategoryAdapter;
-import com.example.tripist.database.Database_Connection;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Historical_Places;
@@ -50,8 +46,8 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-        fav = findViewById(R.id.fav);
-        google = findViewById(R.id.google);
+        fav = findViewById(R.id.favf);
+        google = findViewById(R.id.googlef);
         // TODO Database işlemleri
 
         //RECYCLERVIEW

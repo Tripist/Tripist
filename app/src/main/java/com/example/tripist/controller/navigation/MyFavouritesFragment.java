@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.tripist.R;
-import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.adapters.MyFavAdapter;
 import com.example.tripist.models.Places;
 
 import java.util.ArrayList;
@@ -34,10 +34,10 @@ public class MyFavouritesFragment extends Fragment {
 
 
         fav_rv = root.findViewById(R.id.fav_rv);
-        CategoryAdapter categoryAdapter = new CategoryAdapter(placesArrayList,getContext());
+        MyFavAdapter myFavAdapter = new MyFavAdapter(placesArrayList,getContext());
         fav_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        fav_rv.setAdapter(categoryAdapter);
-        categoryAdapter.notifyDataSetChanged();
+        fav_rv.setAdapter(myFavAdapter);
+        myFavAdapter.notifyDataSetChanged();
 
         return root;
 
@@ -51,7 +51,7 @@ public class MyFavouritesFragment extends Fragment {
 
         try {
             database = getActivity().openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            Cursor cursor = database.rawQuery("SELECT * FROM deneme ", null);
+            Cursor cursor = database.rawQuery("SELECT * FROM my_favourites ", null);
 
             int nameIX = cursor.getColumnIndex("name");
 
@@ -77,12 +77,12 @@ public class MyFavouritesFragment extends Fragment {
 
     public void getData(){
         placesArrayList.clear();
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getActivity());
+        MyFavAdapter adapter = new MyFavAdapter(placesArrayList,getActivity());
         fav_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         fav_rv.setAdapter(adapter);
         try {
             database = getActivity().openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            Cursor cursor = database.rawQuery("SELECT * FROM deneme", null);
+            Cursor cursor = database.rawQuery("SELECT * FROM my_favourites", null);
 
             int nameIX = cursor.getColumnIndex("name");
 

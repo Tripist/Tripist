@@ -17,30 +17,30 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tripist.models.Places;
 import com.example.tripist.R;
+import com.example.tripist.models.Places;
 
 import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardviewPlaceHolder> {
+public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlaceHolder>{
     private ArrayList<Places> itemList;
     Context context;
     SQLiteDatabase database;
 
-    public CategoryAdapter(ArrayList<Places> placeList, Context context) {
+    public MyFavAdapter(ArrayList<Places> placeList, Context context) {
         this.itemList = placeList;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyFavAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_design, parent, false);
+                .inflate(R.layout.carddesign_myfav, parent, false);
 
-        final CardviewPlaceHolder cardviewPlaceHolder = new CardviewPlaceHolder(itemView);
+        final MyFavAdapter.CardviewPlaceHolder cardviewPlaceHolder = new MyFavAdapter.CardviewPlaceHolder(itemView);
         cardviewPlaceHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,44 +57,27 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
                 System.out.println(name);
             }
         });
-        String name = cardviewPlaceHolder.isim.getText().toString();
-
-
-        cardviewPlaceHolder.fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        cardviewPlaceHolder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    String name = cardviewPlaceHolder.isim.getText().toString();
-                    cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
-                    fav(name);
-                }
-                else {
-                    String name = cardviewPlaceHolder.isim.getText().toString();
-                    cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
-                    unfav(name);
-                }
+            public void onClick(View v) {
+                String name = cardviewPlaceHolder.isim.getText().toString();
+                unfav(name);
             }
         });
 
 
-        return new CardviewPlaceHolder(itemView);
+
+
+        return new MyFavAdapter.CardviewPlaceHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardviewPlaceHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyFavAdapter.CardviewPlaceHolder holder, int position) {
         Places item = itemList.get(position);
         holder.isim.setText(item.getName());
         holder.img.setImageResource(context.getResources()
                 .getIdentifier(item.getImage(), "drawable", context.getPackageName()));
-        String name = item.getName();
-        if(DataExists(name)== false){
-
-            holder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
-        }
-        if(DataExists(name)== true) {
-
-            holder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
-        }
+        holder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
 
 
     }
@@ -121,35 +104,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
 
         }
     }
-    public void fav(String name){
-        database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-        String sql = "INSERT INTO  my_favourites (name) VALUES (?) ";
-        database.execSQL(sql, new String[]{ name});
-    }
+
     public void unfav(String name){
         database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
         String sql = "DELETE FROM my_favourites WHERE name = ?";
         database.execSQL(sql, new String[]{ name});
     }
-    public  boolean DataExists(String fieldValue) {
-        database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-        String Query = "Select * from my_favourites where name ='" + fieldValue + "'";
-        Cursor cursor = database.rawQuery(Query, null);
-        if(cursor.getCount() <= 0){
-            cursor.close();
 
-            return false;
 
-        }
-        cursor.close();
 
-        return true;
-    }
 }
-
-
-
-
-
-
-
