@@ -46,7 +46,7 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-        fav = findViewById(R.id.favf);
+
         google = findViewById(R.id.googlef);
         // TODO Database işlemleri
 
