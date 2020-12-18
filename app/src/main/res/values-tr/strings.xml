@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tripist</string>
+    <string name="title_activity_museums">Haritalar</string>
+    <string name="title_activity_historical__places">Haritalar</string>
+    <string name="title_activity_parks">Haritalar</string>
+    <string name="title_activity_island__beachs">Haritalar</string>
+    <string name="title_activity_religions">Haritalar</string>
+    <string name="title_activity_bazaar__markets">Haritalar</string>
+    <string name="title_activity_my_locations">Haritalar</string>
+    <string name="title_activity_my_favourites">Map</string>
+    <string name="title_activity_squares">Haritalar</string>
+    <string name="title_activity_my__locations">Haritalar</string>
+    <string name="title_activity_my__favourites">Haritalar</string>
+    <string name="title_activity_bottom_nav">MainActivity</string>
+    <string name="title_home">Anasayfa</string>
+    <string name="title_myfavourites">Favorilerim</string>
+    <string name="title_mylocations">Konumlarım</string>
+    <string name="title_settings">Ayarlar</string>
+    <string name="language">Dil</string>
+    <string name="application_language1">Türkçe</string>
+    <string name="application_language2">English</string>
+    <string name="application_usage">Uygulama Kullanımı</string>
+    <string name="title_historical">Tarihi Yerler</string>
+    <string name="title_museum">Müzeler</string>
+    <string name="title_religions">Dini Yerler</string>
+    <string name="title_parks">Parklar</string>
+    <string name="title_squares">Meydanlar</string>
+    <string name="title_markets">Pazar &amp; Marketler</string>
+    <string name="title_island">Adalar &amp; Sahiller</string>
+    <string name="title_foods">Yiyecekler</string>
+    <string name="first_slide_titel">İstanbulu Keşfet</string>
+
+    <!--Alert Button Strings -->
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="new_name">Yeni ismi giriniz</string>
+    <string name="edit">Düzenle</string>
+    <string name="delete_question">Silmek istediğinize emin misiniz?</string>
+    <string name="cancel">Sil</string>
+
+    <string name="update_toast">Başarıyla güncellendi</string>
+    <string name="blankname">İsim boş olamaz</string>
+    <string name="saved_toast">Konum kaydedildi</string>
+    <string name="add_cancel_toast">Adding location canceled</string>
+    <string name="already_exist_toast">Zaten mevcut</string>
+    <string name="addlocation_question">Bu yeri kaydetmek istiyor musunuz</string>
+    <string name="myhome">Evim</string>
+    <string name="myairport">Havaalanım</string>
+    <string name="myhotel">Otelim</string>
+    <string name="others">Diğer</string>
+    <!--Onboarding -->
+    <string name="second_slide_titel">Hedef Bulun</string>
+    <string name="third_slide_titel">Bilgi Alın</string>
+    <string name="fourth_slide_titel">Favori Listesi Ekle</string>
+    <string name="fifth_slide_titel">Öneriler Alın</string>
+
+    <string name="first_slide_desc">İstanbuldaki turistik yerleri kategorilerine göre görebilirsiniz.
+         İstanbulda yenmesi gereken yemekleri de keşfedebilirsiniz.</string>
+    <string name="second_slide_desc">Harita üzerinde gezilecek yerleri bulabilir, yol tarifi almak için Google Haritalara yönlendirilebilir ve hatta oteliniz ve havaalanınız gibi özel konumlarınızı haritaya ekleyebilirsiniz.</string>
+    <string name="third_slide_desc">İlgilendiğiniz yer hakkında bilgi alabilirsiniz. Bunun için google ikonuna tıklamanız yeterli.</string>
+    <string name="fourth_slide_desc">Kalp simgesine tıklayarak beğendiğiniz veya ilgilendiğiniz bir yeri ayrı bir listede toplayabilirsiniz.
+         Böylece onlara daha hızlı ulaşabilirsiniz.</string>
+    <string name="fifth_slide_desc">İstanbulun hava durumuna göre etkinlik önerileri alabilirsiniz.</string>
+
+    <string name="next_btn">İleri</string>
+    <string name="lets_startes">Haydi Başlayalım!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- notificaiton -->
+    <string name="goodmorningnotification">Günaydınnn Bugün hava güneşli. Beşiktaşta bulunan kahvaltıcılar sokağında güzel bir Türk kahvaltısı yapmaya ne dersin?</string>
+    <string name="bosphorusnotification">İstanbul Boğazı’nın keyfini boğazın temiz kokusunu içine çekerek çıkarmaya var mısın?
+    Ortaköy-Kuruçeşme-Arnavutköy-Bebek-Rumeli Hisarı hattını 1 saatte yürüyebilirsin.</string>
+    <string name="fishnotf">Eminönünde balık-ekmek yemek ister misin?</string>
+    <string name="kumpirwafflenotf">Ortaköyde kumpir yedikten sonra, Bebekte waffle yemek güzel bir fikir olabilir.</string>
+    <string name="bozanotf">Daha önce hiç boza içmiş miydin? Denemeye ne dersin? Vefada boza içmek güzel bir fikir olabilir.</string>
+    <string name="adalarnotf">Adalara gidip bisiklete binmek için çok güzel bir hava değil mi?</string>
+    <string name="bogazturunotf">İstanbul Boğazının tadını baştan sona eğlenceli bir vapur turu ile çıkarmak istemez misiniz?
+Vapura binmeden simit alıp martılara atmayı unutmayın.</string>
+    <string name="aksamnotf">Akşam oldu diye evde oturacak değilsin ya?
+İstanbulun ihtişamlı ışıklarını yüksek bir tepeden izleyip manzaranın keyfini çıkarmaya ne dersin?
+Mesela Çamlıca ya da Pierre Loti Tepesi bunun için çok güzel bir yer.</string>
+    <string name="gecenotf">Biraz eğlenmenin tam sırası değil de ne?
+Avrupanın en güzel gece kulupleri dışarda seni bekliyor.</string>
+    <string name="bescayınotf">Teleferikle Piyer Loti’ye çıkıp, eski İstanbul manzarasını seyretmek gibisi yoktur herhalde… En tepeye kurulmuş kafelerde, beş çayını ya da akşam kahveni içebilirsin. Özellikle gün batımı saatlerinde fotoğraf çekmek için harika bir mekan.</string>
+    <string name="modasahilinotf">Moda sahili boş vakitleri değerlendirmek için ideal. Güneşli bir havada dondurmanı alıp sahil boyunca yürüyebilir, bir kahve içebilir ya da bisikletle sahil boyunca tur atabilirsin.</string>
+    <string name="sabahmotf">Güne sağlıklı başlamak istersen, yataktan biraz erken kalkıp sabah sporu yapmak için Belgrad’a gidebilirsin.</string>
+    <string name="konsernotf">Biraz da müzik dinleyip kafa dağıtayım diyorsan, sevdiğin tarzda bir konsere gitmek çok iyi bir fikir olabilir. Al biletini çıkar eğlencenin keyfini</string>
+    <string name="gezinotf">Tarihi yarımada deyince akan sular durur… Hazır hava da güneşliyken Karaköy’den yürüyüşe geç. Galata köprüsü boyunca “Bir İstanbul Klasiği” olabilecek her şeyi fotoğrafla. Karnın acıkınca da Niğde Gazozu ve simit ya da köprü altında lezzetli bir balık ekmek… Daha ne olsun!</string>
+    <string name="oglennotf">Al sana başka bir İstanbul klasiği daha… Kuzguncuk’un sokaklarında kaybolmak bedava! Yürü, fotoğraf çek, evleri, küçük şirin dükkanlarını incele. Acıkınca da tarihi fırınından mutlaka bir şeyler al. Hatta Kuzguncuk’un uzun merdivenlerini tırmanıp, kurabiyeni Boğaz manzarasına karşı yiyebilirsin.</string>
+
+
+
+
+
+</resources>
