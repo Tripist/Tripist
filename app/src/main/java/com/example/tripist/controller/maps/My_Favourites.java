@@ -186,9 +186,9 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
 
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(My_Favourites.this);
             alertDialog.setCancelable(false);
-            alertDialog.setTitle("Burayı Kaydetmek Ister Misin");
+            alertDialog.setTitle(R.string.addlocation_question);
             alertDialog.setMessage(place.name);
-            alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            alertDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     //DATABASE ACMAK YADA OLUSTURMAK
@@ -202,7 +202,7 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
                         sqLiteStatement.bindString(3, String.valueOf(place.longitude));
                         sqLiteStatement.execute();
 
-                        Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
 
 
                     } catch (Exception e) {
@@ -211,10 +211,10 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
                     }
                 }
             });
-            alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            alertDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getApplicationContext(), "Kapattıldı", Toast.LENGTH_LONG);
+                    Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG);
 
                 }
             });

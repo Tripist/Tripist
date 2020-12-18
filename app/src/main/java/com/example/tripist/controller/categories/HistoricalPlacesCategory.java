@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.controller.navigation.HomeFragment;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Historical_Places;
@@ -46,7 +47,8 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-        fav = findViewById(R.id.favf);
+
+
         google = findViewById(R.id.googlef);
         // TODO Database işlemleri
 
@@ -105,6 +107,7 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
 
         historical_rv.setAdapter(adapter);
     }
+
 
    /* public void favImage(){
         toggleButton.setChecked(false);
