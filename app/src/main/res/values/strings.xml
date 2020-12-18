@@ -53,7 +53,11 @@
     <string name="third_slide_titel">Get Information</string>
     <string name="fourth_slide_titel">Add Favourite List</string>
     <string name="fifth_slide_titel">Get Suggestions</string>
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> master
     <string name="first_slide_desc">You can see the touristic places in Istanbul according to their categories.
         You can also discover the dishes that should be eaten in Istanbul.</string>
     <string name="second_slide_desc">You can find sightseeing places on the map, be directed to Google Maps
@@ -69,4 +73,30 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+<<<<<<< HEAD
+    <!-- notificaiton -->
+    <string name="goodmorningnotification">Good morning. It is sunny today. How about having a nice Turkish breakfast on the breakfast street in Beşiktaş?</string>
+    <string name="bosphorusnotification">Are you ready to enjoy the Bosphorus by inhaling the clean smell of the Bosphorus?
+You can walk the Ortaköy-Kuruçeşme-Arnavutköy-Bebek-Rumeli Fortress line in 1 hour.</string>
+    <string name="fishnotf">Do you want to eat fish and bread in Eminönü?</string>
+    <string name="kumpirwafflenotf">After eating baked potatoes in Ortaköy, it might be a good idea to have waffles in Bebek.</string>
+    <string name="bozanotf">Have you ever had boza before? How about you give it a try? It can be a good idea to drink boza in Vefa.</string>
+    <string name="adalarnotf">Is not it nice weather to go to the islands and ride a bike?</string>
+    <string name="bogazturunotf">Would not you like to enjoy the Istanbul Bosphorus with a fun ferry tour?
+Do not forget to buy simit and throw it to the seagulls before you get on the ferry.</string>
+    <string name="aksamnotf">You are not going to stay at home because it is evening?
+How about watching the magnificent lights of Istanbul from a high hill and enjoying the view?
+For example, Çamlıca or Pierre Loti Hill is a very nice place for this.</string>
+    <string name="gecenotf">Is not it the time to have some fun? Europes most beautiful night clubs are waiting for you outside.</string>
+    <string name="bescayınotf">There is nothing like going to Piyer Loti by the cable car and watching the view of the old Istanbul…
+You can have your afternoon tea or evening coffee in the outdoor cafes built at the top. It is a great place to take photos, especially at sunset.</string>
+    <string name="modasahilinotf">Moda beach is ideal for leisure time. In sunny weather you can buy a ice cream and walk along the beach, have a coffee or take a bike tour along the beach.</string>
+    <string name="sabahmotf">If you want to start your day healthy, you can get out of bed a little early and go to Belgrade for morning exercise.</string>
+    <string name="konsernotf">If you want to listen to some music and chill out, it might be a very good idea to go to a concert of your favorite style. Get your ticket and enjoy the fun</string>
+    <string name="gezinotf">When the weather is sunny, take a walk from Karaköy. Photograph everything that could be an “Istanbul Classic” along the Galata bridge. When you are hungry, buy a Niğde Gazoz and simit or a delicious fish bread under the bridge… What more can you ask for!</string>
+    <string name="oglennotf">Here is another Istanbul classic for you… Getting lost in the streets of Kuzguncuk is free! Walk, take pictures, check out the houses, cute little shops. When you are hungry, be sure to buy something from the historical bakery. You can even climb the long stairs of Kuzguncuk and eat your cookie against the Bosphorus view.</string>
+
+
+=======
+>>>>>>> master
 </resources>
