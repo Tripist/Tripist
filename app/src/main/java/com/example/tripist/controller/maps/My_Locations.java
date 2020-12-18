@@ -190,7 +190,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         builder.setTitle(place.name);
         builder.setCancelable(false);
         builder.setItems(new CharSequence[]
-                        {"My Hotel", "My Home", "My Airport", "Other"},
+                        {getText(R.string.myhotel), getText(R.string.myhome), getText(R.string.myairport), getText(R.string.others)},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String a = place.name;
@@ -240,7 +240,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setView(edittext);
 
-        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 LatLng latLng = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions().title(name).position(latLng));
@@ -255,7 +255,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                     sqLiteStatement.bindString(3, String.valueOf(longitude));
                     sqLiteStatement.execute();
 
-                    Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
 
 
                 } catch (Exception e) {
@@ -266,9 +266,9 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -280,7 +280,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().title(name).position(latLng));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
-        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
                 try {
@@ -293,7 +293,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                     sqLiteStatement.bindString(3, String.valueOf(longitude));
                     sqLiteStatement.execute();
 
-                    Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
 
 
                 } catch (Exception e) {
@@ -304,9 +304,9 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -331,7 +331,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                     sqLiteStatement.bindString(3, String.valueOf(longitude));
                     sqLiteStatement.execute();
 
-                    Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
 
 
                 } catch (Exception e) {
@@ -342,9 +342,9 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -357,7 +357,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
-        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
 
@@ -371,7 +371,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                     sqLiteStatement.bindString(3, String.valueOf(longitude));
                     sqLiteStatement.execute();
 
-                    Toast.makeText(getApplicationContext(), "SAVED", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
 
 
                 } catch (Exception e) {
@@ -382,9 +382,9 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         });
 
 
-        alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), "CLOSED", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -430,7 +430,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         }
         cursor.close();
-        Toast.makeText(getApplicationContext(), fieldValue + " zaten mevcut", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), fieldValue + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
         return true;
     }
 

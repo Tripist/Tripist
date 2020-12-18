@@ -37,6 +37,17 @@
     <string name="edit">Edit</string>
     <string name="delete_question">Are you sure you want to delete?</string>
     <string name="cancel">Cancel</string>
+
+    <string name="update_toast">Successfully updated</string>
+    <string name="blankname">Name can\'t be blank</string>
+    <string name="saved_toast">The Location saved</string>
+    <string name="add_cancel_toast">Adding location canceled</string>
+    <string name="already_exist_toast">is already exist</string>
+    <string name="addlocation_question">Do you want to save this place</string>
+    <string name="myhome">My Home</string>
+    <string name="myairport">My Airport</string>
+    <string name="myhotel">My Hotel</string>
+    <string name="others">Others</string>
     <!--Onboarding -->
     <string name="second_slide_titel">Find Destination</string>
     <string name="third_slide_titel">Get Information</string>
@@ -57,4 +68,5 @@
     <string name="lets_startes">Let\'s Start</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
