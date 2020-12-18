@@ -318,7 +318,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().title(name).position(latLng));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
-        alert.setPositiveButton("Yes ", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
 
                 try {
