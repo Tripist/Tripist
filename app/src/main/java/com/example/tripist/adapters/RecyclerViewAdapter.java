@@ -174,12 +174,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         @Override
                         public void onClick(View v) {
                             //todo refresh
-                            String newName = edittext.getText().toString().substring(0,1).toUpperCase().trim()
-                                    + edittext.getText().toString().substring(1).trim();
+                            String newName = edittext.getText().toString().trim();
                             System.out.println(newName);
                             if (newName.isEmpty()) {
                                 // TODO set error get text hatası
-                                edittext.setError("TODO");
+                                edittext.setError("ERROR");
                                 edittext.requestFocus();
                                 return;
                             }

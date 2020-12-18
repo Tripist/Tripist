@@ -35,7 +35,8 @@ public class Database_Connection extends AppCompatActivity{
     }
     public static void add_parks(SQLiteDatabase database) {
 
-        String toCompile = "INSERT INTO parks_gardens(name,latitude,longitude) VALUES ('Yıldız Park', '41.049273', '29.015274'),('Emirgan Park', '41.108846', '29.053083'),('Gulhane Park', '41.013328', '28.981384'),('Polonezkoy Nature Park', '41.108598', '29.166018'),('Ozgurluk Park', '40.979074', '29.059408'),('Mihrabat Korusu', '41.096802', '29.068632'),('Fethi Paşa Korusu', '41.0967859', '29.0247348'),('Çamlıca Tepesi', '41.0277528', '29.06622'),('Beykoz Korusu', '41.1331274', '29.0963995'),('Belgrad Forest', '41.1871997', '28.965086'),('Atatürk Arboretum', '41.1766262', '28.9831888')";
+        String toCompile = "INSERT INTO parks_gardens(name,latitude,longitude) VALUES ('Yıldız Park', '41.049273', '29.015274')," +
+                "('Emirgan Park', '41.108846', '29.053083'),('Gulhane Park', '41.013328', '28.981384'),('Polonezkoy Nature Park', '41.108598', '29.166018'),('Ozgurluk Park', '40.979074', '29.059408'),('Mihrabat Korusu', '41.096802', '29.068632'),('Fethi Paşa Korusu', '41.0967859', '29.0247348'),('Çamlıca Tepesi', '41.0277528', '29.06622'),('Beykoz Korusu', '41.1331274', '29.0963995'),('Belgrad Forest', '41.1871997', '28.965086'),('Atatürk Arboretum', '41.1766262', '28.9831888')";
         SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
         String sil = "DELETE FROM parks_gardens Where id Not in (SELECT MIN(id) from parks_gardens Group by name)";
         SQLiteStatement sqLiteStatement1 = database.compileStatement(sil);
@@ -135,7 +136,7 @@ public class Database_Connection extends AppCompatActivity{
     public static void add_food(SQLiteDatabase database) {
         String toCompile =  "INSERT INTO foods(name)  VALUES ('Fish and Bread (Balık Ekmek)'),('Acıbadem Cookies (Acıbadem Kurabiyesi)')," +
                 "('Black Sea Pita (Karadeniz Pidesi)'),('Kanlıca Yogurt'),('Kup Griye'),('Stuffed Mussels (Midye Dolma)'),('Ortaköy Baked Potato (Kumpir)')," +
-                "('Wet Burger (Islak Hamburger)'),('Doner'),('Tantuni'),('Waffle'),('Borek'),('Turkish Bagel (Simit)')," +
+                "('Wet Burger (Islak Hamburger)'),('Doner'),('Tantuni'),('Waffle'),('Borek'),('Osmanlı Macunu'),('Turkish Bagel (Simit)')," +
                 "('Pickle Juice (Turşu Suyu)'),('Iskender'),('Kokoreç'),('Chicken and Rice (Pilav üstü tavuk)')," +
                 "('Dürüm'),('Halka Tatlısı'),('Baklava'),('Mısır (Corn)'),('Kestane (Chesnuts)')," +
                 "('Boza'),('Köfte Sucuk Ekmek'),('Turkish Breakfast'),('Çiğ Köfte'),('Kağıt Helva (Paper Candy)')," +
