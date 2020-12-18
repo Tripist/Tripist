@@ -53,7 +53,11 @@
     <string name="third_slide_titel">Get Information</string>
     <string name="fourth_slide_titel">Add Favourite List</string>
     <string name="fifth_slide_titel">Get Suggestions</string>
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> master
     <string name="first_slide_desc">You can see the touristic places in Istanbul according to their categories.
         You can also discover the dishes that should be eaten in Istanbul.</string>
     <string name="second_slide_desc">You can find sightseeing places on the map, be directed to Google Maps
@@ -69,6 +73,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+<<<<<<< HEAD
     <!-- notificaiton -->
     <string name="goodmorningnotification">Good morning. It is sunny today. How about having a nice Turkish breakfast on the breakfast street in Beşiktaş?</string>
     <string name="bosphorusnotification">Are you ready to enjoy the Bosphorus by inhaling the clean smell of the Bosphorus?
@@ -92,4 +97,6 @@ You can have your afternoon tea or evening coffee in the outdoor cafes built at 
     <string name="oglennotf">Here is another Istanbul classic for you… Getting lost in the streets of Kuzguncuk is free! Walk, take pictures, check out the houses, cute little shops. When you are hungry, be sure to buy something from the historical bakery. You can even climb the long stairs of Kuzguncuk and eat your cookie against the Bosphorus view.</string>
 
 
+=======
+>>>>>>> master
 </resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:background="@drawable/radius_alert"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout26"
+        android:layout_width="300dp"
+        android:layout_height="320dp"
+        android:background="@drawable/alert_editbckgr"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="245dp"
+                android:layout_height="49dp"
+                android:layout_marginBottom="92dp"
+                android:ems="10"
+                android:hint="@string/new_name"
+                android:inputType="textPersonName"
+                app:backgroundTint="#882139"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/editYes_button"
+                android:layout_width="90dp"
+                android:layout_height="39dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/radius"
+                android:text="@string/yes"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <Button
+                android:id="@+id/editCancel_button"
+                android:layout_width="90dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/radius_cancel"
+                android:text="@android:string/cancel"
+                android:textColor="#FFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

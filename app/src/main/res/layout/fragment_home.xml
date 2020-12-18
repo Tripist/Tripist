@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".controller.navigation.HomeFragment">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="422dp"
+        android:layout_height="268dp"
+        android:paddingTop="0dp"
+        android:src="@drawable/ortakoy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="383dp"
+        android:layout_height="106dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/comp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle"
+            android:orientation="vertical"></LinearLayout>
+
+        <TextView
+            android:id="@+id/notification_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="18dp"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            android:textColor="#4A4949"
+            android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:paddingBottom="?actionBarSize"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.0"
+        app:useDefaultMargins="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/historical_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/castle"
+            app:backgroundTint="#F3E8EB"
+            app:maxImageSize="30dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/museum_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/museum"
+            app:backgroundTint="#F3E8EB"
+            app:maxImageSize="30dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/religions_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/bluemosque"
+            app:backgroundTint="#F3E8EB"
+            app:maxImageSize="38dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/parks_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/park"
+            app:backgroundTint="#F3E8EB"
+            app:maxImageSize="30dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/squares_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/roundabout"
+            app:backgroundTint="#F3E8EB"
+            app:layout_column="0"
+            app:layout_row="2"
+            app:maxImageSize="30dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bazaar_markets_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/sale"
+            app:backgroundTint="#F3E8EB"
+            app:maxImageSize="30dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/island_beaches_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/beach"
+            app:backgroundTint="#F3E8EB"
+            app:maxImageSize="30dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/foods_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="41dp"
+            android:clickable="true"
+            android:src="@drawable/fork"
+            app:backgroundTint="#F3E8EB"
+            app:maxImageSize="30dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="81dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="-8dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="20dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="0dp"
+            android:text="@string/title_historical"
+            android:textAlignment="center"
+            android:textColor="#4A4949"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="7dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="0dp"
+            android:text="@string/title_museum"
+            android:textColor="#4A4949" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="7dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:layoutDirection="inherit"
+            android:paddingStart="0dp"
+            android:text="@string/title_religions"
+            android:textColor="#4A4949"
+            app:layout_column="2"
+            app:layout_row="1" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="7dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="0dp"
+            android:text="@string/title_parks"
+            android:textColor="#4A4949" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="0dp"
+            android:text="@string/title_squares"
+            android:textColor="#4A4949"
+            app:layout_column="0"
+            app:layout_row="3" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="63dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:gravity="center"
+            android:paddingStart="0dp"
+            android:text="@string/title_markets"
+            android:textColor="#4A4949"
+            app:layout_column="1"
+            app:layout_row="3" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="65dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="0dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:gravity="center"
+            android:paddingStart="0dp"
+            android:text="@string/title_island"
+            android:textColor="#4A4949" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:editable="false"
+            android:fontFamily="@font/nunito"
+            android:paddingStart="0dp"
+            android:text="@string/title_foods"
+            android:textColor="#4A4949" />
+    </androidx.gridlayout.widget.GridLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="69dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/weather_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/weather_text"
+            android:layout_width="121dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center|top"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

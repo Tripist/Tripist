@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.tripist">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -18,7 +17,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".controller.categories.Bazaar_MarketsCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".controller.categories.SquaresCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".controller.categories.ReligionsCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".controller.categories.ParksCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".controller.categories.FoodsCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".controller.categories.Island_BeachesCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:name=".controller.categories.MuseumsCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".controller.categories.HistoricalPlacesCategory"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".controller.OnBoarding" />
+        <activity
+            android:name=".controller.BottomNav"
+            android:label="@string/title_activity_bottom_nav" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -30,35 +56,38 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".Squares"
-            android:label="@string/title_activity_squares"></activity>
+            android:name=".controller.maps.My_Favourites"
+            android:label="@string/title_activity_my__favourites" />
         <activity
-            android:name=".MyFavourites"
-            android:label="@string/title_activity_my_favourites" />
+            android:name=".controller.maps.My_Locations"
+            android:label="@string/title_activity_my__locations" />
         <activity
-            android:name=".MyLocations"
-            android:label="@string/title_activity_my_locations" />
+            android:name=".controller.maps.Squares"
+            android:label="@string/title_activity_squares" />
         <activity
-            android:name=".Bazaar_Markets"
+            android:name=".controller.maps.Bazaar_Markets"
             android:label="@string/title_activity_bazaar__markets" />
         <activity
-            android:name=".Religions"
+            android:name=".controller.maps.Religions"
             android:label="@string/title_activity_religions" />
         <activity
-            android:name=".Island_Beachs"
+            android:name=".controller.maps.Island_Beachs"
             android:label="@string/title_activity_island__beachs" />
         <activity
-            android:name=".Parks"
+            android:name=".controller.maps.Parks"
             android:label="@string/title_activity_parks" />
         <activity
-            android:name=".Historical_Places"
+            android:name=".controller.maps.Historical_Places"
             android:label="@string/title_activity_historical__places" />
         <activity
-            android:name=".Museums"
+            android:name=".controller.maps.Museums"
             android:label="@string/title_activity_museums" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".controller.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
