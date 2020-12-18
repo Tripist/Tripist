@@ -50,7 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         vHolder.item_mylocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "Test Click" + String.valueOf(vHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, "Test Click" + String.valueOf(vHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
                 int position = vHolder.getAdapterPosition();
                 String name = mList.get(position).name;
                 CallDialog(vHolder.getAdapterPosition(),name);
@@ -178,7 +178,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                     + edittext.getText().toString().substring(1).trim();
                             System.out.println(newName);
                             if (newName.isEmpty()) {
-                                edittext.setError("Name can't be blank");
+                                // TODO set error get text hatası
+                                edittext.setError("TODO");
                                 edittext.requestFocus();
                                 return;
                             }
@@ -189,7 +190,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                             database.execSQL(sql, new String[]{newName,name});
                             refreshTable();
-                            Toast.makeText(mContext, "Employee Updated", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, R.string.update_toast, Toast.LENGTH_SHORT).show();
                             notifyDataSetChanged();
                              dialog_edit.cancel();
                         }
