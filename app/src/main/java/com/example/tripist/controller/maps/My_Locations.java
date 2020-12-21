@@ -190,7 +190,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         builder.setTitle(place.name);
         builder.setCancelable(false);
         builder.setItems(new CharSequence[]
-                        {getText(R.string.myhotel), getText(R.string.myhome), getText(R.string.myairport), getText(R.string.others)},
+                        {(String)getText(R.string.myhotel), (String)getText(R.string.myhome),(String) getText(R.string.myairport),(String) getText(R.string.others)},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String a = place.name;
@@ -199,7 +199,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                         switch (which) {
                             case 0:
                                 //  Toast.makeText(getApplicationContext(), "My Hotel", Toast.LENGTH_SHORT).show();
-                                String myhotel = "My Hotel";
+                                String myhotel = (String) getText(R.string.myhotel);
                                 if(DataExists(myhotel)== false){
 
                                     add_myhotel(myhotel, b, c);
@@ -207,14 +207,14 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                 break;
                             case 1:
                                 // Toast.makeText(getApplicationContext(), "My blabla", Toast.LENGTH_SHORT).show();
-                                String myhome = "My Home";
+                                String myhome =(String) getText(R.string.myhome);
                                 if(DataExists(myhome)== false){
                                     add_myblabla(myhome, b, c);
                                 }
                                 break;
                             case 2:
                                 //  Toast.makeText(getApplicationContext(), "My Airport", Toast.LENGTH_SHORT).show();
-                                String myairport = "My Airport";
+                                String myairport =(String) getText(R.string.myairport);
                                 if(DataExists(myairport)== false){
                                     add_myairport(myairport, b, c);
                                 }
@@ -430,9 +430,10 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         }
         cursor.close();
-        Toast.makeText(getApplicationContext(), fieldValue + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), fieldValue + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
         return true;
     }
+
 
 
 
