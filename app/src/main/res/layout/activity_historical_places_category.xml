@@ -13,16 +13,16 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="#882139"
-        android:backgroundTint="#882139"
+        android:backgroundTint="@color/kategoryactionbuttoncolor"
         android:clickable="true"
-        android:foregroundTint="#882139"
+        android:foregroundTint="@color/kategoryactionbuttoncolor"
         android:onClick="showHistorical_Places_Map"
-        app:backgroundTint="#882139"
+        app:backgroundTint="@color/actionbuttoncolor"
         app:fabCustomSize="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="30dp"
-        app:rippleColor="#882139"
+        app:rippleColor="@color/kategoryactionbuttoncolor"
         app:srcCompat="@drawable/fabmapicon" />
 
     <androidx.appcompat.widget.Toolbar

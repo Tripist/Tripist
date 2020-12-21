@@ -38,8 +38,8 @@ import okhttp3.Response;
 
 public class HomeFragment extends Fragment {
     //  NOT: Viewmodel yapısını silme : private HomeViewModel homeViewModel;
-    FloatingActionButton historical_button,museum_button,religions_button,parks_button, squares_button;
-    FloatingActionButton bazaar_markets_button,island_beaches_button,foods_button;
+    FloatingActionButton historical_button, museum_button, religions_button, parks_button, squares_button;
+    FloatingActionButton bazaar_markets_button, island_beaches_button, foods_button;
     ImageView weather_image;
     TextView weather_text;
     TextView notification_text;
@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment {
                 showFoods();
             }
         });
-        setNotification_text();
+        //setNotification_text();
         return root;
     }
 
@@ -121,30 +121,37 @@ public class HomeFragment extends Fragment {
         Intent intent = new Intent(getActivity(), HistoricalPlacesCategory.class);
         startActivity(intent);
     }
+
     public void showMuseums() {
         Intent intent = new Intent(getActivity(), MuseumsCategory.class);
         startActivity(intent);
     }
+
     public void showReligions() {
         Intent intent = new Intent(getActivity(), ReligionsCategory.class);
         startActivity(intent);
     }
+
     public void showParks() {
         Intent intent = new Intent(getActivity(), ParksCategory.class);
         startActivity(intent);
     }
+
     public void showSquares() {
         Intent intent = new Intent(getActivity(), SquaresCategory.class);
         startActivity(intent);
     }
+
     public void showBazaar_Markets() {
         Intent intent = new Intent(getActivity(), Bazaar_MarketsCategory.class);
         startActivity(intent);
     }
+
     public void showIsland_Beaches() {
         Intent intent = new Intent(getActivity(), Island_BeachesCategory.class);
         startActivity(intent);
     }
+
     public void showFoods() {
         Intent intent = new Intent(getActivity(), FoodsCategory.class);
         startActivity(intent);
@@ -187,9 +194,13 @@ public class HomeFragment extends Fragment {
 
 
                         String temps = Math.round(Temperature) + " °C";
-                        //  Double Derece = Double.parseDouble(temps);
+
+
+                        //    Double Derece = Double.parseDouble(temps);
+                        setNotification_text(notification_text, Temperature, icons);
+                        //bildirim mesajı ayarlamak icin
                         weather_text.setText(temps);
-                        setWeather_image(weather_image,icons);
+                        setWeather_image(weather_image, icons);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -207,42 +218,60 @@ public class HomeFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                switch (value){
-                    case "01d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d01d));
+                switch (value) {
+                    case "01d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d01d));
                         break;
-                    case "01n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d01n));
+                    case "01n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d01n));
                         break;
-                    case "02d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d02d));
+                    case "02d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d02d));
                         break;
-                    case "02n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d02n));
+                    case "02n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d02n));
                         break;
-                    case "03d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d03d));
+                    case "03d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d03d));
                         break;
-                    case "03n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d03n));
+                    case "03n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d03n));
                         break;
-                    case "04d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d04d));
+                    case "04d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d04d));
                         break;
-                    case "04n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d04n));
+                    case "04n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d04n));
                         break;
-                    case "09d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d09d));
+                    case "09d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d09d));
                         break;
-                    case "09n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d09n));
+                    case "09n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d09n));
                         break;
-                    case "10d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d10d));
+                    case "10d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d10d));
                         break;
-                    case "10n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d10n));
+                    case "10n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d10n));
                         break;
-                    case "11d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d11d));
+                    case "11d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d11d));
                         break;
-                    case "11n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d11n));
+                    case "11n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d11n));
                         break;
-                    case "13d": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d13d));
+                    case "13d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d13d));
                         break;
-                    case "13n": imageView.setImageDrawable(getResources().getDrawable(R.drawable.d13n));
+                    case "13n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d13n));
                         break;
-                    case "50d":  imageView.setImageDrawable(getResources().getDrawable(R.drawable.d50d));
+                    case "50d":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d50d));
                         break;
-                    case "50n":  imageView.setImageDrawable(getResources().getDrawable(R.drawable.d50d));
+                    case "50n":
+                        imageView.setImageDrawable(getResources().getDrawable(R.drawable.d50d));
                         break;
                     default:
                         imageView.setImageDrawable(getResources().getDrawable(R.drawable.d01d));
@@ -253,9 +282,50 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    public void setNotification_text(){
-        int currentHour = Calendar.getInstance().getTime().getHours()+ 3;
-        notification_text.setText(String.valueOf(currentHour));
+    private void setNotification_text(final TextView notification_text, final Double Temperature, final String icons) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                int currentHour = Calendar.getInstance().getTime().getHours() + 3;
+                //   String temps = Math.round(Temperature) + " °C";
+
+                 // HAVA ŞARTLARI KÖTÜYSE
+                if (icons == "d09d" || icons == "d09n" || icons == "d10d" || icons == "d10n" ||
+                        icons == "d11d" || icons == "d11n" || icons == "d13d" || icons == "d13n" ) {
+                    if(currentHour <= 10){
+                        notification_text.setText("sabahhavakötü");
+                    }
+                    else if (currentHour <= 16){
+                        notification_text.setText("öğlenhavakötü");
+                    }
+                    else if (currentHour <= 20){
+                        notification_text.setText("aksamhavakötü");
+                    }
+                    else if (currentHour <= 24){
+                        notification_text.setText("gecehavakötü");
+                    }
+
+                }
+                //HAVA SARTLARI İYİYSE
+                else{
+                    if(currentHour <= 10){
+                        notification_text.setText("sabahhavaiyi");
+                    }
+                    else if (currentHour <= 16){
+                        notification_text.setText("öğlenhavaiyi");
+                    }
+                    else if (currentHour <= 20){
+                        notification_text.setText("aksamhavaiyi");
+                    }
+                    else if (currentHour <= 24){
+                        notification_text.setText("gecehavaiyi");
+                    }
+
+                }
+
+
+            }
+        });
     }
 }
 

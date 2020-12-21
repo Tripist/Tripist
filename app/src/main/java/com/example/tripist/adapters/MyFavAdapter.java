@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripist.R;
+import com.example.tripist.controller.navigation.MyFavouritesFragment;
 import com.example.tripist.models.Places;
 
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
     private ArrayList<Places> itemList;
     Context context;
     SQLiteDatabase database;
-
+    MyFavouritesFragment myFavouritesFragment;
     public MyFavAdapter(ArrayList<Places> placeList, Context context) {
         this.itemList = placeList;
         this.context = context;
@@ -39,16 +41,14 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
     @NonNull
     @Override
     public MyFavAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
+        final View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.carddesign_myfav, parent, false);
 
         final MyFavAdapter.CardviewPlaceHolder cardviewPlaceHolder = new MyFavAdapter.CardviewPlaceHolder(itemView);
         cardviewPlaceHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = cardviewPlaceHolder.isim.getText().toString();
 
-                System.out.println(name);
             }
 
         });
@@ -64,11 +64,15 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
                 v.getContext().startActivity(intent);
             }
         });
+
         cardviewPlaceHolder.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String name = cardviewPlaceHolder.isim.getText().toString();
+
+             //   itemList.remove(cardviewPlaceHolder.getAdapterPosition());
                 unfav(name);
+                notifyDataSetChanged();
             }
         });
 
@@ -85,7 +89,6 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
         holder.img.setImageResource(context.getResources()
                 .getIdentifier(item.getImage(), "drawable", context.getPackageName()));
         holder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
-
 
     }
 
@@ -108,7 +111,6 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
             img = view.findViewById(R.id.imgf);
             fav = view.findViewById(R.id.favf);
             google = view.findViewById(R.id.googlef);
-
         }
     }
 
@@ -116,6 +118,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
         database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
         String sql = "DELETE FROM my_favourites WHERE name = ?";
         database.execSQL(sql, new String[]{ name});
+
     }
 
 
