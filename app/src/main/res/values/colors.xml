@@ -8,4 +8,7 @@
     <color name="colorToolbar">#882139</color>
     <color name="colord">#935F5F</color>
     <color name="colore">#731C30</color>
+    <color name="actionbuttoncolor">#F3E8EB</color>
+    <color name="kategoryactionbuttoncolor">#882139</color>
+
 </resources>
