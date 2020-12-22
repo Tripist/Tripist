@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.adapters.RecyclerViewAdapter;
@@ -31,44 +33,22 @@ public class MyLocationsFragment extends Fragment  {
     RecyclerView myRecyclerView;
     ArrayList<Places> lstPlaces;
     FloatingActionButton mymap_fab;
-
+    DatabaseHelper databaseHelper;
 
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        lstPlaces = new ArrayList<>();
-        try {
-            database = getActivity().openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
-            int nameIX = cursor.getColumnIndex("name");
-            int latitudeIX = cursor.getColumnIndex("latitude");
-            int longitudeIX = cursor.getColumnIndex("longitude");
+        databaseHelper = new DatabaseHelper(getContext());
 
-            while (cursor.moveToNext()) {
-                String nameFromDatabase = cursor.getString(nameIX);
-                String latitudeFromDatabase = cursor.getString(latitudeIX);
-                String longitudeFromDatabase = cursor.getString(longitudeIX);
+       // lstPlaces = new KategorieDao().historicalplaces(databaseHelper);
+       // RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
 
-                Double latitude = Double.parseDouble(latitudeFromDatabase);
-                Double longitude = Double.parseDouble(longitudeFromDatabase);
+        lstPlaces = new KategorieDao().Mylocations(databaseHelper);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
 
-                Places place = new Places(nameFromDatabase, latitude, longitude);
-
-
-                lstPlaces.add(place);
-
-            }
-
-            cursor.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-
-        }
 
     }
 
@@ -85,6 +65,7 @@ public class MyLocationsFragment extends Fragment  {
         myRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
         mymap_fab =root.findViewById(R.id.mymap_fab);
+
         mymap_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,15 +73,7 @@ public class MyLocationsFragment extends Fragment  {
             }
         });
 
-      // Berkeden anılar
-       /* map_Buttonn = root.findViewById(R.id.map_Buttonn);
-        map_Buttonn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showMy_Locations();
-            }
-        });
-   */
+
         return root;
 
     }
@@ -128,46 +101,10 @@ public class MyLocationsFragment extends Fragment  {
 
     public void getData() {
         lstPlaces.clear();
+        lstPlaces = new KategorieDao().Mylocations(databaseHelper);
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
-        myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        myRecyclerView.setAdapter(recyclerViewAdapter);
-
-        try {
-
-            database = getActivity().openOrCreateDatabase("Places",MODE_PRIVATE,null);
-            Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
-
-            int nameIx = cursor.getColumnIndex("name");
-            int latitudeIx = cursor.getColumnIndex("latitude");
-            int longitudeIx = cursor.getColumnIndex("longitude");
-
-            while (cursor.moveToNext()) {
-
-                String nameFromDatabase = cursor.getString(nameIx);
-                String latitudeFromDatabase = cursor.getString(latitudeIx);
-                String longitudeFromDatabase = cursor.getString(longitudeIx);
-
-                Double latitude = Double.parseDouble(latitudeFromDatabase);
-                Double longitude = Double.parseDouble(longitudeFromDatabase);
-
-                Places place = new Places(nameFromDatabase,latitude,longitude);
-
-
-                lstPlaces.add(place);
-
-            }
-            recyclerViewAdapter.notifyDataSetChanged();
-            cursor.close();
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        recyclerViewAdapter.notifyDataSetChanged();
         myRecyclerView.setAdapter(recyclerViewAdapter );
-
-
-
     }
 
 }

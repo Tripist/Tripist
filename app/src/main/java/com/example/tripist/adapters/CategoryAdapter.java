@@ -19,6 +19,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 
@@ -30,7 +32,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
     private ArrayList<Places> itemList;
     Context context;
     SQLiteDatabase database;
-
+    DatabaseHelper databaseHelper;
     public CategoryAdapter(ArrayList<Places> placeList, Context context) {
         this.itemList = placeList;
         this.context = context;
@@ -42,7 +44,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_design, parent, false);
 
+
         final CardviewPlaceHolder cardviewPlaceHolder = new CardviewPlaceHolder(itemView);
+        databaseHelper = new DatabaseHelper(context);
         cardviewPlaceHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,12 +76,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
                 if (isChecked) {
                     String name = cardviewPlaceHolder.isim.getText().toString();
                     cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
-                    fav(name);
+                    new KategorieDao().fav(databaseHelper,name);
                 }
                 else {
                     String name = cardviewPlaceHolder.isim.getText().toString();
                     cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
-                    unfav(name);
+                    new KategorieDao().unfav(databaseHelper,name);
                 }
             }
         });
@@ -93,11 +97,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
         holder.img.setImageResource(context.getResources()
                 .getIdentifier(item.getImage(), "drawable", context.getPackageName()));
         String name = item.getName();
-        if(DataExists(name)== false){
+        if(new KategorieDao().DataExists(databaseHelper,name)== false){
 
             holder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
         }
-        if(DataExists(name)== true) {
+        if(new KategorieDao().DataExists(databaseHelper,name)== true) {
 
             holder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
         }
@@ -127,30 +131,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
 
         }
     }
-    public void fav(String name){
-        database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-        String sql = "INSERT INTO  my_favourites (name) VALUES (?) ";
-        database.execSQL(sql, new String[]{ name});
-    }
-    public void unfav(String name){
-        database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-        String sql = "DELETE FROM my_favourites WHERE name = ?";
-        database.execSQL(sql, new String[]{ name});
-    }
-    public  boolean DataExists(String fieldValue) {
-        database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-        String Query = "Select * from my_favourites where name ='" + fieldValue + "'";
-        Cursor cursor = database.rawQuery(Query, null);
-        if(cursor.getCount() <= 0){
-            cursor.close();
 
-            return false;
-
-        }
-        cursor.close();
-
-        return true;
-    }
 }
 
 

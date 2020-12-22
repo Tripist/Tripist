@@ -22,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripist.R;
 import com.example.tripist.controller.navigation.MyFavouritesFragment;
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
     private ArrayList<Places> itemList;
     Context context;
     SQLiteDatabase database;
-    MyFavouritesFragment myFavouritesFragment;
+    DatabaseHelper databaseHelper;
     public MyFavAdapter(ArrayList<Places> placeList, Context context) {
         this.itemList = placeList;
         this.context = context;
@@ -45,6 +47,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
                 .inflate(R.layout.carddesign_myfav, parent, false);
 
         final MyFavAdapter.CardviewPlaceHolder cardviewPlaceHolder = new MyFavAdapter.CardviewPlaceHolder(itemView);
+        databaseHelper = new DatabaseHelper(context);
         cardviewPlaceHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +74,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
                 String name = cardviewPlaceHolder.isim.getText().toString();
 
              //   itemList.remove(cardviewPlaceHolder.getAdapterPosition());
-                unfav(name);
+                new KategorieDao().unfav(databaseHelper,name);
                 notifyDataSetChanged();
             }
         });
@@ -114,12 +117,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
         }
     }
 
-    public void unfav(String name){
-        database = context.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-        String sql = "DELETE FROM my_favourites WHERE name = ?";
-        database.execSQL(sql, new String[]{ name});
 
-    }
 
 
 

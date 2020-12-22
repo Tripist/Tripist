@@ -14,22 +14,24 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tripist.R;
+import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
 import com.example.tripist.controller.navigation.HomeFragment;
+import com.example.tripist.database.KategorieDao;
 
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIMER = 5000;
-    public static final String DATABASE_NAME = "Places";
+
     SQLiteDatabase database;
     Animation topAnim, bottomAnim;
     ImageView image;
     TextView logo, slogan;
     SharedPreferences onBoardingScreen;
-    HomeFragment homeFragment;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
@@ -72,65 +74,18 @@ public class SplashScreen extends AppCompatActivity {
 
             }
         }, SPLASH_TIMER);
+                // TABLE DATA
+        new KategorieDao().add_religions(databaseHelper);
+        new KategorieDao().add_bazaarmarkets(databaseHelper);
+        new KategorieDao().add_historicalplaces(databaseHelper);
+        new KategorieDao().add_islandsandbeachs(databaseHelper);
+        new KategorieDao().add_museums(databaseHelper);
+        new KategorieDao().add_parks(databaseHelper);
+        new KategorieDao().add_squares(databaseHelper);
+        new KategorieDao().add_food(databaseHelper);
 
 
-
-        //create table
-        database = SplashScreen.this.openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
-
-        Database_Connection.databaseprepare(database);
-
-        //add data
-        Database_Connection.add_religions(database);
-        Database_Connection.add_bazaarmarkets(database);
-        Database_Connection.add_historicalplaces(database);
-        Database_Connection.add_islandsandbeachs(database);
-        Database_Connection.add_museums(database);
-        Database_Connection.add_myfavourites(database);
-        Database_Connection.add_mylocations(database);
-        Database_Connection.add_parks(database);
-        Database_Connection.add_squares(database);
-        Database_Connection.add_food(database);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /*  private void createEmployeeTable() {
-        database.execSQL(
-                "CREATE TABLE IF NOT EXISTS my_locationss (\n" +
-                        "    name varchar(30) NOT NULL,\n" +
-                        "    latitude varchar(20) NOT NULL,\n" +
-                        "    longitude varchar(20) NOT NULL\n" +
-                        ");"
-        );
-    } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
