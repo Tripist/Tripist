@@ -87,16 +87,17 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
             int nameIX = cursor.getColumnIndex("name");
             int latitudeIX = cursor.getColumnIndex("latitude");
             int longitudeIX = cursor.getColumnIndex("longitude");
+            int imageIX = cursor.getColumnIndex("image");
 
             while (cursor.moveToNext()) {
                 String nameFromDatabase = cursor.getString(nameIX);
                 String latitudeFromDatabase = cursor.getString(latitudeIX);
                 String longitudeFromDatabase = cursor.getString(longitudeIX);
-                String a = "ayasofya";
+                String image =cursor.getString(imageIX);
                 Double latitude = Double.parseDouble(latitudeFromDatabase);
                 Double longitude = Double.parseDouble(longitudeFromDatabase);
 
-                Places place = new Places(nameFromDatabase, latitude, longitude,a);
+                Places place = new Places(nameFromDatabase, latitude, longitude,image);
 
 
                 placesArrayList.add(place);
