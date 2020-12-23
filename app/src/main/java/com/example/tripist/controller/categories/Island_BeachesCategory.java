@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.adapters.IslandBeachsAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
@@ -24,7 +25,7 @@ public class Island_BeachesCategory extends AppCompatActivity {
     private AppCompatActivity activityForBar;
     private RecyclerView island_rv;
     private ArrayList<Places> placesArrayList;
-    private CategoryAdapter adapter;
+    private IslandBeachsAdapter adapter;
     private Database_Connection dbconnection;
     DatabaseHelper databaseHelper;
     @Override
@@ -64,7 +65,7 @@ public class Island_BeachesCategory extends AppCompatActivity {
     public void getData(){
         String island_beaches = "island_beaches";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,island_beaches);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        IslandBeachsAdapter adapter = new IslandBeachsAdapter(placesArrayList,getApplicationContext());;
         island_rv.setAdapter(adapter);
     }
 }

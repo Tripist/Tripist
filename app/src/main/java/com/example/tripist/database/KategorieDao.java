@@ -267,12 +267,12 @@ public class KategorieDao {
 
     }
 
-    public void fav(DatabaseHelper databaseHelper,String name){
+    public void fav(DatabaseHelper databaseHelper,String name,String tablename){
 
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
 
-        Cursor cursor = database.rawQuery("SELECT * FROM historical_places where name=?",new String [] {name});
+        Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " where name=?",new String [] {name});
 
         int nameIx = cursor.getColumnIndex("name");
         int latitudeIx = cursor.getColumnIndex("latitude");
@@ -284,6 +284,32 @@ public class KategorieDao {
             String latitudeFromDatabase = cursor.getString(latitudeIx);
             String longitudeFromDatabase = cursor.getString(longitudeIx);
             String image = cursor.getString(imageIX);
+            values.put("name", nameFromDatabase);
+            values.put("latitude", latitudeFromDatabase);
+            values.put("longitude", longitudeFromDatabase);
+            values.put("image", image);
+            database.insertOrThrow("my_favourites", null, values);
+        }
+
+        cursor.close();
+
+        database.close();
+    }
+    public void foodFav(DatabaseHelper databaseHelper,String name,String tablename){
+
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        ContentValues values=new ContentValues();
+
+        Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " where name=?",new String [] {name});
+
+        int nameIx = cursor.getColumnIndex("name");
+        int imageIX = cursor.getColumnIndex("image");
+        while (cursor.moveToNext()) {
+
+            String nameFromDatabase = cursor.getString(nameIx);
+            String image = cursor.getString(imageIX);
+            String latitudeFromDatabase = "0";
+            String longitudeFromDatabase = "0";
             values.put("name", nameFromDatabase);
             values.put("latitude", latitudeFromDatabase);
             values.put("longitude", longitudeFromDatabase);

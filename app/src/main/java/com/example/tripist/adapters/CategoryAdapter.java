@@ -76,7 +76,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
                 if (isChecked) {
                     String name = cardviewPlaceHolder.isim.getText().toString();
                     cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
-                    new KategorieDao().fav(databaseHelper,name);
+                    String historical_places = "historical_places";
+                    new KategorieDao().fav(databaseHelper,name,historical_places);
                 }
                 else {
                     String name = cardviewPlaceHolder.isim.getText().toString();

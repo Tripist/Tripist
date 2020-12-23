@@ -3,7 +3,6 @@ package com.example.tripist.adapters;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,29 +20,28 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.models.Foods;
-
+import com.example.tripist.models.Places;
 
 import java.util.ArrayList;
 
-public class FoodsAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.FoodsAdapter.CardviewPlaceHolder> {
 
-        private ArrayList<Foods> itemList;
+public class SquaresAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder> {
+        private ArrayList<Places> itemList;
         Context context;
         DatabaseHelper databaseHelper;
-        public FoodsAdapter(ArrayList<Foods> placeList, Context context) {
+        public SquaresAdapter(ArrayList<Places> placeList, Context context) {
             this.itemList = placeList;
             this.context = context;
         }
 
         @NonNull
         @Override
-        public com.example.tripist.adapters.FoodsAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_design, parent, false);
 
 
-            final com.example.tripist.adapters.FoodsAdapter.CardviewPlaceHolder cardviewPlaceHolder = new com.example.tripist.adapters.FoodsAdapter.CardviewPlaceHolder(itemView);
+            final com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder cardviewPlaceHolder = new com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder(itemView);
             databaseHelper = new DatabaseHelper(context);
             cardviewPlaceHolder.card.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -74,8 +72,8 @@ public class FoodsAdapter extends RecyclerView.Adapter<com.example.tripist.adapt
                     if (isChecked) {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
-                        String foods = "foods";
-                        new KategorieDao().foodFav(databaseHelper,name,foods);
+                        String squares = "squares";
+                        new KategorieDao().fav(databaseHelper,name,squares);
                     }
                     else {
                         String name = cardviewPlaceHolder.isim.getText().toString();
@@ -86,12 +84,12 @@ public class FoodsAdapter extends RecyclerView.Adapter<com.example.tripist.adapt
             });
 
 
-            return new com.example.tripist.adapters.FoodsAdapter.CardviewPlaceHolder(itemView);
+            return new com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder(itemView);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull com.example.tripist.adapters.FoodsAdapter.CardviewPlaceHolder holder, int position) {
-            Foods item = itemList.get(position);
+        public void onBindViewHolder(@NonNull com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder holder, int position) {
+            Places item = itemList.get(position);
             holder.isim.setText(item.getName());
             holder.img.setImageResource(context.getResources()
                     .getIdentifier(item.getImage(), "drawable", context.getPackageName()));
