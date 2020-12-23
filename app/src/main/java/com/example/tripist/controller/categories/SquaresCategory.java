@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Squares;
@@ -24,10 +26,11 @@ public class SquaresCategory extends AppCompatActivity {
     private ArrayList<Places> placesArrayList;
     private CategoryAdapter adapter;
     private Database_Connection dbconnection;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_squares_category);
 
         //TOOLBAR
@@ -36,7 +39,12 @@ public class SquaresCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         // TODO Database işlemleri
 
         //RECYCLERVIEW
@@ -44,12 +52,19 @@ public class SquaresCategory extends AppCompatActivity {
         square_rv.setHasFixedSize(true);
         square_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         adapter = new CategoryAdapter(placesArrayList, this);
-        //   square_rv.setAdapter(adapter);
+        getData();
+
     }
     public void showSquaresMap(View view){
         Intent intent = new Intent(this, Squares.class);
         intent.putExtra("info","new");
         startActivity(intent);
 
+    }
+    public void getData(){
+        String squares = "squares";
+        placesArrayList = new KategorieDao().KategorieList(databaseHelper,squares);
+        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+       square_rv.setAdapter(adapter);
     }
 }

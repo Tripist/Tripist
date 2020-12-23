@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Museums;
@@ -24,10 +26,11 @@ public class MuseumsCategory extends AppCompatActivity {
     private ArrayList<Places> placesArrayList;
     private CategoryAdapter adapter;
     private Database_Connection dbconnection;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_museums_category);
 
         //TOOLBAR
@@ -36,14 +39,19 @@ public class MuseumsCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         // TODO Database işlemleri
 
         //RECYCLERVIEW
         museum_rv= findViewById(R.id.museum_rv);
         museum_rv.setHasFixedSize(true);
         museum_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        adapter = new CategoryAdapter(placesArrayList, this);
+        getData();
         //   museum_rv.setAdapter(adapter);
     }
     public void showMuseumsMap(View view){
@@ -51,5 +59,11 @@ public class MuseumsCategory extends AppCompatActivity {
         intent.putExtra("info","new");
         startActivity(intent);
 
+    }
+    public void getData(){
+        String museums = "museums";
+        placesArrayList = new KategorieDao().KategorieList(databaseHelper,museums);
+        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        museum_rv.setAdapter(adapter);
     }
 }

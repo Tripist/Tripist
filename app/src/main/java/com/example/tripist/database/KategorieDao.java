@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
 import com.example.tripist.adapters.MyFavAdapter;
+import com.example.tripist.models.Foods;
 import com.example.tripist.models.Places;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -77,6 +78,37 @@ public class KategorieDao {
         cursor.close();
         return lstPlaces;
     }
+    public ArrayList<Places>KategorieList(DatabaseHelper databaseHelper,String tablename) {
+
+        ArrayList<Places> lstPlaces = new ArrayList<>();
+        lstPlaces.clear();
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " " ,null);
+
+        int nameIx = cursor.getColumnIndex("name");
+        int latitudeIx = cursor.getColumnIndex("latitude");
+        int longitudeIx = cursor.getColumnIndex("longitude");
+        int imageIX = cursor.getColumnIndex("image");
+
+        while (cursor.moveToNext()) {
+
+            String nameFromDatabase = cursor.getString(nameIx);
+            String latitudeFromDatabase = cursor.getString(latitudeIx);
+            String longitudeFromDatabase = cursor.getString(longitudeIx);
+            String image =cursor.getString(imageIX);
+            Double latitude = Double.parseDouble(latitudeFromDatabase);
+            Double longitude = Double.parseDouble(longitudeFromDatabase);
+
+            Places place = new Places(nameFromDatabase,latitude,longitude,image);
+
+
+            lstPlaces.add(place);
+
+        }
+
+        cursor.close();
+        return lstPlaces;
+    }
     public ArrayList<Places>MyFavourites(DatabaseHelper databaseHelper) {
 
         ArrayList<Places> lstPlaces = new ArrayList<>();
@@ -102,6 +134,33 @@ public class KategorieDao {
 
 
             lstPlaces.add(place);
+
+        }
+
+        cursor.close();
+        return lstPlaces;
+    }
+    public ArrayList<Foods>FoodsList(DatabaseHelper databaseHelper) {
+        ArrayList<Foods> lstPlaces = new ArrayList<>();
+        lstPlaces.clear();
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM foods",null);
+
+
+        int nameIx = cursor.getColumnIndex("name");
+        int imageIX = cursor.getColumnIndex("image");
+
+        while (cursor.moveToNext()) {
+
+            String nameFromDatabase = cursor.getString(nameIx);
+            String image =cursor.getString(imageIX);
+
+
+
+            Foods food = new Foods(nameFromDatabase,image);
+
+
+            lstPlaces.add(food);
 
         }
 
@@ -185,12 +244,12 @@ public class KategorieDao {
 
     }
 
-    public void fav(DatabaseHelper databaseHelper,String namee){
+    public void fav(DatabaseHelper databaseHelper,String name){
 
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
 
-        Cursor cursor = database.rawQuery("SELECT * FROM historical_places where name=?",new String [] {namee});
+        Cursor cursor = database.rawQuery("SELECT * FROM historical_places where name=?",new String [] {name});
 
         int nameIx = cursor.getColumnIndex("name");
         int latitudeIx = cursor.getColumnIndex("latitude");

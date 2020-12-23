@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Parks;
@@ -24,10 +26,11 @@ public class ParksCategory extends AppCompatActivity {
     private ArrayList<Places> placesArrayList;
     private CategoryAdapter adapter;
     private Database_Connection dbconnection;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_parks_category);
 
         //TOOLBAR
@@ -36,14 +39,19 @@ public class ParksCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         // TODO Database işlemleri
 
         //RECYCLERVIEW
         park_rv= findViewById(R.id.park_rv);
         park_rv.setHasFixedSize(true);
         park_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        adapter = new CategoryAdapter(placesArrayList, this);
+        getData();
         //   park_rv.setAdapter(adapter);
     }
     public void showParksMap(View view){
@@ -51,5 +59,11 @@ public class ParksCategory extends AppCompatActivity {
         intent.putExtra("info","new");
         startActivity(intent);
 
+    }
+    public void getData(){
+        String parks = "parks_gardens";
+        placesArrayList = new KategorieDao().KategorieList(databaseHelper,parks);
+        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        park_rv.setAdapter(adapter);
     }
 }
