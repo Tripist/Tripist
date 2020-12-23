@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.adapters.MuseumsAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
@@ -24,7 +25,7 @@ public class MuseumsCategory extends AppCompatActivity {
     private AppCompatActivity activityForBar;
     private RecyclerView museum_rv;
     private ArrayList<Places> placesArrayList;
-    private CategoryAdapter adapter;
+    private MuseumsAdapter adapter;
     private Database_Connection dbconnection;
     DatabaseHelper databaseHelper;
     @Override
@@ -63,7 +64,7 @@ public class MuseumsCategory extends AppCompatActivity {
     public void getData(){
         String museums = "museums";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,museums);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        MuseumsAdapter adapter = new MuseumsAdapter(placesArrayList,getApplicationContext());;
         museum_rv.setAdapter(adapter);
     }
 }

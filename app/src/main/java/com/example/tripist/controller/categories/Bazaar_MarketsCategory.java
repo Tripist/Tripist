@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.tripist.adapters.BazaarMarketsAdapter;
 import com.example.tripist.adapters.CategoryAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
@@ -24,7 +25,7 @@ public class Bazaar_MarketsCategory extends AppCompatActivity {
     private AppCompatActivity activityForBar;
     private RecyclerView bazaar_rv;
     private ArrayList<Places> placesArrayList;
-    private CategoryAdapter adapter;
+    private BazaarMarketsAdapter adapter;
    DatabaseHelper databaseHelper;
 
     @Override
@@ -63,7 +64,7 @@ public class Bazaar_MarketsCategory extends AppCompatActivity {
     public void getData(){
         String bazaar_markets = "bazaar_markets";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,bazaar_markets);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        BazaarMarketsAdapter adapter = new BazaarMarketsAdapter(placesArrayList,getApplicationContext());;
         bazaar_rv.setAdapter(adapter);
     }
 }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.adapters.ParksAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
@@ -24,7 +25,6 @@ public class ParksCategory extends AppCompatActivity {
     private AppCompatActivity activityForBar;
     private RecyclerView park_rv;
     private ArrayList<Places> placesArrayList;
-    private CategoryAdapter adapter;
     private Database_Connection dbconnection;
     DatabaseHelper databaseHelper;
     @Override
@@ -63,7 +63,7 @@ public class ParksCategory extends AppCompatActivity {
     public void getData(){
         String parks = "parks_gardens";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,parks);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        ParksAdapter adapter = new ParksAdapter(placesArrayList,getApplicationContext());;
         park_rv.setAdapter(adapter);
     }
 }

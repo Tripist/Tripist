@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.adapters.ReligionsAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
@@ -24,8 +25,6 @@ public class ReligionsCategory extends AppCompatActivity {
     private AppCompatActivity activityForBar;
     private RecyclerView religion_rv;
     private ArrayList<Places> placesArrayList;
-    private CategoryAdapter adapter;
-    private Database_Connection dbconnection;
     DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,7 @@ public class ReligionsCategory extends AppCompatActivity {
     public void getData(){
         String religions = "religions";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,religions);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        ReligionsAdapter adapter = new ReligionsAdapter(placesArrayList,getApplicationContext());;
         religion_rv.setAdapter(adapter);
     }
 }

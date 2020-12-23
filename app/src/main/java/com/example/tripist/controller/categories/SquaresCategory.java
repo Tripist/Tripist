@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.adapters.SquaresAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
@@ -24,8 +25,7 @@ public class SquaresCategory extends AppCompatActivity {
     private AppCompatActivity activityForBar;
     private RecyclerView square_rv;
     private ArrayList<Places> placesArrayList;
-    private CategoryAdapter adapter;
-    private Database_Connection dbconnection;
+    private SquaresAdapter adapter;
     DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,6 @@ public class SquaresCategory extends AppCompatActivity {
         square_rv= findViewById(R.id.square_rv);
         square_rv.setHasFixedSize(true);
         square_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        adapter = new CategoryAdapter(placesArrayList, this);
         getData();
 
     }
@@ -64,7 +63,7 @@ public class SquaresCategory extends AppCompatActivity {
     public void getData(){
         String squares = "squares";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,squares);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        SquaresAdapter adapter = new SquaresAdapter(placesArrayList,getApplicationContext());;
        square_rv.setAdapter(adapter);
     }
 }
