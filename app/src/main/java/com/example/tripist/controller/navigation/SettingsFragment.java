@@ -73,12 +73,10 @@ public class SettingsFragment  extends Fragment {
                     getActivity().recreate();
                 }
                 else if(i == 1){
-                    setLocale("de");
+                    setLocale("en");
                     getActivity().recreate();
                 }
-                Intent n = new Intent(getActivity(),HomeFragment.class);
-                v.getContext().startActivity(n);
-                getActivity().finish();
+
             }
         });
         mBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

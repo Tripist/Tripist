@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Religions;
@@ -24,10 +26,11 @@ public class ReligionsCategory extends AppCompatActivity {
     private ArrayList<Places> placesArrayList;
     private CategoryAdapter adapter;
     private Database_Connection dbconnection;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_religions_category);
 
         //TOOLBAR
@@ -36,20 +39,30 @@ public class ReligionsCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         // TODO Database işlemleri
 
         //RECYCLERVIEW
         religion_rv= findViewById(R.id.religion_rv);
         religion_rv.setHasFixedSize(true);
         religion_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        adapter = new CategoryAdapter(placesArrayList, this);
-        //   religion_rv.setAdapter(adapter);
+       getData();
     }
     public void showReligionsMap(View view){
         Intent intent = new Intent(this, Religions.class);
         intent.putExtra("info","new");
         startActivity(intent);
 
+    }
+    public void getData(){
+        String religions = "religions";
+        placesArrayList = new KategorieDao().KategorieList(databaseHelper,religions);
+        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        religion_rv.setAdapter(adapter);
     }
 }

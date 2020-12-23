@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Bazaar_Markets;
@@ -23,11 +25,12 @@ public class Bazaar_MarketsCategory extends AppCompatActivity {
     private RecyclerView bazaar_rv;
     private ArrayList<Places> placesArrayList;
     private CategoryAdapter adapter;
-    private Database_Connection dbconnection;
+   DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_bazaar__markets_category);
 
         //TOOLBAR
@@ -36,7 +39,12 @@ public class Bazaar_MarketsCategory extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_28);
         toolbar.setTitleTextAppearance(this, R.style.NunitoBoldFont);
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         // TODO Database işlemleri
 
@@ -44,13 +52,18 @@ public class Bazaar_MarketsCategory extends AppCompatActivity {
         bazaar_rv= findViewById(R.id.bazaar_rv);
         bazaar_rv.setHasFixedSize(true);
         bazaar_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        adapter = new CategoryAdapter(placesArrayList, this);
-        // bazaar_rv.setAdapter(adapter);
+        getData();
     }
     public void showBazaar_Markets_Map(View view){
         Intent intent = new Intent(this, Bazaar_Markets.class);
         intent.putExtra("info","new");
         startActivity(intent);
 
+    }
+    public void getData(){
+        String bazaar_markets = "bazaar_markets";
+        placesArrayList = new KategorieDao().KategorieList(databaseHelper,bazaar_markets);
+        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        bazaar_rv.setAdapter(adapter);
     }
 }

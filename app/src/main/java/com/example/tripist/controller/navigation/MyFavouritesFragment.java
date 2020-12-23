@@ -1,5 +1,6 @@
 package com.example.tripist.controller.navigation;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -16,9 +17,12 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.tripist.R;
 import com.example.tripist.adapters.MyFavAdapter;
+import com.example.tripist.controller.maps.My_Favourites;
+import com.example.tripist.controller.maps.My_Locations;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -29,6 +33,7 @@ public class MyFavouritesFragment extends Fragment {
     RecyclerView fav_rv;
     ArrayList<Places> placesArrayList;
     DatabaseHelper databaseHelper;
+    FloatingActionButton favtomap_fab;
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_myfavourites, container, false);
@@ -36,10 +41,18 @@ public class MyFavouritesFragment extends Fragment {
 
 
         fav_rv = root.findViewById(R.id.fav_rv);
+        favtomap_fab = root.findViewById(R.id.favtomap_fab);
         MyFavAdapter myFavAdapter = new MyFavAdapter(placesArrayList,getContext());
         fav_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         fav_rv.setAdapter(myFavAdapter);
         myFavAdapter.notifyDataSetChanged();
+
+        favtomap_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showMy_Favourites();
+            }
+        });
 
         return root;
 
@@ -57,11 +70,17 @@ public class MyFavouritesFragment extends Fragment {
         placesArrayList.clear();
         placesArrayList = new KategorieDao().MyFavourites(databaseHelper);
         MyFavAdapter adapter = new MyFavAdapter(placesArrayList,getActivity());
-      //  fav_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        fav_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         adapter.notifyDataSetChanged();
         fav_rv.setAdapter(adapter);
         }
 
+    public void showMy_Favourites() {
+        Intent intent = new Intent(getActivity(), My_Favourites.class);
+        intent.putExtra("info","new");
+        startActivity(intent);
+
+    }
     @Override
     public void onStart() {
         getData();
