@@ -37,6 +37,7 @@
     <string name="edit">Edit</string>
     <string name="delete_question">Are you sure you want to delete?</string>
     <string name="cancel">Cancel</string>
+    <string name="dil_secenegi">Choose Language</string>
 
     <string name="update_toast">Successfully updated</string>
     <string name="blankname">Name can\'t be blank</string>
@@ -53,11 +54,6 @@
     <string name="third_slide_titel">Get Information</string>
     <string name="fourth_slide_titel">Add Favourite List</string>
     <string name="fifth_slide_titel">Get Suggestions</string>
-
-
-=======
-    
-
     <string name="first_slide_desc">You can see the touristic places in Istanbul according to their categories.
         You can also discover the dishes that should be eaten in Istanbul.</string>
     <string name="second_slide_desc">You can find sightseeing places on the map, be directed to Google Maps
@@ -95,8 +91,84 @@ You can have your afternoon tea or evening coffee in the outdoor cafes built at 
     <string name="konsernotf">If you want to listen to some music and chill out, it might be a very good idea to go to a concert of your favorite style. Get your ticket and enjoy the fun</string>
     <string name="gezinotf">When the weather is sunny, take a walk from Karaköy. Photograph everything that could be an “Istanbul Classic” along the Galata bridge. When you are hungry, buy a Niğde Gazoz and simit or a delicious fish bread under the bridge… What more can you ask for!</string>
     <string name="oglennotf">Here is another Istanbul classic for you… Getting lost in the streets of Kuzguncuk is free! Walk, take pictures, check out the houses, cute little shops. When you are hungry, be sure to buy something from the historical bakery. You can even climb the long stairs of Kuzguncuk and eat your cookie against the Bosphorus view.</string>
+    <string name="picnicnotf">Isn\'t it a great weather for a picnic? Moreover, what are you waiting for when there are very pleasant locations for picnics in Istanbul! You can also buy your picnic basket and visit the parks and forests of Istanbul with your loved ones; you can enjoy the warm weather.</string>
+    <string name="bogaznotf">Another nice activity that can be done in hot weather in Istanbul is the Bosphorus tour. As the sun shows its face, the magnificent colors of the city emerge. You can witness these colors in their most beautiful form on the Bosphorus tour. For this, you can take tour boats departing from districts such as Beşiktaş, Ortaköy, Eminönü and enjoy the sea and the wind.</string>
+    <string name="coldsabahmotf">Güne sağlıklı başlamak istersen, yataktan biraz erken kalkıp sabah sporu yapmak için Belgrad’a gidebilirsin.</string>
+    <string name="s_havanotf">The weather is a little bad ☹ But don\'t bother, because there are many places to visit in Istanbul even in bad weather. For example, it might be a good choice to glance at the museums category.</string>
+    <string name="s_havanotf1">Are you one of those who can\'t stay home in rainy weather? Then let\'s put you in the parks category. You can go to the park of your choice and take a walk by absorbing that fragrance of the soil. Then who can say no to a warm coffee that will warm you up?</string>
+    <string name="s_havanotf2">Sipping your saleb or Turkish coffee against the view of the Golden Horn in the historical Pierre Loti Coffee is also a good alternative to enjoy Istanbul in cold weather.</string>
+    <string name="s_havanotf3">There are many great cafes where you can have fun with your loved ones in rainy weather. Especially those close to districts such as Cihangir, Karaköy, Moda can enjoy this pleasure without wasting time.</string>
+    <string name="s_havanotf4">If you don\'t want to sit at home in cold weather and are tired of shopping centers, Grand Bazaar is the place for you. Get lost in its streets, discover its bedestens and inns. A unique journey into the back pages of history awaits you </string>
+    <string name="s_havanotf5">After a romantic ferry trip, a nice walk along the tree-lined roads of Heybeliada can be a good choice.</string>
+    <string name="s_havanotf6">Hot tea and a crispy bagel; or a nice coffee. In front of you is Istanbul\'s gray-hazy but uniquely beautiful strait. Even more than enough to get on the ferry and cross the street</string>
+    <string name="s_havanotf7">Whether it is rain or mud, you can sit in a cozy cafe on İstiklal Caddesi, which is full of Beyoğlu lovers, and watch people with good music. I am sure you will enjoy it too.</string>
+    <string name="s_havanotf8">The Bosphorus is the first destination that comes to mind when talking about raki and fish in Istanbul. It is useful to sit at the table before sunset to watch the city bathed in the rain.</string>
+    <!-- notificaiton array -->
+    <string-array name="morning_good">
+        <item>@string/goodmorningnotification</item>
+        <item>@string/sabahmotf</item>
+        <item>@string/bosphorusnotification</item>
+        <item>@string/oglennotf</item>
+        <item>@string/bogazturunotf</item>
+        <item>@string/modasahilinotf</item>
+        <item>@string/picnicnotf</item>
+    </string-array>
 
-    <string name="dil_secenegi">Choose Language</string>
-=======
+    <string-array name="noon_good">
+        <item>@string/oglennotf</item>
+        <item>@string/kumpirwafflenotf</item>
+        <item>@string/konsernotf</item>
+        <item>@string/oglennotf</item>
+        <item>@string/bosphorusnotification</item>
+        <item>@string/bogazturunotf</item>
+        <item>@string/modasahilinotf</item>
+        <item>@string/konsernotf</item>
+        <item>@string/bogaznotf</item>
+    </string-array>
+
+    <string-array name="afternoon_good">
+        <item>@string/aksamnotf</item>
+        <item>@string/bescayınotf</item>
+        <item>@string/konsernotf</item>
+        <item>@string/bosphorusnotification</item>
+        <item>@string/kumpirwafflenotf</item>
+    </string-array>
+
+    <string-array name="morning_bad">
+        <item>@string/coldsabahmotf</item>
+        <item>@string/s_havanotf</item>
+        <item>@string/s_havanotf1</item>
+        <item>@string/s_havanotf2</item>
+        <item>@string/s_havanotf3</item>
+        <item>@string/s_havanotf4</item>
+        <item>@string/s_havanotf5</item>
+        <item>@string/s_havanotf6</item>
+        <item>@string/s_havanotf7</item>
+    </string-array>
+
+    <string-array name="noon_bad">
+        <item>@string/s_havanotf</item>
+        <item>@string/s_havanotf1</item>
+        <item>@string/s_havanotf2</item>
+        <item>@string/s_havanotf3</item>
+        <item>@string/s_havanotf8</item>
+        <item>@string/s_havanotf4</item>
+        <item>@string/s_havanotf5</item>
+        <item>@string/s_havanotf6</item>
+        <item>@string/s_havanotf7</item>
+    </string-array>
+
+
+    <string-array name="afternoon_bad">
+        <item>@string/s_havanotf1</item>
+        <item>@string/s_havanotf3</item>
+        <item>@string/s_havanotf2</item>
+        <item>@string/s_havanotf7</item>
+    </string-array>
+    <string-array name="night">
+        <item>@string/gecenotf</item>
+
+    </string-array>
+
 
 </resources>

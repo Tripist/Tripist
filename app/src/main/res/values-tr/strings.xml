@@ -38,6 +38,7 @@
     <string name="edit">Düzenle</string>
     <string name="delete_question">Silmek istediğinize emin misiniz?</string>
     <string name="cancel">Sil</string>
+    <string name="dil_secenegi">Dil Seçiniz</string>
 
     <string name="update_toast">Başarıyla güncellendi</string>
     <string name="blankname">İsim boş olamaz</string>
@@ -89,9 +90,17 @@ Avrupanın en güzel gece kulupleri dışarda seni bekliyor.</string>
     <string name="konsernotf">Biraz da müzik dinleyip kafa dağıtayım diyorsan, sevdiğin tarzda bir konsere gitmek çok iyi bir fikir olabilir. Al biletini çıkar eğlencenin keyfini</string>
     <string name="gezinotf">Tarihi yarımada deyince akan sular durur… Hazır hava da güneşliyken Karaköy’den yürüyüşe geç. Galata köprüsü boyunca “Bir İstanbul Klasiği” olabilecek her şeyi fotoğrafla. Karnın acıkınca da Niğde Gazozu ve simit ya da köprü altında lezzetli bir balık ekmek… Daha ne olsun!</string>
     <string name="oglennotf">Al sana başka bir İstanbul klasiği daha… Kuzguncuk’un sokaklarında kaybolmak bedava! Yürü, fotoğraf çek, evleri, küçük şirin dükkanlarını incele. Acıkınca da tarihi fırınından mutlaka bir şeyler al. Hatta Kuzguncuk’un uzun merdivenlerini tırmanıp, kurabiyeni Boğaz manzarasına karşı yiyebilirsin.</string>
-    <string name="dil_secenegi">Dil Seçiniz</string>
-
-
-
+    <string name="picnicnotf"> Piknik için muhteşem bir hava değil mi? Üstelik İstanbul’da piknik için son derece keyifli lokasyonlar mevcutken daha ne duruyorsun! Siz de piknik sepetinizi alıp sevdiklerinizde İstanbul’un parklarını, ormanlarını ziyaret edebilir; sıcak havanın tadını çıkarabilirsiniz. </string>
+    <string name="bogaznotf"> İstanbul’da sıcak havalarda yapılabilecek bir diğer güzel aktivite de Boğaz turudur. Güneşin yüzünü göstermesiyle birlikte şehrin muhteşem renkleri ortaya çıkar. Bu renklere ise en güzel haliyle Boğaz turunda tanık olabilirsiniz. Bunun için Beşiktaş, Ortaköy, Eminönü gibi semtlerden kalkan tur teknelerine binebilir, denizin ve rüzgarın tadını çıkarabilirsiniz.</string>
+    <string name="coldsabahmotf">Güne sağlıklı başlamak istersen, yataktan biraz erken kalkıp sabah sporu yapmak için Belgrad’a gidebilirsin.</string>
+    <string name="s_havanotf"> Hava biraz kötü ☹ Ama sen canını hiç sıkma çünkü İstanbulda kötü havalarda da gezilebilecek bir sürü yer var. Mesela müzeler kategorisine göz atmak güzel bir seçim olabilir. </string>
+    <string name="s_havanotf1"> Yağmurlu havalarda evde oturamayanlardan mısın? O zaman seni parklar kategorisine alalım. Seçtiğin parka gidip toprağın o mis kokusunu içine çekerek yürüyüş yapabilirsin. Sonra içini ısıtacak sıcacık bir kahveye kim hayır diyebilir ki?</string>
+    <string name="s_havanotf2"> Tarihi Pierre Loti Kahvesi’nde Haliç manzarasına karşı salebinizi ya da Türk kahvenizi yudumlamak da İstanbul’un soğuk havalarda keyfini sürmek için güzel bir alternatif.</string>
+    <string name="s_havanotf3"> Yağmurlu bir havada sevdiklerinizle keyifli vakit geçirebileceğiniz birçok muazzam cafe mevcut. Özellikle Cihangir, Karaköy, Moda gibi semtlere yakın olanlar vakit kaybetmeden bu keyfi yaşayabilirler. </string>
+    <string name="s_havanotf4"> Soğuk havalarda evde oturmak istemiyorsanız ve alışveriş merkezlerinden sıkıldıysanız, Kapalıçarşı tam da size göre bir yer. Sokaklarında kaybolun, bedestenlerini ve hanlarını keşfedin. Tarihin arka sayfalarına doğru eşsiz bir yolculuk sizi bekliyor.</string>
+    <string name="s_havanotf5"> Romantik bir vapur sefasından sonra Heybeliada’nın ağaçlıklı yollarında güzel bir yürüyüş güzel bir tercih olabilir. </string>
+    <string name="s_havanotf6"> Sıcacık çay ve çıtır bir simit; ya da güzel bir kahve. Önünüzde İstanbul’un gri-puslu ama eşsiz güzellikteki boğazı. Vapur’a binip karşıya yakaya geçmek için yeterde artar bile. </string>
+    <string name="s_havanotf7"> Yağmur da olsa çamur da olsa Beyoğlu sevdalıları ile dolup taşan İstiklal Caddesi‘nde sıcacık bir kafede oturup güzel bir müzik eşliğinde insanları izlemek.  Eminim sen de oldukça keyif alacaksın.</string>
+    <string name="s_havanotf8"> Boğaz, İstanbul’da rakı-balık denince akla gelen ilk istikamet.Yağmurda yıkanan kenti izleyebilmek için masaya gün batmadan oturmakta fayda var.</string>
 
 </resources>

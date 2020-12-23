@@ -28,7 +28,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Random;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -37,7 +40,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HomeFragment extends Fragment {
-    //  NOT: Viewmodel yapısını silme : private HomeViewModel homeViewModel;
     FloatingActionButton historical_button, museum_button, religions_button, parks_button, squares_button;
     FloatingActionButton bazaar_markets_button, island_beaches_button, foods_button;
     ImageView weather_image;
@@ -47,7 +49,6 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //  NOT: Viewmodel yapısını silme :  homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         weather();
         // burası değişecek  buttona onClickMethodu tanımlanacak
@@ -290,35 +291,50 @@ public class HomeFragment extends Fragment {
                 //   String temps = Math.round(Temperature) + " °C";
 
                  // HAVA ŞARTLARI KÖTÜYSE
-                if (icons == "d09d" || icons == "d09n" || icons == "d10d" || icons == "d10n" ||
-                        icons == "d11d" || icons == "d11n" || icons == "d13d" || icons == "d13n" ) {
+                if (icons==""){
                     if(currentHour <= 10){
-                        notification_text.setText("sabahhavakötü");
+                        List<String> morning_bad = Arrays.asList(getResources().getStringArray(R.array.morning_bad));
+                        Random random =new Random();
+                        notification_text.setText(morning_bad.get(random.nextInt(morning_bad.size())));
                     }
                     else if (currentHour <= 16){
-                        notification_text.setText("öğlenhavakötü");
+                        List<String> noon_bad = Arrays.asList(getResources().getStringArray(R.array.noon_bad));
+                        Random random =new Random();
+                        notification_text.setText(noon_bad.get(random.nextInt(noon_bad.size())));
                     }
                     else if (currentHour <= 20){
-                        notification_text.setText("aksamhavakötü");
+                        List<String> afternoon_bad = Arrays.asList(getResources().getStringArray(R.array.afternoon_bad));
+                        Random random =new Random();
+                        notification_text.setText(afternoon_bad.get(random.nextInt(afternoon_bad.size())));
                     }
                     else if (currentHour <= 24){
-                        notification_text.setText("gecehavakötü");
+                        List<String> night = Arrays.asList(getResources().getStringArray(R.array.night));
+                        Random random =new Random();
+                        notification_text.setText(night.get(random.nextInt(night.size())));
                     }
 
                 }
                 //HAVA SARTLARI İYİYSE
                 else{
                     if(currentHour <= 10){
-                        notification_text.setText("sabahhavaiyi");
+                        List<String> morning_good = Arrays.asList(getResources().getStringArray(R.array.morning_good));
+                        Random random =new Random();
+                        notification_text.setText(morning_good.get(random.nextInt(morning_good.size())));
                     }
                     else if (currentHour <= 16){
-                        notification_text.setText("öğlenhavaiyi");
+                        List<String> noon_good = Arrays.asList(getResources().getStringArray(R.array.noon_good));
+                        Random random =new Random();
+                        notification_text.setText(noon_good.get(random.nextInt(noon_good.size())));
                     }
                     else if (currentHour <= 20){
-                        notification_text.setText("aksamhavaiyi");
+                        List<String> afternoon_good = Arrays.asList(getResources().getStringArray(R.array.afternoon_good));
+                        Random random =new Random();
+                        notification_text.setText(afternoon_good.get(random.nextInt(afternoon_good.size())));
                     }
                     else if (currentHour <= 24){
-                        notification_text.setText("gecehavaiyi");
+                        List<String> night = Arrays.asList(getResources().getStringArray(R.array.night));
+                        Random random =new Random();
+                        notification_text.setText(night.get(random.nextInt(night.size())));
                     }
 
                 }
