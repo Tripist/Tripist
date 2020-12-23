@@ -4,6 +4,8 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+
+import com.example.tripist.adapters.MyFavAdapter;
 import com.example.tripist.models.Places;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
@@ -19,6 +21,7 @@ public class KategorieDao {
         lstPlaces.clear();
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
+
 
         int nameIx = cursor.getColumnIndex("name");
         int latitudeIx = cursor.getColumnIndex("latitude");
@@ -49,6 +52,37 @@ public class KategorieDao {
         lstPlaces.clear();
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM historical_places",null);
+
+        int nameIx = cursor.getColumnIndex("name");
+        int latitudeIx = cursor.getColumnIndex("latitude");
+        int longitudeIx = cursor.getColumnIndex("longitude");
+        int imageIX = cursor.getColumnIndex("image");
+
+        while (cursor.moveToNext()) {
+
+            String nameFromDatabase = cursor.getString(nameIx);
+            String latitudeFromDatabase = cursor.getString(latitudeIx);
+            String longitudeFromDatabase = cursor.getString(longitudeIx);
+            String image =cursor.getString(imageIX);
+            Double latitude = Double.parseDouble(latitudeFromDatabase);
+            Double longitude = Double.parseDouble(longitudeFromDatabase);
+
+            Places place = new Places(nameFromDatabase,latitude,longitude,image);
+
+
+            lstPlaces.add(place);
+
+        }
+
+        cursor.close();
+        return lstPlaces;
+    }
+    public ArrayList<Places>MyFavourites(DatabaseHelper databaseHelper) {
+
+        ArrayList<Places> lstPlaces = new ArrayList<>();
+        lstPlaces.clear();
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM my_favourites",null);
 
         int nameIx = cursor.getColumnIndex("name");
         int latitudeIx = cursor.getColumnIndex("latitude");
@@ -150,16 +184,34 @@ public class KategorieDao {
         dbx.close();
 
     }
-    public void fav(DatabaseHelper databaseHelper,String name){
+
+    public void fav(DatabaseHelper databaseHelper,String namee){
 
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         ContentValues values=new ContentValues();
 
-        values.put("name",name );
+        Cursor cursor = database.rawQuery("SELECT * FROM historical_places where name=?",new String [] {namee});
 
-        database.insertOrThrow("my_favourites", null, values);
+        int nameIx = cursor.getColumnIndex("name");
+        int latitudeIx = cursor.getColumnIndex("latitude");
+        int longitudeIx = cursor.getColumnIndex("longitude");
+        int imageIX = cursor.getColumnIndex("image");
+        while (cursor.moveToNext()) {
+
+            String nameFromDatabase = cursor.getString(nameIx);
+            String latitudeFromDatabase = cursor.getString(latitudeIx);
+            String longitudeFromDatabase = cursor.getString(longitudeIx);
+            String image = cursor.getString(imageIX);
+            values.put("name", nameFromDatabase);
+            values.put("latitude", latitudeFromDatabase);
+            values.put("longitude", longitudeFromDatabase);
+            values.put("image", image);
+            database.insertOrThrow("my_favourites", null, values);
+        }
+
+        cursor.close();
+
         database.close();
-
     }
     public void unfav(DatabaseHelper databaseHelper,String name){
         SQLiteDatabase db=databaseHelper.getWritableDatabase();
@@ -180,6 +232,32 @@ public class KategorieDao {
         cursor.close();
 
         return true;
+    }
+    public void refreshMyFav(DatabaseHelper databaseHelper,ArrayList<Places> mList){
+        mList.clear();
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
+
+        int nameIx = cursor.getColumnIndex("name");
+        int latitudeIx = cursor.getColumnIndex("latitude");
+        int longitudeIx = cursor.getColumnIndex("longitude");
+
+        while (cursor.moveToNext()) {
+
+            String nameFromDatabase = cursor.getString(nameIx);
+            String latitudeFromDatabase = cursor.getString(latitudeIx);
+            String longitudeFromDatabase = cursor.getString(longitudeIx);
+
+            Double latitude = Double.parseDouble(latitudeFromDatabase);
+            Double longitude = Double.parseDouble(longitudeFromDatabase);
+
+            Places place = new Places(nameFromDatabase,latitude,longitude);
+
+
+            mList.add(place);
+
+        }
+        cursor.close();
     }
 
     public void refreshTable(DatabaseHelper databaseHelper,ArrayList<Places> mList){

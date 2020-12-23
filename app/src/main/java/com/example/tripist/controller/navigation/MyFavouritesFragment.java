@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.tripist.R;
 import com.example.tripist.adapters.MyFavAdapter;
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class MyFavouritesFragment extends Fragment {
     SQLiteDatabase database;
     RecyclerView fav_rv;
     ArrayList<Places> placesArrayList;
-
+    DatabaseHelper databaseHelper;
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_myfavourites, container, false);
@@ -46,70 +48,26 @@ public class MyFavouritesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper =new DatabaseHelper(getContext());
+        placesArrayList = new KategorieDao().MyFavourites(databaseHelper);
 
-        placesArrayList = new ArrayList<>();
-
-        try {
-            database = getActivity().openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            Cursor cursor = database.rawQuery("SELECT * FROM my_favourites ", null);
-
-            int nameIX = cursor.getColumnIndex("name");
-
-
-            while (cursor.moveToNext()) {
-                String nameFromDatabase = cursor.getString(nameIX);
-                String a = "ayasofya";
-                Places place = new Places(nameFromDatabase,a);
-
-
-                placesArrayList.add(place);
-
-            }
-
-            cursor.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-
-
-        }
     }
 
     public void getData(){
         placesArrayList.clear();
+        placesArrayList = new KategorieDao().MyFavourites(databaseHelper);
         MyFavAdapter adapter = new MyFavAdapter(placesArrayList,getActivity());
-        fav_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+      //  fav_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter.notifyDataSetChanged();
         fav_rv.setAdapter(adapter);
-        try {
-            database = getActivity().openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            Cursor cursor = database.rawQuery("SELECT * FROM my_favourites", null);
-
-            int nameIX = cursor.getColumnIndex("name");
-
-
-            while (cursor.moveToNext()) {
-                String nameFromDatabase = cursor.getString(nameIX);
-                String a = "ayasofya";
-
-                Places place = new Places(nameFromDatabase,a);
-
-
-                placesArrayList.add(place);
-
-
-            }
-
-            adapter.notifyDataSetChanged();
-            cursor.close();
         }
 
+    @Override
+    public void onStart() {
+        getData();
+        super.onStart();
 
-        catch (Exception e) {
-            e.printStackTrace();
-
-
-        }
-
-        fav_rv.setAdapter(adapter);
     }
+
+
 }

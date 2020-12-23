@@ -72,10 +72,9 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
             @Override
             public void onClick(View v) {
                 String name = cardviewPlaceHolder.isim.getText().toString();
-
-             //   itemList.remove(cardviewPlaceHolder.getAdapterPosition());
+                //   itemList.remove(cardviewPlaceHolder.getAdapterPosition());
                 new KategorieDao().unfav(databaseHelper,name);
-                notifyDataSetChanged();
+
             }
         });
 
