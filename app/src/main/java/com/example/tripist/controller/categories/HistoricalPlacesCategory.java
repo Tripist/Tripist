@@ -14,7 +14,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.tripist.adapters.CategoryAdapter;
+import com.example.tripist.adapters.RecyclerViewAdapter;
 import com.example.tripist.controller.navigation.HomeFragment;
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.example.tripist.controller.maps.Historical_Places;
@@ -28,15 +31,15 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
    private RecyclerView historical_rv;
    private ArrayList <Places> placesArrayList;
    private CategoryAdapter adapter;
-   //private Database_Connection dbconnection;
+   DatabaseHelper databaseHelper;
     ImageButton fav;
     ImageButton google;
-   SQLiteDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_historical_places_category);
 
 
@@ -73,70 +76,9 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
             startActivity(intent);
 
         }
-
-    public void getData(){
-        placesArrayList = new ArrayList<>();
-       // adapter = new CategoryAdapter(placesArrayList, this);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());
-       // historical_rv.setLayoutManager(new LinearLayoutManager(get));
-        historical_rv.setAdapter(adapter);
-
-
-        Cursor cursor = database.rawQuery("SELECT * FROM historical_places", null);
-
-            int nameIX = cursor.getColumnIndex("name");
-            int latitudeIX = cursor.getColumnIndex("latitude");
-            int longitudeIX = cursor.getColumnIndex("longitude");
-            int imageIX = cursor.getColumnIndex("image");
-
-            while (cursor.moveToNext()) {
-                String nameFromDatabase = cursor.getString(nameIX);
-                String latitudeFromDatabase = cursor.getString(latitudeIX);
-                String longitudeFromDatabase = cursor.getString(longitudeIX);
-                String image =cursor.getString(imageIX);
-                Double latitude = Double.parseDouble(latitudeFromDatabase);
-                Double longitude = Double.parseDouble(longitudeFromDatabase);
-
-                Places place = new Places(nameFromDatabase, latitude, longitude,image);
-
-
-                placesArrayList.add(place);
-
-
-            }
-
-            adapter.notifyDataSetChanged();
-            cursor.close();
-
-
-
-
+        public void getData(){
+        placesArrayList = new KategorieDao().Historical_Places(databaseHelper);
+        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
         historical_rv.setAdapter(adapter);
     }
-
-
-   /* public void favImage(){
-        toggleButton.setChecked(false);
-
-        fav.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.d02n));
-        fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
-                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.d02d));
-                else
-                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.d02n));
-            }
-        });
-    } */
-
-
-
-
-
-
-
-
-    
-
 }

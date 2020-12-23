@@ -24,6 +24,8 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -43,10 +45,11 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     SQLiteDatabase database;
     LocationManager locationManager;
     LocationListener locationListener;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_my__locations);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -59,7 +62,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-        add_marker();
+        new KategorieDao().add_marker(databaseHelper,mMap);
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
@@ -173,12 +176,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
 
-
-
-     // mMap.addMarker(new MarkerOptions().title(address).position(latLng));
-
-
-
         final Double latitude = latLng.latitude;
         final Double longitude = latLng.longitude;
 
@@ -188,7 +185,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         AlertDialog.Builder builder = new AlertDialog.Builder(My_Locations.this);
         builder.setTitle(place.name);
-        builder.setCancelable(false);
+
         builder.setItems(new CharSequence[]
                         {(String)getText(R.string.myhotel), (String)getText(R.string.myhome),(String) getText(R.string.myairport),(String) getText(R.string.others)},
                 new DialogInterface.OnClickListener() {
@@ -200,23 +197,32 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                             case 0:
                                 //  Toast.makeText(getApplicationContext(), "My Hotel", Toast.LENGTH_SHORT).show();
                                 String myhotel = (String) getText(R.string.myhotel);
-                                if(DataExists(myhotel)== false){
-
+                                if(new KategorieDao().DataExists(databaseHelper,myhotel)== false){
                                     add_myhotel(myhotel, b, c);
                                 }
+                                else{
+                                    Toast.makeText(getApplicationContext(), myhotel + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
+                                }
                                 break;
+
                             case 1:
                                 // Toast.makeText(getApplicationContext(), "My blabla", Toast.LENGTH_SHORT).show();
                                 String myhome =(String) getText(R.string.myhome);
-                                if(DataExists(myhome)== false){
+                                if(new KategorieDao().DataExists(databaseHelper,myhome)== false){
                                     add_myblabla(myhome, b, c);
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), myhome + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case 2:
                                 //  Toast.makeText(getApplicationContext(), "My Airport", Toast.LENGTH_SHORT).show();
                                 String myairport =(String) getText(R.string.myairport);
-                                if(DataExists(myairport)== false){
+                                if(new KategorieDao().DataExists(databaseHelper,myairport)== false){
                                     add_myairport(myairport, b, c);
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), myairport + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
 
                                 break;
@@ -233,7 +239,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_others(final String name, final Double latitude, final Double longitude) {
-
+        LatLng latLng = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText edittext = new EditText(My_Locations.this);
         alert.setTitle(name);
@@ -242,26 +249,14 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                LatLng latLng = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
-                String UserLocationInput = edittext.getText().toString();
-                try {
-                    database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-                    String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
-
-                    SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-                    sqLiteStatement.bindString(1, UserLocationInput.substring(0,1).toUpperCase() + UserLocationInput.substring(1));
-                    sqLiteStatement.bindString(2, String.valueOf(latitude));
-                    sqLiteStatement.bindString(3, String.valueOf(longitude));
-                    sqLiteStatement.execute();
+                String userLocationInput = edittext.getText().toString();
+                String userLocationInputname = userLocationInput.substring(0,1).toUpperCase() + userLocationInput.substring(1);
+                new KategorieDao().addMylocationsOthers(databaseHelper,userLocationInputname,latitude,longitude);
 
                     Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
 
 
-                } catch (Exception e) {
-                    e.printStackTrace();
 
-                }
             }
         });
 
@@ -282,25 +277,10 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.setTitle(name);
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-
-                try {
-                    database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-                    String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
-
-                    SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-                    sqLiteStatement.bindString(1, name);
-                    sqLiteStatement.bindString(2, String.valueOf(latitude));
-                    sqLiteStatement.bindString(3, String.valueOf(longitude));
-                    sqLiteStatement.execute();
-
+                new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
                     Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-
-                }
             }
+
         });
 
 
@@ -320,25 +300,10 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.setTitle(name);
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-
-                try {
-                    database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-                    String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
-
-                    SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-                    sqLiteStatement.bindString(1, name);
-                    sqLiteStatement.bindString(2, String.valueOf(latitude));
-                    sqLiteStatement.bindString(3, String.valueOf(longitude));
-                    sqLiteStatement.execute();
-
-                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-
-                }
+                new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
+                Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }
+
         });
 
 
@@ -359,26 +324,10 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.setTitle(name);
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-
-
-                try {
-                    database = My_Locations.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-                    String toCompile = "INSERT INTO my_locations (name,latitude,longitude) VALUES (?,?,?)";
-
-                    SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-                    sqLiteStatement.bindString(1, name);
-                    sqLiteStatement.bindString(2, String.valueOf(latitude));
-                    sqLiteStatement.bindString(3, String.valueOf(longitude));
-                    sqLiteStatement.execute();
-
-                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
-
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-
-                }
+                new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
+                Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }
+
         });
 
 
@@ -392,47 +341,9 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     //kayıtlı konumları eklemek icin
-    public void add_marker() {
-        try {
-            mMap.clear();
-            database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-            Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
-            int nameIX = cursor.getColumnIndex("name");
-            int latitudeIX = cursor.getColumnIndex("latitude");
-            int longitudeIX = cursor.getColumnIndex("longitude");
 
-            while (cursor.moveToNext()) {
-                String nameFromDatabase = cursor.getString(nameIX);
-                String latitudeFromDatabase = cursor.getString(latitudeIX);
-                String longitudeFromDatabase = cursor.getString(longitudeIX);
 
-                Double latitude = Double.parseDouble(latitudeFromDatabase);
-                Double longitude = Double.parseDouble(longitudeFromDatabase);
-                LatLng latLng = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().position(latLng).title(nameFromDatabase));
-            }
-            cursor.close();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public  boolean DataExists(String fieldValue) {
-        database = this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-        String Query = "Select * from my_locations where name ='" + fieldValue + "'";
-        Cursor cursor = database.rawQuery(Query, null);
-        if(cursor.getCount() <= 0){
-            cursor.close();
-
-            return false;
-
-        }
-        cursor.close();
-        Toast.makeText(getApplicationContext(), fieldValue + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
-        return true;
-    }
 
 
 

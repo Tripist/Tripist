@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 
@@ -27,7 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     ArrayList<Places> mList;
     Dialog myDialog ,dialog_edit, delete_alert;
     SQLiteDatabase database;
-
+    DatabaseHelper databaseHelper;
     public RecyclerViewAdapter(@NonNull Context mContext, ArrayList<Places> mList,SQLiteDatabase database) {
         this.mContext = mContext;
         this.mList = mList;
@@ -43,7 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
        // v = LayoutInflater.from(mContext).inflate(R.layout.item_mylocation, parent, false);
         final MyViewHolder vHolder = new MyViewHolder(v);
         //Dialog init
-
+        databaseHelper = new DatabaseHelper(mContext);
 
 
 
@@ -141,8 +143,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                         @Override
                         public void onClick(View v) {
 
-                            String sql = "DELETE FROM my_locations WHERE name = ?";
-                            database.execSQL(sql, new String[]{ name});
+                            new KategorieDao().deletePlace(databaseHelper,name);
                             System.out.println(name);
                             mList.remove(id);
                             delete_alert.cancel();
@@ -183,12 +184,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                 return;
                             }
 
-                            String sql = "UPDATE my_locations \n" +
-                                    "SET name = ? \n" +
-                                    "WHERE name = ?;\n";
-
-                            database.execSQL(sql, new String[]{newName,name});
-                            refreshTable();
+                           new KategorieDao().updatePlace(databaseHelper,name,newName);
+                            new KategorieDao().refreshTable(databaseHelper,mList);
+//
                             Toast.makeText(mContext, R.string.update_toast, Toast.LENGTH_SHORT).show();
                             notifyDataSetChanged();
                              dialog_edit.cancel();
@@ -204,32 +202,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
 
-        public void refreshTable(){
-            mList.clear();
-            Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
 
-            int nameIx = cursor.getColumnIndex("name");
-            int latitudeIx = cursor.getColumnIndex("latitude");
-            int longitudeIx = cursor.getColumnIndex("longitude");
-
-            while (cursor.moveToNext()) {
-
-                String nameFromDatabase = cursor.getString(nameIx);
-                String latitudeFromDatabase = cursor.getString(latitudeIx);
-                String longitudeFromDatabase = cursor.getString(longitudeIx);
-
-                Double latitude = Double.parseDouble(latitudeFromDatabase);
-                Double longitude = Double.parseDouble(longitudeFromDatabase);
-
-                Places place = new Places(nameFromDatabase,latitude,longitude);
-
-
-                mList.add(place);
-
-            }
-            notifyDataSetChanged();
-            cursor.close();
-        }
 
 
 
