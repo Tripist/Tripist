@@ -22,6 +22,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,16 +37,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class Squares extends FragmentActivity implements OnMapReadyCallback , GoogleMap.OnMapLongClickListener {
+public class Squares extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
-    SQLiteDatabase database;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_squares);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -64,8 +67,8 @@ public class Squares extends FragmentActivity implements OnMapReadyCallback , Go
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setOnMapLongClickListener(this);
-
+        String squares = "squares";
+        new KategorieDao().addMarker(databaseHelper,mMap,squares);
 
 
         Intent intent = getIntent();
@@ -116,6 +119,7 @@ public class Squares extends FragmentActivity implements OnMapReadyCallback , Go
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -151,8 +155,9 @@ public class Squares extends FragmentActivity implements OnMapReadyCallback , Go
             }
         }
     }
+}
 
-    // uzun basıldığında adres ekleme
+ /*   // uzun basıldığında adres ekleme
     @Override
     public void onMapLongClick(LatLng latLng) {
         Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
@@ -224,5 +229,4 @@ public class Squares extends FragmentActivity implements OnMapReadyCallback , Go
             }
         });
         alertDialog.show();
-    }
-}
+    }*/

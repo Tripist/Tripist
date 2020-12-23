@@ -23,6 +23,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,16 +38,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class My_Favourites extends FragmentActivity implements OnMapReadyCallback , GoogleMap.OnMapLongClickListener {
+public class My_Favourites extends FragmentActivity implements OnMapReadyCallback  {
 
     private GoogleMap mMap;
     SQLiteDatabase database;
     LocationManager locationManager;
     LocationListener locationListener;
-
+    DatabaseHelper databaseHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_my__favourites);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -57,7 +60,8 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setOnMapLongClickListener(this);
+        String my_favourites = "my_favourites";
+        new KategorieDao().addMarker(databaseHelper,mMap,my_favourites);
 
 
         Intent intent = getIntent();
@@ -146,80 +150,6 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
             }
         }
 
-        // uzun basıldığında adres ekleme
-        @Override
-        public void onMapLongClick(LatLng latLng) {
-            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-            String address = "";
-
-            try {
-                List<Address> addressList = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
-
-                if (addressList != null && addressList.size() > 0) {
-                    if (addressList.get(0).getThoroughfare() != null) {
-                        address += addressList.get(0).getThoroughfare();
-
-                        if (addressList.get(0).getSubThoroughfare() != null) {
-                            address += "";
-                            address += addressList.get(0).getSubThoroughfare();
-                        }
-
-
-                    }
-                } else {
-                    // adres alamazsa default
-                    address = "new place";
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // mMap.clear();
-
-            mMap.addMarker(new MarkerOptions().title(address).position(latLng));
-
-            Double latitude = latLng.latitude;
-            Double longitude = latLng.longitude;
-
-
-            final Places place = new Places(address, latitude, longitude);
-
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(My_Favourites.this);
-            alertDialog.setCancelable(false);
-            alertDialog.setTitle(R.string.addlocation_question);
-            alertDialog.setMessage(place.name);
-            alertDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    //DATABASE ACMAK YADA OLUSTURMAK
-                    try {
-                        database = My_Favourites.this.openOrCreateDatabase("Places", MODE_PRIVATE, null);
-                        String toCompile = "INSERT INTO my_favourites (name,latitude,longitude) VALUES (?,?,?)";
-
-                        SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-                        sqLiteStatement.bindString(1, place.name);
-                        sqLiteStatement.bindString(2, String.valueOf(place.latitude));
-                        sqLiteStatement.bindString(3, String.valueOf(place.longitude));
-                        sqLiteStatement.execute();
-
-                        Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
-                }
-            });
-            alertDialog.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG);
-
-                }
-            });
-            alertDialog.show();
-        }
 
 
 }

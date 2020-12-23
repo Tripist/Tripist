@@ -62,7 +62,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-        new KategorieDao().add_marker(databaseHelper,mMap);
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");

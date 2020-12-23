@@ -194,7 +194,30 @@ public class KategorieDao {
         database.close();
     }
 
-    public void add_marker(DatabaseHelper databaseHelper, GoogleMap mMap) {
+    public void addMarker(DatabaseHelper databaseHelper, GoogleMap mMap,String tablename) {
+
+        mMap.clear();
+        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " ", null);
+
+        int nameIX = cursor.getColumnIndex("name");
+        int latitudeIX = cursor.getColumnIndex("latitude");
+        int longitudeIX = cursor.getColumnIndex("longitude");
+
+        while (cursor.moveToNext()) {
+            String nameFromDatabase = cursor.getString(nameIX);
+            String latitudeFromDatabase = cursor.getString(latitudeIX);
+            String longitudeFromDatabase = cursor.getString(longitudeIX);
+
+            Double latitude = Double.parseDouble(latitudeFromDatabase);
+            Double longitude = Double.parseDouble(longitudeFromDatabase);
+            LatLng latLng = new LatLng(latitude, longitude);
+            mMap.addMarker(new MarkerOptions().position(latLng).title(nameFromDatabase));
+        }
+        cursor.close();
+
+    }
+    public void add_MyLocMarker(DatabaseHelper databaseHelper, GoogleMap mMap) {
 
         mMap.clear();
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
