@@ -63,7 +63,7 @@ public class SettingsFragment  extends Fragment {
         //TODO: On Android 6.0.1, when you try to change the language, it automatically sets the language to English
         //TODO: On all other Android versions (7.1.1+) it is kind of buggy, setLocale must be configured properly
         final String[] listItems = {getString(R.string.application_language1), getString(R.string.application_language2)};
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
+        final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
         mBuilder.setTitle(getString(R.string.dil_secenegi));
         mBuilder.setSingleChoiceItems(listItems,-1, new DialogInterface.OnClickListener() {
             @Override
@@ -79,6 +79,12 @@ public class SettingsFragment  extends Fragment {
                 Intent n = new Intent(getActivity(),HomeFragment.class);
                 v.getContext().startActivity(n);
                 getActivity().finish();
+            }
+        });
+        mBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
             }
         });
         AlertDialog mDialog = mBuilder.create();
