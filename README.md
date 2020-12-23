@@ -26,6 +26,10 @@ Bevor wir uns auf eine Reise begeben, gibt es hierzu viele Websites, auf denen w
 ### Architektur
 * MVC (Model-View-Controller)
 
+### API
+* Google Maps
+* OpenWeather
+
 ### Koordination
 * Github
 * Google Docs 
