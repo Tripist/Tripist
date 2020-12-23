@@ -18,24 +18,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/food_fab"
-        android:layout_width="69dp"
-        android:layout_height="69dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="#882139"
-        android:backgroundTint="#882139"
-        android:clickable="true"
-        android:foregroundTint="#882139"
-        app:backgroundTint="#882139"
-        app:fabCustomSize="69dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:maxImageSize="30dp"
-        app:rippleColor="#882139"
-        app:srcCompat="@drawable/fabmapicon" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/food_rv"
         android:layout_width="match_parent"
