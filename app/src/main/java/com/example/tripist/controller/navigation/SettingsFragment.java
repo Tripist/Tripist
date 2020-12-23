@@ -43,7 +43,7 @@ public class SettingsFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 showChangeLanguageDialog(v);
-                System.out.println("geri");
+
 
 
             }

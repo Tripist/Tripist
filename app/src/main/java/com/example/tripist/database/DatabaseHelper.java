@@ -13,7 +13,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class    DatabaseHelper extends SQLiteOpenHelper {
 
     // public static String DBNAME = "Places";
 
