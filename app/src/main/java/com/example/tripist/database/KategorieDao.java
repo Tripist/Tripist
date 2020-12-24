@@ -331,6 +331,21 @@ public class KategorieDao {
     }
     public  boolean DataExists(DatabaseHelper databaseHelper,String fieldValue) {
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM my_favourites where name=?",new String [] {fieldValue});
+
+        if(cursor.getCount() <= 0){
+            cursor.close();
+
+            return false;
+
+        }
+        cursor.close();
+
+        return true;
+    }
+
+    public  boolean MyLocationsDataExists(DatabaseHelper databaseHelper,String fieldValue) {
+        SQLiteDatabase database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations where name=?",new String [] {fieldValue});
 
         if(cursor.getCount() <= 0){
@@ -343,6 +358,7 @@ public class KategorieDao {
 
         return true;
     }
+
 
 
     public void refreshTable(DatabaseHelper databaseHelper,ArrayList<Places> mList){
