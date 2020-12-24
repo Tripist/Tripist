@@ -3,10 +3,12 @@ package com.example.tripist.controller.navigation;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -288,63 +290,98 @@ public class HomeFragment extends Fragment {
             @Override
             public void run() {
                 int currentHour = Calendar.getInstance().getTime().getHours() + 3;
-                //   String temps = Math.round(Temperature) + " °C";
+                switch (icons) {
+                    case "01d":
+                    case "01n":
+                    case "02d":
+                    case "02n":
+                    case "03d":
+                    case "03n":
+                        if(currentHour <= 10){
+                            List<String> morning_good = Arrays.asList(getResources().getStringArray(R.array.morning_good));
+                            Random random =new Random();
+                            notification_text.setText(morning_good.get(random.nextInt(morning_good.size())));
+                        }
+                        else if (currentHour <= 16){
+                            List<String> noon_good = Arrays.asList(getResources().getStringArray(R.array.noon_good));
+                            Random random =new Random();
+                            notification_text.setText(noon_good.get(random.nextInt(noon_good.size())));
+                        }
+                        else if (currentHour <= 20){
+                            List<String> afternoon_good = Arrays.asList(getResources().getStringArray(R.array.afternoon_good));
+                            Random random =new Random();
+                            notification_text.setText(afternoon_good.get(random.nextInt(afternoon_good.size())));
+                        }
+                        else if (currentHour <= 24){
+                            List<String> night = Arrays.asList(getResources().getStringArray(R.array.night));
+                            Random random =new Random();
+                            notification_text.setText(night.get(random.nextInt(night.size())));
+                        }
+                        break;
+                    case "09d":
+                    case "09n":
+                    case "10d":
+                    case "10n":
+                    case "11d":
+                    case "11n":
 
-                 // HAVA ŞARTLARI KÖTÜYSE
-                if (icons==""){
-                    if(currentHour <= 10){
-                        List<String> morning_bad = Arrays.asList(getResources().getStringArray(R.array.morning_bad));
-                        Random random =new Random();
-                        notification_text.setText(morning_bad.get(random.nextInt(morning_bad.size())));
-                    }
-                    else if (currentHour <= 16){
-                        List<String> noon_bad = Arrays.asList(getResources().getStringArray(R.array.noon_bad));
-                        Random random =new Random();
-                        notification_text.setText(noon_bad.get(random.nextInt(noon_bad.size())));
-                    }
-                    else if (currentHour <= 20){
-                        List<String> afternoon_bad = Arrays.asList(getResources().getStringArray(R.array.afternoon_bad));
-                        Random random =new Random();
-                        notification_text.setText(afternoon_bad.get(random.nextInt(afternoon_bad.size())));
-                    }
-                    else if (currentHour <= 24){
-                        List<String> night = Arrays.asList(getResources().getStringArray(R.array.night));
-                        Random random =new Random();
-                        notification_text.setText(night.get(random.nextInt(night.size())));
-                    }
+                        if(currentHour <= 10){
+                            List<String> morning_good = Arrays.asList(getResources().getStringArray(R.array.morning_rain));
+                            Random random =new Random();
+                            notification_text.setText(morning_good.get(random.nextInt(morning_good.size())));
+                        }
+                        else if (currentHour <= 16){
+                            List<String> noon_good = Arrays.asList(getResources().getStringArray(R.array.noon_rain));
+                            Random random =new Random();
+                            notification_text.setText(noon_good.get(random.nextInt(noon_good.size())));
+                        }
+                        else if (currentHour <= 20){
+                            List<String> afternoon_good = Arrays.asList(getResources().getStringArray(R.array.afternoon_rain));
+                            Random random =new Random();
+                            notification_text.setText(afternoon_good.get(random.nextInt(afternoon_good.size())));
+                        }
+                        else if (currentHour <= 24){
+                            List<String> night = Arrays.asList(getResources().getStringArray(R.array.night));
+                            Random random =new Random();
+                            notification_text.setText(night.get(random.nextInt(night.size())));
+                        }
+                        break;
+                    case "04n":
+                    case "04d":
+                    case "13d":
+                    case "13n":
+                    case "50d":
+                    case "50n":
+                        if(currentHour <= 10){
+                            List<String> morning_bad = Arrays.asList(getResources().getStringArray(R.array.morning_bad));
+                            Random random =new Random();
+                            notification_text.setText(morning_bad.get(random.nextInt(morning_bad.size())));
+                        }
+                        else if (currentHour <= 16){
+                            List<String> noon_bad = Arrays.asList(getResources().getStringArray(R.array.noon_bad));
+                            Random random =new Random();
+                            notification_text.setText(noon_bad.get(random.nextInt(noon_bad.size())));
+                        }
+                        else if (currentHour <= 20){
+                            List<String> afternoon_bad = Arrays.asList(getResources().getStringArray(R.array.afternoon_bad));
+                            Random random =new Random();
+                            notification_text.setText(afternoon_bad.get(random.nextInt(afternoon_bad.size())));
+                        }
+                        else if (currentHour <= 24){
+                            List<String> night = Arrays.asList(getResources().getStringArray(R.array.night));
+                            Random random =new Random();
+                            notification_text.setText(night.get(random.nextInt(night.size())));
+                        }
+                        break;
+
+
+
 
                 }
-                //HAVA SARTLARI İYİYSE
-                else{
-                    if(currentHour <= 10){
-                        List<String> morning_good = Arrays.asList(getResources().getStringArray(R.array.morning_good));
-                        Random random =new Random();
-                        notification_text.setText(morning_good.get(random.nextInt(morning_good.size())));
-                    }
-                    else if (currentHour <= 16){
-                        List<String> noon_good = Arrays.asList(getResources().getStringArray(R.array.noon_good));
-                        Random random =new Random();
-                        notification_text.setText(noon_good.get(random.nextInt(noon_good.size())));
-                    }
-                    else if (currentHour <= 20){
-                        List<String> afternoon_good = Arrays.asList(getResources().getStringArray(R.array.afternoon_good));
-                        Random random =new Random();
-                        notification_text.setText(afternoon_good.get(random.nextInt(afternoon_good.size())));
-                    }
-                    else if (currentHour <= 24){
-                        List<String> night = Arrays.asList(getResources().getStringArray(R.array.night));
-                        Random random =new Random();
-                        notification_text.setText(night.get(random.nextInt(night.size())));
-                    }
-
-                }
-
-
             }
         });
     }
 }
-
 
 
 

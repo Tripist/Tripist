@@ -46,13 +46,12 @@
                     android:id="@+id/notification_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/nunito"
                     android:paddingStart="18dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
                     android:textColor="#4A4949"
                     android:textSize="16sp" />
             </LinearLayout>
