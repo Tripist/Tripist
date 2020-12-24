@@ -203,7 +203,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                         switch (which) {
                             case 0:
                                 String myhotel = (String) getText(R.string.myhotel);
-                                if(new KategorieDao().DataExists(databaseHelper,myhotel)== false){
+                                if(new KategorieDao().MyLocationsDataExists(databaseHelper,myhotel)== false){
                                     add_myhotel(myhotel, b, c);
                                 }
                                 else{
@@ -213,7 +213,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
                             case 1:
                                 String myhome =(String) getText(R.string.myhome);
-                                if(new KategorieDao().DataExists(databaseHelper,myhome)== false){
+                                if(new KategorieDao().MyLocationsDataExists(databaseHelper,myhome)== false){
                                     add_myblabla(myhome, b, c);
                                 }
                                 else{
@@ -222,7 +222,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                 break;
                             case 2:
                                 String myairport =(String) getText(R.string.myairport);
-                                if(new KategorieDao().DataExists(databaseHelper,myairport)== false){
+                                if(new KategorieDao().MyLocationsDataExists(databaseHelper,myairport)== false){
                                     add_myairport(myairport, b, c);
                                 }
                                 else{
