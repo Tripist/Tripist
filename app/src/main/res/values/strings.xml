@@ -94,7 +94,6 @@ You can have your afternoon tea or evening coffee in the outdoor cafes built at 
     <string name="oglennotf">Here is another Istanbul classic for you… Getting lost in the streets of Kuzguncuk is free! Walk, take pictures, check out the houses, cute little shops. When you are hungry, be sure to buy something from the historical bakery. You can even climb the long stairs of Kuzguncuk and eat your cookie against the Bosphorus view.</string>
     <string name="picnicnotf">Isn\'t it a great weather for a picnic? Moreover, what are you waiting for when there are very pleasant locations for picnics in Istanbul! You can also buy your picnic basket and visit the parks and forests of Istanbul with your loved ones; you can enjoy the warm weather.</string>
     <string name="bogaznotf">Another nice activity that can be done in hot weather in Istanbul is the Bosphorus tour. As the sun shows its face, the magnificent colors of the city emerge. You can witness these colors in their most beautiful form on the Bosphorus tour. For this, you can take tour boats departing from districts such as Beşiktaş, Ortaköy, Eminönü and enjoy the sea and the wind.</string>
-    <string name="coldsabahmotf">Güne sağlıklı başlamak istersen, yataktan biraz erken kalkıp sabah sporu yapmak için Belgrad’a gidebilirsin.</string>
     <string name="s_havanotf">The weather is a little bad ☹ But don\'t bother, because there are many places to visit in Istanbul even in bad weather. For example, it might be a good choice to glance at the museums category.</string>
     <string name="s_havanotf1">Are you one of those who can\'t stay home in rainy weather? Then let\'s put you in the parks category. You can go to the park of your choice and take a walk by absorbing that fragrance of the soil. Then who can say no to a warm coffee that will warm you up?</string>
     <string name="s_havanotf2">Sipping your saleb or Turkish coffee against the view of the Golden Horn in the historical Pierre Loti Coffee is also a good alternative to enjoy Istanbul in cold weather.</string>
@@ -136,7 +135,37 @@ You can have your afternoon tea or evening coffee in the outdoor cafes built at 
     </string-array>
 
     <string-array name="morning_bad">
-        <item>@string/coldsabahmotf</item>
+        <item>@string/sabahmotf</item>
+        <item>@string/s_havanotf</item>
+        <item>@string/s_havanotf2</item>
+        <item>@string/s_havanotf4</item>
+        <item>@string/s_havanotf5</item>
+        <item>@string/s_havanotf6</item>
+    </string-array>
+    <string-array name="morning_rain">
+        <item>@string/sabahmotf</item>
+        <item>@string/s_havanotf</item>
+        <item>@string/s_havanotf1</item>
+        <item>@string/s_havanotf2</item>
+        <item>@string/s_havanotf3</item>
+        <item>@string/s_havanotf4</item>
+        <item>@string/s_havanotf5</item>
+        <item>@string/s_havanotf6</item>
+        <item>@string/s_havanotf7</item>
+    </string-array>
+
+    <string-array name="noon_rain">
+        <item>@string/s_havanotf</item>
+        <item>@string/s_havanotf1</item>
+        <item>@string/s_havanotf2</item>
+        <item>@string/s_havanotf3</item>
+        <item>@string/s_havanotf4</item>
+        <item>@string/s_havanotf5</item>
+        <item>@string/s_havanotf6</item>
+        <item>@string/s_havanotf7</item>
+    </string-array>
+
+    <string-array name="afternoon_rain">
         <item>@string/s_havanotf</item>
         <item>@string/s_havanotf1</item>
         <item>@string/s_havanotf2</item>
@@ -149,22 +178,15 @@ You can have your afternoon tea or evening coffee in the outdoor cafes built at 
 
     <string-array name="noon_bad">
         <item>@string/s_havanotf</item>
-        <item>@string/s_havanotf1</item>
         <item>@string/s_havanotf2</item>
-        <item>@string/s_havanotf3</item>
-        <item>@string/s_havanotf8</item>
         <item>@string/s_havanotf4</item>
         <item>@string/s_havanotf5</item>
         <item>@string/s_havanotf6</item>
-        <item>@string/s_havanotf7</item>
     </string-array>
 
 
     <string-array name="afternoon_bad">
-        <item>@string/s_havanotf1</item>
-        <item>@string/s_havanotf3</item>
         <item>@string/s_havanotf2</item>
-        <item>@string/s_havanotf7</item>
     </string-array>
     <string-array name="night">
         <item>@string/gecenotf</item>
