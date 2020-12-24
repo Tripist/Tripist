@@ -16,7 +16,7 @@
         android:background="?selectableItemBackground"
         android:fontFamily="@font/nunito_bold"
         android:onClick="skip"
-        android:text="Skıp"
+        android:text="@string/skip"
         android:textColor="#FFFFFF"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

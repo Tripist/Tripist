@@ -65,6 +65,7 @@
     <string name="fifth_slide_desc">You can get suggestions for events according to the weather of Istanbul.</string>
 
     <string name="next_btn">Next</string>
+    <string name="skip">SKIP</string>
     <string name="lets_startes">Let\'s Start</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
