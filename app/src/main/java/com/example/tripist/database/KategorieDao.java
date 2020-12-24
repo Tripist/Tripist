@@ -331,8 +331,8 @@ public class KategorieDao {
     }
     public  boolean DataExists(DatabaseHelper databaseHelper,String fieldValue) {
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
-        String Query = "Select * from my_favourites where name ='" + fieldValue + "'";
-        Cursor cursor = database.rawQuery(Query, null);
+        Cursor cursor = database.rawQuery("SELECT * FROM my_locations where name=?",new String [] {fieldValue});
+
         if(cursor.getCount() <= 0){
             cursor.close();
 
@@ -343,32 +343,7 @@ public class KategorieDao {
 
         return true;
     }
-    public void refreshMyFav(DatabaseHelper databaseHelper,ArrayList<Places> mList){
-        mList.clear();
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
 
-        int nameIx = cursor.getColumnIndex("name");
-        int latitudeIx = cursor.getColumnIndex("latitude");
-        int longitudeIx = cursor.getColumnIndex("longitude");
-
-        while (cursor.moveToNext()) {
-
-            String nameFromDatabase = cursor.getString(nameIx);
-            String latitudeFromDatabase = cursor.getString(latitudeIx);
-            String longitudeFromDatabase = cursor.getString(longitudeIx);
-
-            Double latitude = Double.parseDouble(latitudeFromDatabase);
-            Double longitude = Double.parseDouble(longitudeFromDatabase);
-
-            Places place = new Places(nameFromDatabase,latitude,longitude);
-
-
-            mList.add(place);
-
-        }
-        cursor.close();
-    }
 
     public void refreshTable(DatabaseHelper databaseHelper,ArrayList<Places> mList){
         mList.clear();
@@ -474,20 +449,7 @@ public class KategorieDao {
         sqLiteStatement1.execute();
 
     }
-    public  void add_myfavourites(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
-        //String toCompile = "INSERT INTO religions (name, latitude, longitude) VALUES ('ayasofta','45','44') Select '1448523' Where not exists(select * from tablename where code='1448523') ";
-        //SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-        //sqLiteStatement.execute();
 
-    }
-    public  void add_mylocations(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
-        //String toCompile = "INSERT INTO religions (name, latitude, longitude) VALUES ('ayasofta','45','44') Select '1448523' Where not exists(select * from tablename where code='1448523') ";
-        //SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
-        //sqLiteStatement.execute();
-
-    }
     public  void add_squares(DatabaseHelper databaseHelper) {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO squares (name, latitude, longitude,image) VALUES ('Taksim Square', '41.036991', '28.985081','taksim')," +

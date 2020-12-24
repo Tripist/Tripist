@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
+import com.example.tripist.database.LocalizationHelper;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,15 +49,19 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     LocationManager locationManager;
     LocationListener locationListener;
     DatabaseHelper databaseHelper;
+    LocalizationHelper localizationHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         databaseHelper = new DatabaseHelper(this);
+        localizationHelper = new LocalizationHelper();
+        localizationHelper.loadLocale(this);
         setContentView(R.layout.activity_my__locations);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
 
@@ -64,7 +70,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
         new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
-
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {
@@ -197,7 +202,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                         Double c = place.longitude;
                         switch (which) {
                             case 0:
-                                //  Toast.makeText(getApplicationContext(), "My Hotel", Toast.LENGTH_SHORT).show();
                                 String myhotel = (String) getText(R.string.myhotel);
                                 if(new KategorieDao().DataExists(databaseHelper,myhotel)== false){
                                     add_myhotel(myhotel, b, c);
@@ -208,7 +212,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                 break;
 
                             case 1:
-                                // Toast.makeText(getApplicationContext(), "My blabla", Toast.LENGTH_SHORT).show();
                                 String myhome =(String) getText(R.string.myhome);
                                 if(new KategorieDao().DataExists(databaseHelper,myhome)== false){
                                     add_myblabla(myhome, b, c);
@@ -218,7 +221,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                 }
                                 break;
                             case 2:
-                                //  Toast.makeText(getApplicationContext(), "My Airport", Toast.LENGTH_SHORT).show();
                                 String myairport =(String) getText(R.string.myairport);
                                 if(new KategorieDao().DataExists(databaseHelper,myairport)== false){
                                     add_myairport(myairport, b, c);
@@ -229,7 +231,6 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
                                 break;
                             case 3:
-                                //  Toast.makeText(getApplicationContext(), "Other", Toast.LENGTH_SHORT).show();
                                 add_others(a, b, c);
                                 break;
                         }
@@ -351,7 +352,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.show();
     }
 
-    //kayıtlı konumları eklemek icin
+
 
 
 
