@@ -9,6 +9,7 @@ import com.example.tripist.adapters.MyFavAdapter;
 import com.example.tripist.models.Foods;
 import com.example.tripist.models.Places;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -219,7 +220,7 @@ public class KategorieDao {
     }
     public void add_MyLocMarker(DatabaseHelper databaseHelper, GoogleMap mMap) {
 
-        mMap.clear();
+       // mMap.clear();
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
@@ -235,7 +236,8 @@ public class KategorieDao {
             Double latitude = Double.parseDouble(latitudeFromDatabase);
             Double longitude = Double.parseDouble(longitudeFromDatabase);
             LatLng latLng = new LatLng(latitude, longitude);
-            mMap.addMarker(new MarkerOptions().position(latLng).title(nameFromDatabase));
+            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
+                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(latLng).title(nameFromDatabase));
         }
         cursor.close();
 

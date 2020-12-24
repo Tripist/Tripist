@@ -62,7 +62,7 @@ public class Island_Beachs extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
         String island_beaches = "island_beaches";
         new KategorieDao().addMarker(databaseHelper,mMap,island_beaches);
-
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {

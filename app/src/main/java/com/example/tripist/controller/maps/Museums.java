@@ -69,6 +69,7 @@ public class Museums extends FragmentActivity implements OnMapReadyCallback  {
         mMap = googleMap;
         String museums = "museums";
         new KategorieDao().addMarker(databaseHelper,mMap,museums);
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");

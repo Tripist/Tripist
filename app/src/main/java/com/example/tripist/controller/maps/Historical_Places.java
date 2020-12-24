@@ -63,6 +63,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
         mMap = googleMap;
         String historical_places = "historical_places";
         new KategorieDao().addMarker(databaseHelper,mMap,historical_places);
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {
@@ -76,7 +77,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
 
                     if (trackBoolean == false) {
                         LatLng user_location = new LatLng(location.getLatitude(), location.getLongitude());
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_location, 13));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_location, 15));
                         sharedPreferences.edit().putBoolean("trackBoolean", true).apply();
                     }
 
@@ -95,7 +96,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
                     String latitudeString = String.valueOf(user_last_location.latitude);
                     String longitudeString = String.valueOf(user_last_location.longitude);
 
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 13));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 15));
 
                 }
             }
@@ -107,7 +108,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
             LatLng latLng = new LatLng(place.latitude, place.longitude);
             String place_Name = place.name;
             mMap.addMarker(new MarkerOptions().position(latLng).title(place_Name));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         }
     }
 
@@ -133,7 +134,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
                         if (last_location != null) {
 
                             LatLng user_last_location = new LatLng(last_location.getLatitude(), last_location.getLongitude());
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 13));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 15));
 
                         } else {
                             //sqlite data
@@ -143,7 +144,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
                             LatLng latLng = new LatLng(place.latitude, place.longitude);
                             String place_Name = place.name;
                             mMap.addMarker(new MarkerOptions().position(latLng).title(place_Name));
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                         }
 
                     }

@@ -69,7 +69,7 @@ public class Squares extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
         String squares = "squares";
         new KategorieDao().addMarker(databaseHelper,mMap,squares);
-
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
