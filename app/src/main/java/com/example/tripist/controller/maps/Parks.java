@@ -70,7 +70,7 @@ public class Parks extends FragmentActivity implements OnMapReadyCallback  {
         mMap = googleMap;
         String parks = "parks_gardens";
         new KategorieDao().addMarker(databaseHelper,mMap,parks);
-
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
 
 
         Intent intent = getIntent();

@@ -64,7 +64,7 @@ public class Bazaar_Markets extends FragmentActivity implements OnMapReadyCallba
         mMap = googleMap;
         String bazaar_markets = "bazaar_markets";
         new KategorieDao().addMarker(databaseHelper,mMap,bazaar_markets);
-
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
 
 
 

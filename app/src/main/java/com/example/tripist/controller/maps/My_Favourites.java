@@ -62,7 +62,7 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
         String my_favourites = "my_favourites";
         new KategorieDao().addMarker(databaseHelper,mMap,my_favourites);
-
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");

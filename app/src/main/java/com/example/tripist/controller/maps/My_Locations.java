@@ -32,6 +32,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -138,7 +139,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                             Places place = (Places) intent.getSerializableExtra("place");
                             LatLng latLng = new LatLng(place.latitude, place.longitude);
                             String place_Name = place.name;
-                            mMap.addMarker(new MarkerOptions().position(latLng).title(place_Name));
+                            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
+                                    (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).position(latLng).title(place_Name));
 
                         }
 
@@ -254,7 +256,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 LatLng latLng = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
+                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
+                        (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 String userLocationInput = edittext.getText().toString();
                 String userLocationInputname = userLocationInput.substring(0,1).toUpperCase() + userLocationInput.substring(1);
                 new KategorieDao().addMylocationsOthers(databaseHelper,userLocationInputname,latitude,longitude);
@@ -282,7 +285,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 LatLng latLng = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
+                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
+                        (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
                     Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }
@@ -305,7 +309,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 LatLng latLng = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
+                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
+                        (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
                 Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }
@@ -328,7 +333,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
                 LatLng latLng = new LatLng(latitude, longitude);
-                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
+                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
+                        (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
                 Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }

@@ -60,7 +60,7 @@ public class Religions extends FragmentActivity implements OnMapReadyCallback  {
         mMap = googleMap;
         String religions = "religions";
         new KategorieDao().addMarker(databaseHelper,mMap,religions);
-
+        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
