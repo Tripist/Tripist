@@ -18,6 +18,7 @@ import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
 import com.example.tripist.controller.navigation.HomeFragment;
 import com.example.tripist.database.KategorieDao;
+import com.example.tripist.database.LocalizationHelper;
 
 public class SplashScreen extends AppCompatActivity {
     private static int SPLASH_TIMER = 5000;
@@ -28,10 +29,12 @@ public class SplashScreen extends AppCompatActivity {
     TextView logo, slogan;
     SharedPreferences onBoardingScreen;
     DatabaseHelper databaseHelper;
+    LocalizationHelper localizationHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         databaseHelper = new DatabaseHelper(this);
+        localizationHelper = new LocalizationHelper();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
@@ -74,6 +77,7 @@ public class SplashScreen extends AppCompatActivity {
 
             }
         }, SPLASH_TIMER);
+        localizationHelper.loadLocale(this);
                 // TABLE DATA
         new KategorieDao().add_religions(databaseHelper);
         new KategorieDao().add_bazaarmarkets(databaseHelper);
