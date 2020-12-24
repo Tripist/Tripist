@@ -29,21 +29,21 @@
     <string name="title_markets">Pazar &amp; Marketler</string>
     <string name="title_island">Adalar &amp; Sahiller</string>
     <string name="title_foods">Yiyecekler</string>
-    <string name="first_slide_titel">İstanbulu Keşfet</string>
+    <string name="first_slide_titel">İstanbul\'u Keşfet</string>
 
     <!--Alert Button Strings -->
     <string name="yes">Evet</string>
     <string name="no">Hayır</string>
-    <string name="new_name">Yeni ismi giriniz</string>
+    <string name="new_name">Yeni isim giriniz</string>
     <string name="edit">Düzenle</string>
     <string name="delete_question">Silmek istediğinize emin misiniz?</string>
-    <string name="cancel">Sil</string>
+    <string name="cancel">İptal</string>
     <string name="dil_secenegi">Dil Seçiniz</string>
 
     <string name="update_toast">Başarıyla güncellendi</string>
     <string name="blankname">İsim boş olamaz</string>
     <string name="saved_toast">Konum kaydedildi</string>
-    <string name="add_cancel_toast">Adding location canceled</string>
+    <string name="add_cancel_toast">Konum ekleme işlemi iptal edildi</string>
     <string name="already_exist_toast">Zaten mevcut</string>
     <string name="addlocation_question">Bu yeri kaydetmek istiyor musunuz</string>
     <string name="myhome">Evim</string>
@@ -51,20 +51,19 @@
     <string name="myhotel">Otelim</string>
     <string name="others">Diğer</string>
     <!--Onboarding -->
-    <string name="second_slide_titel">Hedef Bulun</string>
+    <string name="second_slide_titel">Yol Tarifi Alın</string>
     <string name="third_slide_titel">Bilgi Alın</string>
-    <string name="fourth_slide_titel">Favori Listesi Ekle</string>
-    <string name="fifth_slide_titel">Öneriler Alın</string>
+    <string name="fourth_slide_titel">Favori Listesine Ekle</string>
+    <string name="fifth_slide_titel">Tavsiyeler Alın</string>
 
-    <string name="first_slide_desc">İstanbuldaki turistik yerleri kategorilerine göre görebilirsiniz.
-         İstanbulda yenmesi gereken yemekleri de keşfedebilirsiniz.</string>
+    <string name="first_slide_desc">İstanbul\'daki turistik yerleri kategorilerine göre görebilir, İstanbul\'da yenmesi gereken yemekleri de keşfedebilirsiniz.</string>
     <string name="second_slide_desc">Harita üzerinde gezilecek yerleri bulabilir, yol tarifi almak için Google Haritalara yönlendirilebilir ve hatta oteliniz ve havaalanınız gibi özel konumlarınızı haritaya ekleyebilirsiniz.</string>
-    <string name="third_slide_desc">İlgilendiğiniz yer hakkında bilgi alabilirsiniz. Bunun için google ikonuna tıklamanız yeterli.</string>
-    <string name="fourth_slide_desc">Kalp simgesine tıklayarak beğendiğiniz veya ilgilendiğiniz bir yeri ayrı bir listede toplayabilirsiniz.
-         Böylece onlara daha hızlı ulaşabilirsiniz.</string>
-    <string name="fifth_slide_desc">İstanbulun hava durumuna göre etkinlik önerileri alabilirsiniz.</string>
+    <string name="third_slide_desc">Merak ettiğiniz yer veya yemek hakkında bilgi alabilirsiniz. Bunun için Google butonuna tıklamanız yeterli.</string>
+    <string name="fourth_slide_desc">Kalp butonuna tıklayarak beğendiğiniz veya ilgilendiğiniz bir yeri ya da bir yemeği favori listenize ekleyebilir, onlara daha hızlı ulaşabilirsiniz.</string>
+    <string name="fifth_slide_desc">İstanbul\'un hava durumuna göre İstanbul\'da yapılacak aktivitiler hakkında tavsiye alabilir, İstanbul gezinizi daha keyifli hale getirebilirsiniz.</string>
 
     <string name="next_btn">İleri</string>
+    <string name="skip">Geç</string>
     <string name="lets_startes">Haydi Başlayalım!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
