@@ -244,8 +244,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_others(final String name, final Double latitude, final Double longitude) {
-        LatLng latLng = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
+
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         final EditText edittext = new EditText(My_Locations.this);
         alert.setTitle(name);
@@ -254,6 +253,8 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
                 String userLocationInput = edittext.getText().toString();
                 String userLocationInputname = userLocationInput.substring(0,1).toUpperCase() + userLocationInput.substring(1);
                 new KategorieDao().addMylocationsOthers(databaseHelper,userLocationInputname,latitude,longitude);
@@ -276,12 +277,12 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_myhotel(final String name, final Double latitude, final Double longitude) {
-        LatLng latLng = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
                     Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }
@@ -299,12 +300,12 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_myblabla(final String name, final Double latitude, final Double longitude) {
-        LatLng latLng = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
                 Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }
@@ -322,13 +323,12 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void add_myairport(final String name, final Double latitude, final Double longitude) {
-        LatLng latLng = new LatLng(latitude, longitude);
-        mMap.addMarker(new MarkerOptions().title(name).position(latLng));
-
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
         alert.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
+                LatLng latLng = new LatLng(latitude, longitude);
+                mMap.addMarker(new MarkerOptions().title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
                 Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
             }
