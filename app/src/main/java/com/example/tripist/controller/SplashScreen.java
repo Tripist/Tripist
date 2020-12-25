@@ -77,6 +77,7 @@ public class SplashScreen extends AppCompatActivity {
 
             }
         }, SPLASH_TIMER);
+
         localizationHelper.loadLocale(this);
                 // TABLE DATA
         new KategorieDao().add_religions(databaseHelper);
