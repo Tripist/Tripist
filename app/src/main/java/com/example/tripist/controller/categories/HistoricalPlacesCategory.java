@@ -25,6 +25,8 @@ import com.example.tripist.controller.maps.Historical_Places;
 
 import java.util.ArrayList;
 
+import static com.example.tripist.database.LocalizationHelper.loadLocale;
+
 public class HistoricalPlacesCategory extends AppCompatActivity {
    private Toolbar toolbar;
    private AppCompatActivity activityForBar;
@@ -42,7 +44,7 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_historical_places_category);
 
-
+        loadLocale(this);
         //TOOLBAR
         //getSupportActionBar().hide();
         toolbar =findViewById(R.id.historical_toolbar);
