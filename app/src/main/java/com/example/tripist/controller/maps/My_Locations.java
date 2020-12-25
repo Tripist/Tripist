@@ -207,7 +207,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                     add_myhotel(myhotel, b, c);
                                 }
                                 else{
-                                    Toast.makeText(getApplicationContext(), myhotel + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), myhotel + " " + getResources().getString(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
                                 break;
 
@@ -217,7 +217,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                     add_myblabla(myhome, b, c);
                                 }
                                 else{
-                                    Toast.makeText(getApplicationContext(), myhome + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), myhome + " " + getResources().getString(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case 2:
@@ -226,7 +226,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                                     add_myairport(myairport, b, c);
                                 }
                                 else{
-                                    Toast.makeText(getApplicationContext(), myairport + " " + getText(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), myairport + " " + getResources().getString(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
 
                                 break;
@@ -263,7 +263,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                 String userLocationInputname = userLocationInput.substring(0,1).toUpperCase() + userLocationInput.substring(1);
                 new KategorieDao().addMylocationsOthers(databaseHelper,userLocationInputname,latitude,longitude);
 
-                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
 
 
 
@@ -273,7 +273,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.add_cancel_toast), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -289,7 +289,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                         (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
-                    Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
             }
 
         });
@@ -297,7 +297,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.add_cancel_toast), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -313,7 +313,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                         (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
-                Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
             }
 
         });
@@ -321,7 +321,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.add_cancel_toast), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -337,7 +337,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                         (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
-                Toast.makeText(getApplicationContext(), R.string.saved_toast, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
             }
 
         });
@@ -345,7 +345,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                Toast.makeText(getApplicationContext(), R.string.add_cancel_toast, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.add_cancel_toast), Toast.LENGTH_LONG).show();
             }
         });
 
