@@ -20,6 +20,8 @@ import com.example.tripist.controller.maps.Museums;
 
 import java.util.ArrayList;
 
+import static com.example.tripist.database.LocalizationHelper.loadLocale;
+
 public class MuseumsCategory extends AppCompatActivity {
     private Toolbar toolbar;
     private AppCompatActivity activityForBar;
@@ -31,6 +33,7 @@ public class MuseumsCategory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale(this);
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_museums_category);
 

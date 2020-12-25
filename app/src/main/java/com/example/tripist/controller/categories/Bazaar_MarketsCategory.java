@@ -20,6 +20,8 @@ import com.example.tripist.controller.maps.Bazaar_Markets;
 
 import java.util.ArrayList;
 
+import static com.example.tripist.database.LocalizationHelper.loadLocale;
+
 public class Bazaar_MarketsCategory extends AppCompatActivity {
     private Toolbar toolbar;
     private AppCompatActivity activityForBar;
@@ -31,6 +33,7 @@ public class Bazaar_MarketsCategory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale(this);
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_bazaar__markets_category);
 

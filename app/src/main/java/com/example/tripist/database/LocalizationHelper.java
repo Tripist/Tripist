@@ -9,7 +9,7 @@ import java.util.Locale;
 
 public class LocalizationHelper {
 
-    public void setLocale(String lang, Context activity){
+    public static void setLocale(String lang, Context activity){
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -21,7 +21,7 @@ public class LocalizationHelper {
 
     }
 
-    public void loadLocale(Context context){
+    public static void loadLocale(Context context){
         SharedPreferences prefs = context.getSharedPreferences("Settings", context.MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
         System.out.println(language);
