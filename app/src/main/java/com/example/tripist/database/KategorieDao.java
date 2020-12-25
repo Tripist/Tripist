@@ -15,9 +15,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
+import static com.example.tripist.controller.navigation.SettingsFragment.appLanguage;
 
 
 public class KategorieDao {
+
+    public int app_language(){
+        if(appLanguage == "en"){
+            return 1;
+        }
+        else{
+            return 5;
+        }
+    }
+
     public ArrayList<Places>Mylocations(DatabaseHelper databaseHelper) {
         ArrayList<Places> lstPlaces = new ArrayList<>();
         lstPlaces.clear();
@@ -25,7 +36,7 @@ public class KategorieDao {
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
 
 
-        int nameIx = cursor.getColumnIndex("name");
+        int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
         int longitudeIx = cursor.getColumnIndex("longitude");
 
@@ -55,7 +66,11 @@ public class KategorieDao {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM historical_places",null);
 
-        int nameIx = cursor.getColumnIndex("name");
+        System.out.println(app_language());
+        System.out.println(app_language());
+
+
+        int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
         int longitudeIx = cursor.getColumnIndex("longitude");
         int imageIX = cursor.getColumnIndex("image");
@@ -86,7 +101,7 @@ public class KategorieDao {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " " ,null);
 
-        int nameIx = cursor.getColumnIndex("name");
+        int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
         int longitudeIx = cursor.getColumnIndex("longitude");
         int imageIX = cursor.getColumnIndex("image");
@@ -117,7 +132,7 @@ public class KategorieDao {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_favourites",null);
 
-        int nameIx = cursor.getColumnIndex("name");
+        int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
         int longitudeIx = cursor.getColumnIndex("longitude");
         int imageIX = cursor.getColumnIndex("image");
@@ -201,12 +216,12 @@ public class KategorieDao {
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " ", null);
 
-        int nameIX = cursor.getColumnIndex("name");
+        int nameIx = app_language();
         int latitudeIX = cursor.getColumnIndex("latitude");
         int longitudeIX = cursor.getColumnIndex("longitude");
 
         while (cursor.moveToNext()) {
-            String nameFromDatabase = cursor.getString(nameIX);
+            String nameFromDatabase = cursor.getString(nameIx);
             String latitudeFromDatabase = cursor.getString(latitudeIX);
             String longitudeFromDatabase = cursor.getString(longitudeIX);
 
@@ -224,12 +239,12 @@ public class KategorieDao {
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
-        int nameIX = cursor.getColumnIndex("name");
+        int nameIx = app_language();
         int latitudeIX = cursor.getColumnIndex("latitude");
         int longitudeIX = cursor.getColumnIndex("longitude");
 
         while (cursor.moveToNext()) {
-            String nameFromDatabase = cursor.getString(nameIX);
+            String nameFromDatabase = cursor.getString(nameIx);
             String latitudeFromDatabase = cursor.getString(latitudeIX);
             String longitudeFromDatabase = cursor.getString(longitudeIX);
 
@@ -276,7 +291,7 @@ public class KategorieDao {
 
         Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " where name=?",new String [] {name});
 
-        int nameIx = cursor.getColumnIndex("name");
+        int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
         int longitudeIx = cursor.getColumnIndex("longitude");
         int imageIX = cursor.getColumnIndex("image");
@@ -366,7 +381,7 @@ public class KategorieDao {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations",null);
 
-        int nameIx = cursor.getColumnIndex("name");
+        int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
         int longitudeIx = cursor.getColumnIndex("longitude");
 

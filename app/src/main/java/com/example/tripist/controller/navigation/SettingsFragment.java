@@ -30,6 +30,7 @@ public class SettingsFragment  extends Fragment {
     Button show_onboarding_button;
     Button button3;
     LocalizationHelper localizationHelper;
+    public static String appLanguage = Locale.getDefault().getLanguage();
 
     @Nullable
     @Override
@@ -76,21 +77,17 @@ public class SettingsFragment  extends Fragment {
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (i == 0) {
                     localizationHelper.setLocale("tr", getContext());
-                    getFragmentManager()
-                            .beginTransaction()
-                            .detach(SettingsFragment.this)
-                            .attach(SettingsFragment.this)
-                            .commit();
-                    System.out.println("dil türkçe");
+                    getActivity().recreate();
+
+                    appLanguage = Locale.getDefault().getLanguage();
+                    System.out.println(appLanguage);
 
                 } else if (i == 1) {
                     localizationHelper.setLocale("en", getContext());
-                    getFragmentManager()
-                            .beginTransaction()
-                            .detach(SettingsFragment.this)
-                            .attach(SettingsFragment.this)
-                            .commit();
-                    System.out.println("dil ingilizce");
+                    getActivity().recreate();
+
+                    appLanguage = Locale.getDefault().getLanguage();
+                    System.out.println(appLanguage);
 
                 }
                 dialogInterface.dismiss();
