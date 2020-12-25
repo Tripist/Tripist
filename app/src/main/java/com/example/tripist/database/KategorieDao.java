@@ -330,7 +330,7 @@ public class KategorieDao {
                 values.put("latitude", latitudeFromDatabase);
                 values.put("longitude", longitudeFromDatabase);
                 values.put("image", image);
-                values.put("name", isimFromDatabase);
+                values.put("isim", isimFromDatabase);
                 database.insertOrThrow("my_favourites", null, values);
             }
             cursor.close();
@@ -381,7 +381,7 @@ public class KategorieDao {
                 values.put("latitude", latitudeFromDatabase);
                 values.put("longitude", longitudeFromDatabase);
                 values.put("image", image);
-                values.put("name", isimFromDatabase);
+                values.put("isim", isimFromDatabase);
                 database.insertOrThrow("my_favourites", null, values);
             }
             cursor.close();
