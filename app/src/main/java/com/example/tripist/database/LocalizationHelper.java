@@ -7,6 +7,8 @@ import android.content.res.Configuration;
 
 import java.util.Locale;
 
+import static com.example.tripist.controller.navigation.SettingsFragment.appLanguage;
+
 public class LocalizationHelper {
 
     public static void setLocale(String lang, Context activity){
@@ -27,4 +29,40 @@ public class LocalizationHelper {
         System.out.println(language);
         setLocale(language,context);
     }
+
+    public static int app_language(){
+        if(appLanguage == "en"){
+            return 1;
+        }
+        else{
+            return 5;
+        }
+    }
+    public static int MyLocApp_language(){
+        if(appLanguage == "en"){
+            return 1;
+        }
+        else{
+            return 4;
+        }
+    }
+    public static int FoodsApp_language(){
+        if(appLanguage == "en"){
+            return 1;
+        }
+        else{
+            return 3;
+        }
+    }
+    public static boolean EnLanguage(){
+
+        if(appLanguage == "en"){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 }
