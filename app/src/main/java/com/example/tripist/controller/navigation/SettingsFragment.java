@@ -26,6 +26,8 @@ import com.example.tripist.database.LocalizationHelper;
 
 import java.util.Locale;
 
+import static com.example.tripist.database.LocalizationHelper.showChangeLanguageDialog;
+
 public class SettingsFragment  extends Fragment {
     Button show_onboarding_button;
     Button button3;
@@ -49,7 +51,7 @@ public class SettingsFragment  extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showChangeLanguageDialog(v);
+                showChangeLanguageDialog(v,getActivity());
 
 
             }
@@ -65,38 +67,6 @@ public class SettingsFragment  extends Fragment {
 
     }
 
-
-    private void showChangeLanguageDialog(final View v) {
-        //TODO: On Android 6.0.1, when you try to change the language, it automatically sets the language to English
-        //TODO: On all other Android versions (7.1.1+) it is kind of buggy, setLocale must be configured properly
-        final String[] listItems = {getString(R.string.application_language1), getString(R.string.application_language2)};
-        final AlertDialog.Builder mBuilder = new AlertDialog.Builder(getContext());
-        mBuilder.setTitle(getString(R.string.dil_secenegi));
-        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                if (i == 0) {
-                    localizationHelper.setLocale("tr", getContext());
-                    getActivity().recreate();
-
-                    appLanguage = Locale.getDefault().getLanguage();
-                    System.out.println(appLanguage);
-
-                } else if (i == 1) {
-                    localizationHelper.setLocale("en", getContext());
-                    getActivity().recreate();
-
-                    appLanguage = Locale.getDefault().getLanguage();
-                    System.out.println(appLanguage);
-
-                }
-                dialogInterface.dismiss();
-            }
-        });
-
-        AlertDialog mDialog = mBuilder.create();
-        mDialog.show();
-    }
 
 
 }
