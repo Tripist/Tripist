@@ -14,6 +14,9 @@ Bevor wir uns auf eine Reise begeben, gibt es hierzu viele Websites, auf denen w
 | Dokumentation | Şevval Arslan |
 | Tester | Asım Tatar |
 
+Die Planung der Projektaufgaben wird in Bezug auf die agile Entwicklungmethodik "Scrum" gemacht.
+Bei der Sprintplanung wurden die Anforderungen an Meilensteine ​​zugrunde gelegt. Die detaillierte Planung befindet sich in der Datei INF303-[Tripist]-Sprint-Plan. Unsere Sprint Plan enthält Informationen wie die Aufgaben, die während des gesamten Projekts ausgeführt werden müssen, die Daten, an denen diese Aufgaben abgeschlossen sind, und die verantwortliche Person.
+
 **Unsere Sprint Plan : https://docs.google.com/spreadsheets/d/1fdpTwONh6p4itfnS9OBl6klZ2XE_dcycAqip9KCnJ-o/edit#gid=1269452056**
 
 ## Verwendete Werkzeuge
