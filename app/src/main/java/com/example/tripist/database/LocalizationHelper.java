@@ -1,9 +1,14 @@
 package com.example.tripist.database;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.view.View;
+
+import com.example.tripist.R;
 
 import java.util.Locale;
 
@@ -63,6 +68,46 @@ public class LocalizationHelper {
             return false;
         }
 
+    }
+
+    public static void showChangeLanguageDialog(final View v, final Activity context) {
+        //TODO: On Android 6.0.1, when you try to change the language, it automatically sets the language to English
+        //TODO: On all other Android versions (7.1.1+) it is kind of buggy, setLocale must be configured properly
+        String türkce = "Türkçe";
+        String english = "English";
+        final String[] listItems = {türkce,english };
+        final AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
+        mBuilder.setTitle(R.string.dil_secenegi);
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (i == 0) {
+                    setLocale("tr", context);
+                    context.recreate();
+
+                    appLanguage = Locale.getDefault().getLanguage();
+                    System.out.println(appLanguage);
+
+                } else if (i == 1) {
+                    setLocale("en", context);
+                    context.recreate();
+
+                    appLanguage = Locale.getDefault().getLanguage();
+                    System.out.println(appLanguage);
+
+                }
+
+                dialogInterface.dismiss();
+            }
+        });
+        mBuilder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
     }
 
 }
