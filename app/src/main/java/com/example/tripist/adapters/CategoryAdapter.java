@@ -29,17 +29,20 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CardviewPlaceHolder> {
+    //Definition adapter variables
     private ArrayList<Places> itemList;
     Context context;
     SQLiteDatabase database;
     DatabaseHelper databaseHelper;
+
+    // Constructor
     public CategoryAdapter(ArrayList<Places> placeList, Context context) {
         this.itemList = placeList;
         this.context = context;
     }
 
     @NonNull
-    @Override
+    @Override  //First Creation
     public CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_design, parent, false);
@@ -91,6 +94,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
         return new CardviewPlaceHolder(itemView);
     }
 
+    //Binding data to UI
     @Override
     public void onBindViewHolder(@NonNull CardviewPlaceHolder holder, int position) {
         Places item = itemList.get(position);
@@ -115,6 +119,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Cardvi
         return itemList.size();
     }
 
+    //Card view Properties
     public class CardviewPlaceHolder extends RecyclerView.ViewHolder {
         public CardView card;
         public TextView isim;
