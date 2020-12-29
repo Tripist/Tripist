@@ -21,13 +21,15 @@
     <string name="application_language1">Türkçe</string>
     <string name="application_language2">English</string>
     <string name="application_usage">Application Usage</string>
-    <string name="title_historical">Historical Places</string>
+    <string name="title_historical">"Historical" "\n" "Places"</string>
     <string name="title_museum">Museums</string>
     <string name="title_religions">Religions</string>
     <string name="title_parks">Parks</string>
     <string name="title_squares">Squares</string>
-    <string name="title_markets">Bazaar &amp; Markets</string>
-    <string name="title_island">Islands &amp; Beaches</string>
+    <string name="title_markets">Bazaars </string>
+    <string name="title_island">"Islands &amp;" "\n" "Beaches"</string>
+
+
     <string name="title_foods">Foods</string>
     <string name="first_slide_titel">Explore Istanbul</string>
 
