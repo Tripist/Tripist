@@ -21,13 +21,13 @@
     <string name="application_language1">Türkçe</string>
     <string name="application_language2">English</string>
     <string name="application_usage">Uygulama Kullanımı</string>
-    <string name="title_historical">Tarihi Yerler</string>
+    <string name="title_historical">"Tarihi" "\n" "Yerler"</string>
     <string name="title_museum">Müzeler</string>
     <string name="title_religions">Dini Yerler</string>
     <string name="title_parks">Parklar</string>
     <string name="title_squares">Meydanlar</string>
-    <string name="title_markets">Pazar &amp; Marketler</string>
-    <string name="title_island">Adalar &amp; Sahiller</string>
+    <string name="title_markets">Pazarlar</string>
+    <string name="title_island">"Adalar &amp;" "\n" "Sahiller"</string>
     <string name="title_foods">Yiyecekler</string>
     <string name="first_slide_titel">İstanbul\'u Keşfet</string>
 
