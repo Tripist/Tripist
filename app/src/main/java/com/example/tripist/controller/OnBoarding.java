@@ -17,6 +17,7 @@ import com.example.tripist.R;
 import com.example.tripist.adapters.SliderAdapter;
 
 public class OnBoarding extends AppCompatActivity {
+    //Variables defined
     ViewPager viewPager;
     LinearLayout dotsLayout;
 
@@ -48,18 +49,20 @@ public class OnBoarding extends AppCompatActivity {
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
     }
-
+    //Go to homepage
     public void skip(View view){
         startActivity(new Intent(getApplicationContext(), BottomNav.class));
         finish();
     }
+    //Go to homepage at the end of Onboarding pages
     public void letsGetStarted(View view){
         startActivity(new Intent(getApplicationContext(), BottomNav.class));
     }
+    //Navigate in Onboardinng pages
     public void next(View view){
         viewPager.setCurrentItem(currentPos + 1);
     }
-
+    //indicates which page it is on
     private void addDots(int position){
 
         dots = new TextView[5];
@@ -78,13 +81,13 @@ public class OnBoarding extends AppCompatActivity {
         }
 
     }
-
+    //Sliding pages
     ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
         }
-
+        //Visibility of buttons
         @Override
         public void onPageSelected(int position) {
         addDots(position);

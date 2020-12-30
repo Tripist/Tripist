@@ -23,8 +23,9 @@ import com.example.tripist.database.LocalizationHelper;
 import static com.example.tripist.database.LocalizationHelper.loadLocale;
 
 public class SplashScreen extends AppCompatActivity {
+    //Time to open the homepage
     private static int SPLASH_TIMER = 5000;
-
+    //Variables defined
     SQLiteDatabase database;
     Animation topAnim, bottomAnim;
     ImageView image;
@@ -39,19 +40,21 @@ public class SplashScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
         //Animations
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        image.setAnimation(topAnim);
+        logo.setAnimation(topAnim);
+        slogan.setAnimation(bottomAnim);
 
         //Hooks
         image = findViewById(R.id.imageView2);
         logo = findViewById(R.id.textView);
         slogan = findViewById(R.id.textView2);
 
-        image.setAnimation(topAnim);
-        logo.setAnimation(topAnim);
-        slogan.setAnimation(bottomAnim);
 
+        //Onboarding pages only appear on first launch
         new Handler().postDelayed(new Runnable() {
 
 
@@ -80,7 +83,7 @@ public class SplashScreen extends AppCompatActivity {
         }, SPLASH_TIMER);
 
        loadLocale(this);
-                // TABLE DATA
+       // TABLE DATA
         new KategorieDao().add_religions(databaseHelper);
         new KategorieDao().add_bazaarmarkets(databaseHelper);
         new KategorieDao().add_historicalplaces(databaseHelper);
