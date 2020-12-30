@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".controller.navigation.MyFavouritesFragment" >
 
     <androidx.appcompat.widget.Toolbar
@@ -56,6 +57,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize"
         android:layout_marginBottom="60sp"
+        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
