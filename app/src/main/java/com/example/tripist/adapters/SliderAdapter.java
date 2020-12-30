@@ -14,9 +14,11 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.example.tripist.R;
 
 public class SliderAdapter extends PagerAdapter {
+    //Definition adapter variables
     Context context;
     LayoutInflater layoutInflater;
 
+    // Constructor
     public SliderAdapter(Context context) {
         this.context = context;
     }
@@ -60,7 +62,8 @@ public class SliderAdapter extends PagerAdapter {
 
         layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slides_layout, container, false);
-        //Hooks
+
+        //Contents of screens that will slide
         ImageView imageView = view.findViewById(R.id.slider_image);
         TextView heading= view.findViewById(R.id.slider_heading);
         TextView desc = view.findViewById(R.id.slider_desc);
