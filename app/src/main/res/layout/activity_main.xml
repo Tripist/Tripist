@@ -22,14 +22,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="201dp"
-        android:layout_height="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:fontFamily="@font/magnolia"
         android:text="Tripist"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="60sp"
+        android:textSize="55sp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"
