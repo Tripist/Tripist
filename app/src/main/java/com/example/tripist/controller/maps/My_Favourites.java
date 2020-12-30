@@ -101,14 +101,6 @@ public class My_Favourites extends FragmentActivity implements OnMapReadyCallbac
                 }
             }
 
-        } else {
-            //once  KAYDEDİLENEN DATALAR SQLİTE intent data
-            //kontrol et
-            Places place = (Places) intent.getSerializableExtra("place");
-            LatLng latLng = new LatLng(place.latitude, place.longitude);
-            String place_Name = place.name;
-            mMap.addMarker(new MarkerOptions().position(latLng).title(place_Name));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
         }
     }
 
