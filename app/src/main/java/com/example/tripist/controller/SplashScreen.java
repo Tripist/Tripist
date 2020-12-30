@@ -44,15 +44,17 @@ public class SplashScreen extends AppCompatActivity {
         //Animations
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
-        image.setAnimation(topAnim);
-        logo.setAnimation(topAnim);
-        slogan.setAnimation(bottomAnim);
+
 
         //Hooks
         image = findViewById(R.id.imageView2);
         logo = findViewById(R.id.textView);
         slogan = findViewById(R.id.textView2);
 
+        //Set Animation
+        image.setAnimation(topAnim);
+        logo.setAnimation(topAnim);
+        slogan.setAnimation(bottomAnim);
 
         //Onboarding pages only appear on first launch
         new Handler().postDelayed(new Runnable() {
