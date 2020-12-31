@@ -21,16 +21,13 @@ import static com.example.tripist.database.LocalizationHelper.FoodsApp_language;
 import static com.example.tripist.database.LocalizationHelper.MyLocApp_language;
 import static com.example.tripist.database.LocalizationHelper.app_language;
 
-
 public class KategorieDao {
-
-
+    //Adding data to arraylist from database
     public ArrayList<Places> Mylocations(DatabaseHelper databaseHelper) {
         ArrayList<Places> lstPlaces = new ArrayList<>();
         lstPlaces.clear();
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
-
 
         int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
@@ -63,7 +60,6 @@ public class KategorieDao {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM historical_places", null);
 
-
         int nameIx = app_language();
         int latitudeIx = cursor.getColumnIndex("latitude");
         int longitudeIx = cursor.getColumnIndex("longitude");
@@ -75,11 +71,11 @@ public class KategorieDao {
             String latitudeFromDatabase = cursor.getString(latitudeIx);
             String longitudeFromDatabase = cursor.getString(longitudeIx);
             String image = cursor.getString(imageIX);
+
             Double latitude = Double.parseDouble(latitudeFromDatabase);
             Double longitude = Double.parseDouble(longitudeFromDatabase);
 
             Places place = new Places(nameFromDatabase, latitude, longitude, image);
-
 
             lstPlaces.add(place);
 
@@ -167,20 +163,15 @@ public class KategorieDao {
 
             String nameFromDatabase = cursor.getString(nameIx);
             String image = cursor.getString(imageIX);
-
-
             Foods food = new Foods(nameFromDatabase, image);
 
-
             lstPlaces.add(food);
-
         }
-
         cursor.close();
         return lstPlaces;
     }
 
-
+    //Adding home,airport,hotel Location in my location table
     public void addMylocations(DatabaseHelper databaseHelper, String name, Double latitude, Double longitude) {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
 
@@ -193,7 +184,7 @@ public class KategorieDao {
         database.insertOrThrow("my_locations", null, values);
         database.close();
     }
-
+    //Adding others Location in my location table
     public void addMylocationsOthers(DatabaseHelper databaseHelper, String name, Double latitude, Double longitude) {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
 
@@ -207,6 +198,7 @@ public class KategorieDao {
         database.close();
     }
 
+    //Adding markers to maps
     public void addMarker(DatabaseHelper databaseHelper, GoogleMap mMap, String tablename) {
 
         mMap.clear();
@@ -230,10 +222,9 @@ public class KategorieDao {
         cursor.close();
 
     }
-
+    //Adding a marker to the map of my locations page
     public void add_MyLocMarker(DatabaseHelper databaseHelper, GoogleMap mMap) {
 
-        // mMap.clear();
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
@@ -256,12 +247,14 @@ public class KategorieDao {
 
     }
 
-
+    // //delete place in database table
     public void deletePlace(DatabaseHelper databaseHelper, String name) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
         if (EnLanguage()) {
+            //if the application language is English, remove the data from the "name" column
             db.delete("my_locations", "name=?", new String[]{name});
         } else {
+            //if the application language is not English(Turkish), remove the data from the "isim" column
             db.delete("my_locations", "isim=?", new String[]{name});
         }
 
@@ -269,14 +262,15 @@ public class KategorieDao {
 
     }
 
-
+    //Update place in database table
     public void updatePlace(DatabaseHelper databaseHelper, String name, String newName) {
         String newNamee = newName.substring(0, 1).toUpperCase() + newName.substring(1);
         SQLiteDatabase dbx = databaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-
+        //if the application language is English
         values.put("name", newNamee);
+        //if the application language is Turkish
         values.put("isim", newNamee);
 
         dbx.update("my_locations", values, "name=?", new String[]{name});
@@ -284,6 +278,7 @@ public class KategorieDao {
 
     }
 
+    //fav function
     public void fav(DatabaseHelper databaseHelper, String name, String tablename) {
 
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
@@ -338,6 +333,7 @@ public class KategorieDao {
         database.close();
     }
 
+    //fav function for foods
     public void foodFav(DatabaseHelper databaseHelper, String name, String tablename) {
 
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
@@ -389,21 +385,26 @@ public class KategorieDao {
         database.close();
     }
 
+    //remove from favorites
     public void unfav(DatabaseHelper databaseHelper, String name) {
         SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
         if (EnLanguage()) {
+            //if the application language is English, remove the data from the "name" column
             db.delete("my_favourites", "name=?", new String[]{name});
         } else {
+            //If the application language is not English (Turkish), remove the data from the "isim" column
             db.delete("my_favourites", "isim=?", new String[]{name});
         }
 
         db.close();
     }
 
+    //Checking the searched data in my favourites table
     public boolean DataExists(DatabaseHelper databaseHelper, String fieldValue) {
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         if (EnLanguage()) {
+            //if the application language is English, get the data from the "name" column
             Cursor cursor = database.rawQuery("SELECT * FROM my_favourites where name=?", new String[]{fieldValue});
 
             if (cursor.getCount() <= 0) {
@@ -416,6 +417,7 @@ public class KategorieDao {
 
             return true;
         } else {
+            //If the application language is not English (Turkish), get the data from the "isim" column
             Cursor cursor = database.rawQuery("SELECT * FROM my_favourites where isim=?", new String[]{fieldValue});
 
             if (cursor.getCount() <= 0) {
@@ -430,9 +432,11 @@ public class KategorieDao {
         }
     }
 
+    //Checking the searched data in my locations table
     public boolean MyLocationsDataExists(DatabaseHelper databaseHelper, String fieldValue) {
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         if (EnLanguage()) {
+            //if the application language is English, get the data from the "name" column
             Cursor cursor = database.rawQuery("SELECT * FROM my_locations where name=?", new String[]{fieldValue});
 
             if (cursor.getCount() <= 0) {
@@ -445,6 +449,7 @@ public class KategorieDao {
 
             return true;
         } else {
+            //If the application language is not English (Turkish), get the data from the "isim" column
             Cursor cursor = database.rawQuery("SELECT * FROM my_locations where isim=?", new String[]{fieldValue});
 
             if (cursor.getCount() <= 0) {
@@ -460,8 +465,7 @@ public class KategorieDao {
 
     }
 
-    //todo
-
+    //refresh the my_locations table in database
     public void refreshTable(DatabaseHelper databaseHelper, ArrayList<Places> mList) {
         mList.clear();
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
@@ -489,7 +493,7 @@ public class KategorieDao {
         cursor.close();
     }
 
-    /// ADD DATA
+    /// Add data to database
     public void add_religions(DatabaseHelper databaseHelper) {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO religions(name,latitude,longitude,image,isim) VALUES ('Suleymaniye Mosque', '41.016177', '28.964153','suleymaniyemin','Süleymaniye Camii')," +
