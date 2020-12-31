@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.tripist.adapters.CategoryAdapter;
 import com.example.tripist.adapters.ParksAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.Database_Connection;
@@ -23,20 +22,20 @@ import java.util.ArrayList;
 import static com.example.tripist.database.LocalizationHelper.loadLocale;
 
 public class ParksCategory extends AppCompatActivity {
+    //Definition category variables
     private Toolbar toolbar;
-    private AppCompatActivity activityForBar;
     private RecyclerView park_rv;
     private ArrayList<Places> placesArrayList;
-    private Database_Connection dbconnection;
     DatabaseHelper databaseHelper;
-    @Override
+
+    @Override   //First Creation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale(this);
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_parks_category);
 
-        //TOOLBAR
+        //Toolbar
         toolbar =findViewById(R.id.park_toolbar);
         toolbar.setTitle(R.string.title_parks);
         setSupportActionBar(toolbar);
@@ -48,21 +47,23 @@ public class ParksCategory extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        // TODO Database işlemleri
 
-        //RECYCLERVIEW
+        //RecyclerView
         park_rv= findViewById(R.id.park_rv);
         park_rv.setHasFixedSize(true);
         park_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+
         getData();
-        //   park_rv.setAdapter(adapter);
     }
+
+    //open the map
     public void showParksMap(View view){
         Intent intent = new Intent(this, Parks.class);
         intent.putExtra("info","new");
         startActivity(intent);
-
     }
+
+    //call the function to get data from the database
     public void getData(){
         String parks = "parks_gardens";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,parks);

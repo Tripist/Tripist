@@ -9,10 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.tripist.adapters.CategoryAdapter;
 import com.example.tripist.adapters.ReligionsAdapter;
 import com.example.tripist.database.DatabaseHelper;
-import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
@@ -23,19 +21,20 @@ import java.util.ArrayList;
 import static com.example.tripist.database.LocalizationHelper.loadLocale;
 
 public class ReligionsCategory extends AppCompatActivity {
+    //Definition category variables
     private Toolbar toolbar;
-    private AppCompatActivity activityForBar;
     private RecyclerView religion_rv;
     private ArrayList<Places> placesArrayList;
     DatabaseHelper databaseHelper;
-    @Override
+
+    @Override   //First Creation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale(this);
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_religions_category);
 
-        //TOOLBAR
+        //Toolbar
         toolbar =findViewById(R.id.religion_toolbar);
         toolbar.setTitle(R.string.title_religions);
         setSupportActionBar(toolbar);
@@ -47,20 +46,23 @@ public class ReligionsCategory extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        // TODO Database işlemleri
 
-        //RECYCLERVIEW
+        //RecyclerView
         religion_rv= findViewById(R.id.religion_rv);
         religion_rv.setHasFixedSize(true);
         religion_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
        getData();
     }
+
+    //open the map
     public void showReligionsMap(View view){
         Intent intent = new Intent(this, Religions.class);
         intent.putExtra("info","new");
         startActivity(intent);
 
     }
+
+    //call the function to get data from the database
     public void getData(){
         String religions = "religions";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,religions);
