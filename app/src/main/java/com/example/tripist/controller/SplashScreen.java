@@ -15,10 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
-import com.example.tripist.database.Database_Connection;
-import com.example.tripist.controller.navigation.HomeFragment;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.database.LocalizationHelper;
 
 import static com.example.tripist.database.LocalizationHelper.loadLocale;
 
