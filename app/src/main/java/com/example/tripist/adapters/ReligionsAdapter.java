@@ -25,16 +25,19 @@ import com.example.tripist.models.Places;
 import java.util.ArrayList;
 
 public class ReligionsAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.ReligionsAdapter.CardviewPlaceHolder> {
+        //Definition adapter variables
         private ArrayList<Places> itemList;
         Context context;
         DatabaseHelper databaseHelper;
+
+        // Constructor
         public ReligionsAdapter(ArrayList<Places> placeList, Context context) {
             this.itemList = placeList;
             this.context = context;
         }
 
         @NonNull
-        @Override
+        @Override   //First Creation
         public com.example.tripist.adapters.ReligionsAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_design, parent, false);
@@ -69,11 +72,13 @@ public class ReligionsAdapter extends RecyclerView.Adapter<com.example.tripist.a
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     if (isChecked) {
+                        //add favorites
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
                         String religions = "religions";
                         new KategorieDao().fav(databaseHelper,name,religions);
                     }
+                    //remove favorites
                     else {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
@@ -86,6 +91,7 @@ public class ReligionsAdapter extends RecyclerView.Adapter<com.example.tripist.a
             return new com.example.tripist.adapters.ReligionsAdapter.CardviewPlaceHolder(itemView);
         }
 
+        //Binding data to UI
         @Override
         public void onBindViewHolder(@NonNull com.example.tripist.adapters.ReligionsAdapter.CardviewPlaceHolder holder, int position) {
             Places item = itemList.get(position);
@@ -110,6 +116,7 @@ public class ReligionsAdapter extends RecyclerView.Adapter<com.example.tripist.a
             return itemList.size();
         }
 
+        //Card view Properties
         public class CardviewPlaceHolder extends RecyclerView.ViewHolder {
             public CardView card;
             public TextView isim;

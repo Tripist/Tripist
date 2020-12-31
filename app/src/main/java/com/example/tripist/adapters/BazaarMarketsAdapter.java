@@ -28,16 +28,19 @@ import java.util.ArrayList;
 
 
 public class BazaarMarketsAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.BazaarMarketsAdapter.CardviewPlaceHolder> {
+        //Definition adapter variables
         private ArrayList<Places> itemList;
         Context context;
         DatabaseHelper databaseHelper;
+
+        // Constructor
         public BazaarMarketsAdapter(ArrayList<Places> placeList, Context context) {
             this.itemList = placeList;
             this.context = context;
         }
 
         @NonNull
-        @Override
+        @Override //First Creation
         public com.example.tripist.adapters.BazaarMarketsAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_design, parent, false);
@@ -71,12 +74,14 @@ public class BazaarMarketsAdapter extends RecyclerView.Adapter<com.example.tripi
             cardviewPlaceHolder.fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    //add favorites
                     if (isChecked) {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
                         String bazaar_markets = "bazaar_markets";
                         new KategorieDao().fav(databaseHelper,name,bazaar_markets);
                     }
+                    //remove favorites
                     else {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
@@ -89,6 +94,7 @@ public class BazaarMarketsAdapter extends RecyclerView.Adapter<com.example.tripi
             return new com.example.tripist.adapters.BazaarMarketsAdapter.CardviewPlaceHolder(itemView);
         }
 
+        //Binding data to UI
         @Override
         public void onBindViewHolder(@NonNull com.example.tripist.adapters.BazaarMarketsAdapter.CardviewPlaceHolder holder, int position) {
            Places item = itemList.get(position);
@@ -113,6 +119,7 @@ public class BazaarMarketsAdapter extends RecyclerView.Adapter<com.example.tripi
             return itemList.size();
         }
 
+        //Card view Properties
         public class CardviewPlaceHolder extends RecyclerView.ViewHolder {
             public CardView card;
             public TextView isim;
