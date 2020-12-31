@@ -2,9 +2,7 @@ package com.example.tripist.adapters;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +22,7 @@ import com.example.tripist.R;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class My_LocationsAdapter extends RecyclerView.Adapter<My_LocationsAdapter.MyViewHolder> {
     //Definition adapter variables
     Context mContext;
     ArrayList<Places> mList;
@@ -33,7 +31,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     DatabaseHelper databaseHelper;
 
     // Constructor
-    public RecyclerViewAdapter(@NonNull Context mContext, ArrayList<Places> mList, SQLiteDatabase database) {
+    public My_LocationsAdapter(@NonNull Context mContext, ArrayList<Places> mList, SQLiteDatabase database) {
         this.mContext = mContext;
         this.mList = mList;
         this.database = database;

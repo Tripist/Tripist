@@ -17,7 +17,7 @@
         android:clickable="true"
         android:foregroundTint="@color/kategoryactionbuttoncolor"
         android:onClick="showHistorical_Places_Map"
-        app:backgroundTint="@color/actionbuttoncolor"
+        app:backgroundTint="@color/kategoryactionbuttoncolor"
         app:fabCustomSize="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
