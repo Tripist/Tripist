@@ -1,14 +1,11 @@
 package com.example.tripist.controller.navigation;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,13 +17,11 @@ import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
-import com.example.tripist.adapters.RecyclerViewAdapter;
+import com.example.tripist.adapters.My_LocationsAdapter;
 import com.example.tripist.controller.maps.My_Locations;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class MyLocationsFragment extends Fragment  {
     //Definition variables
@@ -42,7 +37,7 @@ public class MyLocationsFragment extends Fragment  {
 
         databaseHelper = new DatabaseHelper(getContext());
         lstPlaces = new KategorieDao().Mylocations(databaseHelper);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
+        My_LocationsAdapter myLocationsAdapter = new My_LocationsAdapter(getContext(),lstPlaces,database);
 
     }
 
@@ -52,10 +47,10 @@ public class MyLocationsFragment extends Fragment  {
         View root = inflater.inflate(R.layout.fragment_mylocations, container, false);
 
         myRecyclerView = root.findViewById(R.id.recyclerView);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
+        My_LocationsAdapter myLocationsAdapter = new My_LocationsAdapter(getContext(),lstPlaces,database);
         myRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        myRecyclerView.setAdapter(recyclerViewAdapter);
-        recyclerViewAdapter.notifyDataSetChanged();
+        myRecyclerView.setAdapter(myLocationsAdapter);
+        myLocationsAdapter.notifyDataSetChanged();
         mymap_fab =root.findViewById(R.id.mymap_fab);
         mymap_fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,9 +81,9 @@ public class MyLocationsFragment extends Fragment  {
     public void getData() {
         lstPlaces.clear();
         lstPlaces = new KategorieDao().Mylocations(databaseHelper);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
-        recyclerViewAdapter.notifyDataSetChanged();
-        myRecyclerView.setAdapter(recyclerViewAdapter );
+        My_LocationsAdapter myLocationsAdapter = new My_LocationsAdapter(getContext(),lstPlaces,database);
+        myLocationsAdapter.notifyDataSetChanged();
+        myRecyclerView.setAdapter(myLocationsAdapter);
     }
 
 }

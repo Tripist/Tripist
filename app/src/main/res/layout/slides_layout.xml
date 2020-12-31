@@ -22,15 +22,16 @@
 
     <TextView
         android:id="@+id/slider_heading"
-        android:layout_width="355dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:fontFamily="@font/nunito_bold"
-        android:gravity="center"
         android:text="@string/first_slide_titel"
         android:textColor="#AA2947"
         android:textSize="35sp"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toTopOf="@id/slider_desc"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/slider_image" />
 
