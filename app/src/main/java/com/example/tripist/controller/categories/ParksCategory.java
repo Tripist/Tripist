@@ -11,7 +11,6 @@ import android.view.View;
 
 import com.example.tripist.adapters.ParksAdapter;
 import com.example.tripist.database.DatabaseHelper;
-import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;

@@ -27,6 +27,7 @@ import okhttp3.Response;
 
 public class WeatherController {
 
+        //to get weather data for Istanbul
     public static void weather(final TextView weather_text,final ImageView weather_image,final TextView notification_text,final FragmentActivity activity)  {
 
 
@@ -66,10 +67,7 @@ public class WeatherController {
 
                         String temps = Math.round(Temperature) + " °C";
 
-
-                        //    Double Derece = Double.parseDouble(temps);
-                     //   setNotification_text(notification_text, Temperature, icons,activity);
-                        //bildirim mesajı ayarlamak icin
+                      //  to change the notification message
                         weather_text.setText(temps);
                         setWeather_image(weather_image, icons,activity);
                         setNotification_text(notification_text, Temperature, icons,activity);
@@ -85,7 +83,7 @@ public class WeatherController {
 
 
     }
-
+        // change the imageview according to the weather conditions
     public static void setWeather_image(final ImageView imageView, final String value,final FragmentActivity context) {
         context.runOnUiThread(new Runnable() {
             @Override
@@ -154,7 +152,7 @@ public class WeatherController {
             }
         });
     }
-
+     // Change notification message based on time and weather
     public static void setNotification_text(final TextView notification_text, final Double Temperature, final String icons,final FragmentActivity activity) {
        activity.runOnUiThread(new Runnable() {
             @Override

@@ -16,6 +16,7 @@ import static com.example.tripist.controller.navigation.SettingsFragment.appLang
 
 public class LocalizationHelper {
 
+    // setting the application language
     public static void setLocale(String lang, Context activity){
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
@@ -27,14 +28,14 @@ public class LocalizationHelper {
         editor.apply();
 
     }
-
+    // loading the selected language
     public static void loadLocale(Context context){
         SharedPreferences prefs = context.getSharedPreferences("Settings", context.MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
         System.out.println(language);
         setLocale(language,context);
     }
-
+    //database column of data according to selected language
     public static int app_language(){
         if(appLanguage == "en"){
             return 1;
@@ -69,7 +70,7 @@ public class LocalizationHelper {
         }
 
     }
-
+        // dialog for change language
     public static void showChangeLanguageDialog(final View v, final Activity context) {
         //TODO: On Android 6.0.1, when you try to change the language, it automatically sets the language to English
         //TODO: On all other Android versions (7.1.1+) it is kind of buggy, setLocale must be configured properly
