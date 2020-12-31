@@ -39,14 +39,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class Historical_Places extends FragmentActivity implements OnMapReadyCallback {
-
+    //Definition variables
     private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
-    SQLiteDatabase database;
     DatabaseHelper databaseHelper;
 
-    @Override
+    @Override  //First Creation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         databaseHelper = new DatabaseHelper(this);
@@ -67,7 +66,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {
-            //KULLANICIDAN KONUM İZNİ
+            //Location Permission
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             locationListener = new LocationListener() {
                 @Override
@@ -84,7 +83,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
                 }
             };
 
-            //kulanıcı izni kontrol etmek
+            //Check Location Permission
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
             } else {
@@ -107,7 +106,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
 
 
 
-    // izne göre kontrol yapmak
+    // checking according to permission
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -129,9 +128,7 @@ public class Historical_Places extends FragmentActivity implements OnMapReadyCal
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 15));
 
                         } else {
-                            //sqlite data
-                            // mMap.clear();
-                            //?
+
                             Places place = (Places) intent.getSerializableExtra("place");
                             LatLng latLng = new LatLng(place.latitude, place.longitude);
                             String place_Name = place.name;

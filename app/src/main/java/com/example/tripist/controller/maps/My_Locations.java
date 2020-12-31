@@ -43,14 +43,13 @@ import java.util.List;
 import java.util.Locale;
 
 public class My_Locations extends FragmentActivity implements OnMapReadyCallback , GoogleMap.OnMapLongClickListener {
-
+    //Definition  Variables
     private GoogleMap mMap;
-    SQLiteDatabase database;
     LocationManager locationManager;
     LocationListener locationListener;
     DatabaseHelper databaseHelper;
     LocalizationHelper localizationHelper;
-    @Override
+    @Override//First Creation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         databaseHelper = new DatabaseHelper(this);
@@ -73,7 +72,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {
-            //KULLANICIDAN KONUM İZNİ
+            //Location Permission
             locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             locationListener = new LocationListener() {
                 @Override
@@ -90,7 +89,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                 }
             };
 
-            //kulanıcı izni kontrol etmek
+            //Check Location Permission
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 100);
             } else {
@@ -109,7 +108,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         }
     }
-
+    // checking according to permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -130,9 +129,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 15));
 
                         } else {
-                            //sqlite data
-                            // mMap.clear();
-                            //?
+
                             Places place = (Places) intent.getSerializableExtra("place");
                             LatLng latLng = new LatLng(place.latitude, place.longitude);
                             String place_Name = place.name;
@@ -147,7 +144,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    // uzun basıldığında adres ekleme
+    //add an address with a long click
     @Override
     public void onMapLongClick(LatLng latLng) {
         Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
@@ -168,7 +165,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
                 }
             } else {
-                // adres alamazsa default
+                //default if it can't get an address
                 address = "new place";
             }
         } catch (IOException e) {
@@ -181,7 +178,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         final Places place = new Places(address, latitude, longitude);
 
-
+        // presenting choice to the user
         AlertDialog.Builder builder = new AlertDialog.Builder(My_Locations.this);
         builder.setTitle(place.name);
 
@@ -237,7 +234,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
              });
         builder.create().show();
     }
-
+     //adding  others location from user input
     public void add_others(final String name, final Double latitude, final Double longitude) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -272,6 +269,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.show();
     }
 
+    // adding myhotel location
     public void add_myhotel(final String name, final Double latitude, final Double longitude) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
@@ -296,6 +294,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
         alert.show();
     }
 
+    //adding  home location
     public void add_myblabla(final String name, final Double latitude, final Double longitude) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
@@ -319,7 +318,7 @@ public class My_Locations extends FragmentActivity implements OnMapReadyCallback
 
         alert.show();
     }
-
+        // adding  airport location
     public void add_myairport(final String name, final Double latitude, final Double longitude) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
