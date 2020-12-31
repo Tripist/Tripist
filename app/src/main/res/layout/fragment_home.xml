@@ -47,15 +47,62 @@
             android:textColor="#000000"
             android:textSize="15sp" />
     </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="106dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/comp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <LinearLayout
+            android:layout_width="15dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/rectangle"
+            android:orientation="vertical"></LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/notification_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="7dp"
+                    android:fontFamily="@font/nunito"
+                    android:justificationMode="inter_word"
+                    android:lineSpacingExtra="2dp"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
+
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="375dp"
+        android:layout_height="385dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,53 +114,6 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="106dp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="15dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/comp"
-                    app:layout_constraintEnd_toStartOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView">
-
-                    <LinearLayout
-                        android:layout_width="15dp"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/rectangle"
-                        android:orientation="vertical"></LinearLayout>
-
-                    <ScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/notification_text"
-                                android:layout_width="match_parent"
-                                android:paddingEnd="10dp"
-                                android:layout_height="wrap_content"
-                                android:justificationMode="inter_word"
-                                android:layout_marginStart="4dp"
-                                android:layout_marginLeft="4dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginRight="5dp"
-                                android:fontFamily="@font/nunito"
-                                android:lineSpacingExtra="2dp"
-                                android:paddingStart="18dp"
-                                android:textColor="#4A4949"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </ScrollView>
-
-                </androidx.cardview.widget.CardView>
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
@@ -187,7 +187,7 @@
                                 android:id="@+id/textView"
                                 android:layout_width="60sp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="16sp"
+                                android:layout_marginStart="13dp"
                                 android:layout_marginTop="7dp"
                                 android:layout_marginBottom="20dp"
                                 android:editable="false"
@@ -202,7 +202,7 @@
                                 android:id="@+id/textView2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="33sp"
+                                android:layout_marginStart="32sp"
                                 android:layout_marginTop="7dp"
                                 android:editable="false"
                                 android:fontFamily="@font/nunito"
@@ -215,7 +215,7 @@
                                 android:id="@+id/textView3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="29sp"
+                                android:layout_marginStart="28dp"
                                 android:layout_marginTop="7dp"
                                 android:editable="false"
                                 android:fontFamily="@font/nunito"
@@ -330,7 +330,7 @@
                                 android:id="@+id/textView8"
                                 android:layout_width="70sp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="27sp"
+                                android:layout_marginStart="25sp"
                                 android:layout_marginTop="7dp"
                                 android:editable="false"
                                 android:fontFamily="@font/nunito"

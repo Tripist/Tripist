@@ -104,9 +104,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="141dp"
+            android:gravity="center"
             android:layout_marginTop="64dp"
-            android:layout_marginEnd="6dp"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal" />
 
