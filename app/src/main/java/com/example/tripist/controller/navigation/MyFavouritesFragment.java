@@ -29,16 +29,17 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 public class MyFavouritesFragment extends Fragment {
+    //Definition variables
     SQLiteDatabase database;
     RecyclerView fav_rv;
     ArrayList<Places> placesArrayList;
     DatabaseHelper databaseHelper;
     FloatingActionButton favtomap_fab;
+
+    //ui views of components
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_myfavourites, container, false);
-
-
 
         fav_rv = root.findViewById(R.id.fav_rv);
         favtomap_fab = root.findViewById(R.id.favtomap_fab);
@@ -46,7 +47,6 @@ public class MyFavouritesFragment extends Fragment {
         fav_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         fav_rv.setAdapter(myFavAdapter);
         myFavAdapter.notifyDataSetChanged();
-
         favtomap_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,10 +55,9 @@ public class MyFavouritesFragment extends Fragment {
         });
 
         return root;
-
     }
 
-    @Override
+    @Override   //First Creation
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         databaseHelper =new DatabaseHelper(getContext());
@@ -66,6 +65,7 @@ public class MyFavouritesFragment extends Fragment {
 
     }
 
+    //call the function to get data from the database
     public void getData(){
         placesArrayList.clear();
         placesArrayList = new KategorieDao().MyFavourites(databaseHelper);
@@ -73,20 +73,19 @@ public class MyFavouritesFragment extends Fragment {
         fav_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         adapter.notifyDataSetChanged();
         fav_rv.setAdapter(adapter);
-        }
+    }
 
+    //open the map
     public void showMy_Favourites() {
         Intent intent = new Intent(getActivity(), My_Favourites.class);
         intent.putExtra("info","new");
         startActivity(intent);
 
     }
-    @Override
+    @Override   //Initialization
     public void onStart() {
         getData();
         super.onStart();
-
     }
-
 
 }

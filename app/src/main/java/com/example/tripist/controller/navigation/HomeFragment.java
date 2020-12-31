@@ -24,24 +24,20 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import static com.example.tripist.controller.WeatherController.weather;
 
 public class HomeFragment extends Fragment {
+    //Definition variables
     FloatingActionButton historical_button, museum_button, religions_button, parks_button, squares_button;
     FloatingActionButton bazaar_markets_button, island_beaches_button, foods_button;
     ImageView weather_image;
     TextView weather_text;
     TextView notification_text;
 
-
+    //ui views of components
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-       // weather(weather_text,weather_image,notification_text,getActivity());
-        System.out.println("oncreateview");
-        // burası değişecek  buttona onClickMethodu tanımlanacak
         weather_image = root.findViewById(R.id.weather_image);
         weather_text = root.findViewById(R.id.weather_text);
         notification_text = root.findViewById(R.id.notification_text);
-       // weather(weather_text,weather_image,notification_text,getActivity());
-       // weather(weather_text,weather_image,notification_text,getActivity());
         historical_button = (FloatingActionButton) root.findViewById(R.id.historical_button);
         historical_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +45,7 @@ public class HomeFragment extends Fragment {
                 showHistorical_Places();
             }
         });
+
         museum_button = (FloatingActionButton) root.findViewById(R.id.museum_button);
         museum_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,14 +95,10 @@ public class HomeFragment extends Fragment {
                 showFoods();
             }
         });
-        //setNotification_text();
         return root;
     }
 
-
-
-
-    @Override
+    @Override   //Presenting the weather and notification
     public void onStart() {
         super.onStart();
         weather(weather_text,weather_image,notification_text,getActivity());
