@@ -3,30 +3,32 @@ package com.example.tripist.models;
 import java.io.Serializable;
 
 public class Places implements Serializable {
-
+    //Definition variables
     public String name ;
     public Double latitude;
     public Double longitude;
     public String image;
 
+    // Constructor
     public Places(String name,Double latitude, Double longitude){
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
+    // Constructor
     public Places(String name, Double latitude, Double longitude, String image) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.image = image;
     }
-
+    // Constructor
     public Places(String name, String image) {
         this.name = name;
         this.image = image;
     }
 
+    //get and set function
     public String getName() {
         return name;
     }
@@ -43,9 +45,7 @@ public class Places implements Serializable {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
-        return longitude;
-    }
+    public Double getLongitude() { return longitude; }
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;

@@ -15,24 +15,13 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class    DatabaseHelper extends SQLiteOpenHelper {
 
-    // public static String DBNAME = "Places";
-
-
-    // public static int VERSION = 1;
-
-
-
-
-    /**
-     * Constructor
-     */
+    // Constructor
     public DatabaseHelper(Context context) {
         super(context,"Places", null, 1);
-        // this.mDB = getWritableDatabase();
     }
 
 
-    @Override
+    @Override   //Create a table in a database
     public void onCreate(SQLiteDatabase database) {
         database.execSQL("CREATE TABLE IF NOT EXISTS bazaar_markets (id INTEGER PRIMARY KEY,name VARCHAR, latitude VARCHAR, longitude VARCHAR,image VARCHAR, isim VARCHAR)");
         database.execSQL("CREATE TABLE IF NOT EXISTS historical_places (id INTEGER PRIMARY KEY,name VARCHAR, latitude VARCHAR, longitude VARCHAR,image VARCHAR, isim VARCHAR)");
@@ -47,7 +36,7 @@ public class    DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    @Override
+    @Override   //Drop table
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS bazaar_markets");
         db.execSQL("DROP TABLE IF EXISTS  historical_places");
