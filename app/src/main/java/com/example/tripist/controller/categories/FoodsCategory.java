@@ -8,13 +8,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.tripist.adapters.CategoryAdapter;
 import com.example.tripist.adapters.FoodsAdapter;
 import com.example.tripist.database.DatabaseHelper;
-import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Foods;
-import com.example.tripist.models.Places;
 import com.example.tripist.R;
 
 import java.util.ArrayList;
@@ -22,21 +19,20 @@ import java.util.ArrayList;
 import static com.example.tripist.database.LocalizationHelper.loadLocale;
 
 public class FoodsCategory extends AppCompatActivity {
+    //Definition category variables
     private Toolbar toolbar;
-    private AppCompatActivity activityForBar;
     private RecyclerView food_rv;
     private ArrayList<Foods> placesArrayList;
-    private CategoryAdapter adapter;
-    private Database_Connection dbconnection;
     DatabaseHelper databaseHelper;
-    @Override
+
+    @Override   //First Creation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale(this);
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_foods_category);
 
-        //TOOLBAR
+        //Toolbar
         toolbar =findViewById(R.id.food_toolbar);
         toolbar.setTitle(R.string.title_foods);
         setSupportActionBar(toolbar);
@@ -48,15 +44,16 @@ public class FoodsCategory extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        // TODO Database işlemleri
 
-        //RECYCLERVIEW
+        //RecyclerView
         food_rv= findViewById(R.id.food_rv);
         food_rv.setHasFixedSize(true);
         food_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+
         getData();
-        //   food_rv.setAdapter(adapter);
     }
+
+    //call the function to get data from the database
     public void getData(){
         String foods = "foods";
         placesArrayList = new KategorieDao().FoodsList(databaseHelper);

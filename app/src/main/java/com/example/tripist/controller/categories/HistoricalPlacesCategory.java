@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -13,9 +11,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import com.example.tripist.adapters.CategoryAdapter;
-import com.example.tripist.adapters.RecyclerViewAdapter;
-import com.example.tripist.controller.navigation.HomeFragment;
+import com.example.tripist.adapters.HistoricalPlacesAdapter;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
@@ -28,25 +24,22 @@ import java.util.ArrayList;
 import static com.example.tripist.database.LocalizationHelper.loadLocale;
 
 public class HistoricalPlacesCategory extends AppCompatActivity {
-   private Toolbar toolbar;
-   private AppCompatActivity activityForBar;
-   private RecyclerView historical_rv;
-   private ArrayList <Places> placesArrayList;
-   private CategoryAdapter adapter;
-   DatabaseHelper databaseHelper;
-    ImageButton fav;
+    //Definition category variables
+    private Toolbar toolbar;
+    private RecyclerView historical_rv;
+    private ArrayList <Places> placesArrayList;
+    DatabaseHelper databaseHelper;
     ImageButton google;
 
-    @Override
+    @Override   //First Creation
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_historical_places_category);
-
         loadLocale(this);
-        //TOOLBAR
-        //getSupportActionBar().hide();
+
+        ////Toolbar
         toolbar =findViewById(R.id.historical_toolbar);
         toolbar.setTitle(R.string.title_historical);
         setSupportActionBar(toolbar);
@@ -60,27 +53,26 @@ public class HistoricalPlacesCategory extends AppCompatActivity {
         });
 
         google = findViewById(R.id.googlef);
-        // TODO Database işlemleri
-
-        //RECYCLERVIEW
+        //RecyclerView
         historical_rv= findViewById(R.id.historical_rv);
         historical_rv.setHasFixedSize(true);
         historical_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
 
-
-            getData();
-
+        getData();
 
     }
-        public void showHistorical_Places_Map (View view){
-            Intent intent = new Intent(this, Historical_Places.class);
-            intent.putExtra("info", "new");
-            startActivity(intent);
 
-        }
-        public void getData(){
+    //open the map
+     public void showHistorical_Places_Map (View view){
+        Intent intent = new Intent(this, Historical_Places.class);
+        intent.putExtra("info", "new");
+        startActivity(intent);
+      }
+
+      //call the function to get data from the database
+      public void getData(){
         placesArrayList = new KategorieDao().Historical_Places(databaseHelper);
-        CategoryAdapter adapter = new CategoryAdapter(placesArrayList,getApplicationContext());;
+        HistoricalPlacesAdapter adapter = new HistoricalPlacesAdapter(placesArrayList,getApplicationContext());;
         historical_rv.setAdapter(adapter);
     }
 }

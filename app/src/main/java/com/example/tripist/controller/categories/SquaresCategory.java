@@ -9,10 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.tripist.adapters.CategoryAdapter;
 import com.example.tripist.adapters.SquaresAdapter;
 import com.example.tripist.database.DatabaseHelper;
-import com.example.tripist.database.Database_Connection;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Places;
 import com.example.tripist.R;
@@ -23,20 +21,20 @@ import java.util.ArrayList;
 import static com.example.tripist.database.LocalizationHelper.loadLocale;
 
 public class SquaresCategory extends AppCompatActivity {
+    //Definition category variables
     private Toolbar toolbar;
-    private AppCompatActivity activityForBar;
     private RecyclerView square_rv;
     private ArrayList<Places> placesArrayList;
-    private SquaresAdapter adapter;
     DatabaseHelper databaseHelper;
-    @Override
+
+    @Override   //First Creation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadLocale(this);
         databaseHelper = new DatabaseHelper(this);
         setContentView(R.layout.activity_squares_category);
 
-        //TOOLBAR
+        //Toolbar
         toolbar =findViewById(R.id.square_toolbar);
         toolbar.setTitle(R.string.title_squares);
         setSupportActionBar(toolbar);
@@ -48,21 +46,24 @@ public class SquaresCategory extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        // TODO Database işlemleri
 
-        //RECYCLERVIEW
+        //RecyclerView
         square_rv= findViewById(R.id.square_rv);
         square_rv.setHasFixedSize(true);
         square_rv.setLayoutManager( new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        getData();
 
+        getData();
     }
+
+    //open the map
     public void showSquaresMap(View view){
         Intent intent = new Intent(this, Squares.class);
         intent.putExtra("info","new");
         startActivity(intent);
 
     }
+
+    //call the function to get data from the database
     public void getData(){
         String squares = "squares";
         placesArrayList = new KategorieDao().KategorieList(databaseHelper,squares);
