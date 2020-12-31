@@ -38,17 +38,20 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlaceHolder> {
+    //Definition adapter variables
     private ArrayList<Places> itemList;
     Context context;
     SQLiteDatabase database;
     DatabaseHelper databaseHelper;
+
+    // Constructor
     public MyFavAdapter(ArrayList<Places> placeList, Context context) {
         this.itemList = placeList;
         this.context = context;
     }
 
     @NonNull
-    @Override
+    @Override    //First Creation
     public MyFavAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         final View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.carddesign_myfav, parent, false);
@@ -75,49 +78,10 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
             }
         });
 
-       /* cardviewPlaceHolder.fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               final String name = cardviewPlaceHolder.isim.getText().toString();
-                //   itemList.remove(cardviewPlaceHolder.getAdapterPosition());
-              //  new KategorieDao().unfav(databaseHelper,name);
-                notifyDataSetChanged();
-                final Snackbar snackbar = Snackbar
-                        .make(v, "Favorilerden Çıkarılsın mı?", Snackbar.LENGTH_LONG)
-                        .setAction("UNFAV", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                new KategorieDao().unfav(databaseHelper,name);
-
-                                itemList.remove(position);
-                                notifyDataSetChanged();
-                               // view.getContext().startActivity(new Intent(context, HomeFragment.class));
-                                notifyDataSetChanged();
-                                Snackbar snackbar1 = Snackbar.make(view, "Favorilerden Çıkarıldı!", Snackbar.LENGTH_SHORT);
-
-                                View sbView = snackbar1.getView();
-                                TextView textView = (TextView) sbView.findViewById(com.google.android.material.R.id.snackbar_text);
-                                textView.setTextColor(Color.YELLOW);
-                                snackbar1.show();
-
-                            }
-                        });
-                snackbar.setActionTextColor(Color.RED);
-                View sbView = snackbar.getView();
-                TextView textView = (TextView) sbView.findViewById(com.google.android.material.R.id.snackbar_text);
-                textView.setTextColor(Color.YELLOW);
-                snackbar.show();
-
-            }
-        });
-*/
-
-
-
         return new MyFavAdapter.CardviewPlaceHolder(itemView);
     }
 
-    @Override
+    @Override   //Binding data to UI
     public void onBindViewHolder(@NonNull MyFavAdapter.CardviewPlaceHolder holder, int position) {
         Places item = itemList.get(position);
         holder.isim.setText(item.getName());
@@ -132,6 +96,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
         return itemList.size();
     }
 
+    //Card view Properties
     public class CardviewPlaceHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public CardView card;
@@ -150,10 +115,9 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
             google = view.findViewById(R.id.googlef);
            fav.setOnClickListener(this);
         }
-        @Override
+        @Override   //remove
         public void onClick(View view) {
             final String name = isim.getText().toString();
-            System.out.println(name);
             int position = (int) view.getTag();
            // Toast.makeText(view.getContext(),Integer.toString(position),Toast.LENGTH_SHORT).show();
             new KategorieDao().unfav(databaseHelper,name);

@@ -26,16 +26,19 @@ import java.util.ArrayList;
 
 
 public class IslandBeachsAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.IslandBeachsAdapter.CardviewPlaceHolder> {
+        //Definition adapter variables
         private ArrayList<Places> itemList;
         Context context;
         DatabaseHelper databaseHelper;
+
+        // Constructor
         public IslandBeachsAdapter(ArrayList<Places> placeList, Context context) {
             this.itemList = placeList;
             this.context = context;
         }
 
         @NonNull
-        @Override
+        @Override   //First Creation
         public com.example.tripist.adapters.IslandBeachsAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_design, parent, false);
@@ -69,12 +72,14 @@ public class IslandBeachsAdapter extends RecyclerView.Adapter<com.example.tripis
             cardviewPlaceHolder.fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    //add favorites
                     if (isChecked) {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
                         String island_beaches = "island_beaches";
                         new KategorieDao().fav(databaseHelper,name,island_beaches);
                     }
+                    //remove favorites
                     else {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
@@ -87,6 +92,7 @@ public class IslandBeachsAdapter extends RecyclerView.Adapter<com.example.tripis
             return new com.example.tripist.adapters.IslandBeachsAdapter.CardviewPlaceHolder(itemView);
         }
 
+        //Binding data to UI
         @Override
         public void onBindViewHolder(@NonNull com.example.tripist.adapters.IslandBeachsAdapter.CardviewPlaceHolder holder, int position) {
             Places item = itemList.get(position);
@@ -111,6 +117,7 @@ public class IslandBeachsAdapter extends RecyclerView.Adapter<com.example.tripis
             return itemList.size();
         }
 
+        //Card view Properties
         public class CardviewPlaceHolder extends RecyclerView.ViewHolder {
             public CardView card;
             public TextView isim;

@@ -26,16 +26,19 @@ import java.util.ArrayList;
 
 
 public class ParksAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.ParksAdapter.CardviewPlaceHolder> {
+        //Definition adapter variables
         private ArrayList<Places> itemList;
         Context context;
         DatabaseHelper databaseHelper;
+
+        // Constructor
         public ParksAdapter(ArrayList<Places> placeList, Context context) {
             this.itemList = placeList;
             this.context = context;
         }
 
         @NonNull
-        @Override
+        @Override   //First Creation
         public com.example.tripist.adapters.ParksAdapter.CardviewPlaceHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View itemView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.card_design, parent, false);
@@ -69,12 +72,14 @@ public class ParksAdapter extends RecyclerView.Adapter<com.example.tripist.adapt
             cardviewPlaceHolder.fav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    //add favorites
                     if (isChecked) {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favoriteselect_24));
                         String parks_gardens = "parks_gardens";
                         new KategorieDao().fav(databaseHelper,name,parks_gardens);
                     }
+                    //remove favorites
                     else {
                         String name = cardviewPlaceHolder.isim.getText().toString();
                         cardviewPlaceHolder.fav.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_favorite_24));
@@ -87,6 +92,7 @@ public class ParksAdapter extends RecyclerView.Adapter<com.example.tripist.adapt
             return new com.example.tripist.adapters.ParksAdapter.CardviewPlaceHolder(itemView);
         }
 
+        //Binding data to UI
         @Override
         public void onBindViewHolder(@NonNull com.example.tripist.adapters.ParksAdapter.CardviewPlaceHolder holder, int position) {
             Places item = itemList.get(position);
@@ -111,6 +117,7 @@ public class ParksAdapter extends RecyclerView.Adapter<com.example.tripist.adapt
             return itemList.size();
         }
 
+        //Card view Properties
         public class CardviewPlaceHolder extends RecyclerView.ViewHolder {
             public CardView card;
             public TextView isim;

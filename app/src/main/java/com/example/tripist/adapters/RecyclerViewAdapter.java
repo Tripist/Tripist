@@ -45,7 +45,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from(mContext).inflate(R.layout.carddesign_mylocation, parent, false);
-        // v = LayoutInflater.from(mContext).inflate(R.layout.item_mylocation, parent, false);
         final MyViewHolder vHolder = new MyViewHolder(v);
         //Dialog init
         databaseHelper = new DatabaseHelper(mContext);
@@ -54,7 +53,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         vHolder.item_mylocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(mContext, "Test Click" + String.valueOf(vHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
                 int position = vHolder.getAdapterPosition();
                 String name = mList.get(position).name;
                 CallDialog(vHolder.getAdapterPosition(), name);
@@ -70,8 +68,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.text_mylocation.setText(mList.get(position).name);
-        // holder.item_textView.setText(mList.get(position).name);
-
     }
 
     @Override
@@ -175,7 +171,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                         new KategorieDao().updatePlace(databaseHelper, name, newName);
                         new KategorieDao().refreshTable(databaseHelper, mList);
-//
+
                         Toast.makeText(mContext, R.string.update_toast, Toast.LENGTH_SHORT).show();
                         notifyDataSetChanged();
                         dialog_edit.cancel();
