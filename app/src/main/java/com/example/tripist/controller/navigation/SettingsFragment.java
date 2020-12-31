@@ -29,13 +29,14 @@ import java.util.Locale;
 import static com.example.tripist.database.LocalizationHelper.showChangeLanguageDialog;
 
 public class SettingsFragment  extends Fragment {
+    //Definition variables
     Button show_onboarding_button;
     Button button3;
     LocalizationHelper localizationHelper;
     public static String appLanguage = Locale.getDefault().getLanguage();
 
     @Nullable
-    @Override
+    @Override   //ui views of components
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_settings, container, false);
 
@@ -52,10 +53,9 @@ public class SettingsFragment  extends Fragment {
             @Override
             public void onClick(View v) {
                 showChangeLanguageDialog(v,getActivity());
-
-
             }
         });
+
         localizationHelper = new LocalizationHelper();
         return root;
     }
@@ -64,10 +64,7 @@ public class SettingsFragment  extends Fragment {
     public void showOnboarding() {
         Intent intent = new Intent(getActivity(), OnBoarding.class);
         startActivity(intent);
-
     }
-
-
 
 }
 

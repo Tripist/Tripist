@@ -29,34 +29,26 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 public class MyLocationsFragment extends Fragment  {
+    //Definition variables
     SQLiteDatabase database;
     RecyclerView myRecyclerView;
     ArrayList<Places> lstPlaces;
     FloatingActionButton mymap_fab;
     DatabaseHelper databaseHelper;
 
-
-
-    @Override
+    @Override   //First Creation
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         databaseHelper = new DatabaseHelper(getContext());
-
-       // lstPlaces = new KategorieDao().historicalplaces(databaseHelper);
-       // RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
-
         lstPlaces = new KategorieDao().Mylocations(databaseHelper);
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(),lstPlaces,database);
 
-
     }
 
-
+    //ui views of components
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-        //  NOT: Viewmodel yapısını silme : myLocationsViewModel = new ViewModelProvider(this).get(MyLocationsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_mylocations, container, false);
 
         myRecyclerView = root.findViewById(R.id.recyclerView);
@@ -65,7 +57,6 @@ public class MyLocationsFragment extends Fragment  {
         myRecyclerView.setAdapter(recyclerViewAdapter);
         recyclerViewAdapter.notifyDataSetChanged();
         mymap_fab =root.findViewById(R.id.mymap_fab);
-
         mymap_fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,13 +64,11 @@ public class MyLocationsFragment extends Fragment  {
             }
         });
 
-
         return root;
 
     }
 
-
-
+    //open the map
     public void showMy_Locations() {
         Intent intent = new Intent(getActivity(), My_Locations.class);
         intent.putExtra("info","new");
@@ -87,18 +76,13 @@ public class MyLocationsFragment extends Fragment  {
 
     }
 
-    @Override
+    @Override   //Initialization
     public void onStart() {
         getData();
         super.onStart();
 
     }
-
-
-
-
-
-
+    //call the function to get data from the database
     public void getData() {
         lstPlaces.clear();
         lstPlaces = new KategorieDao().Mylocations(databaseHelper);
