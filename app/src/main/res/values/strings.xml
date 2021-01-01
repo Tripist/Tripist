@@ -103,6 +103,8 @@ You can have your afternoon tea or evening coffee in the outdoor cafes built at 
     <string name="s_havanotf6">Hot tea and a crispy bagel; or a nice coffee. In front of you is Istanbul\'s gray-hazy but uniquely beautiful strait. Even more than enough to get on the ferry and cross the street</string>
     <string name="s_havanotf7">Whether it is rain or mud, you can sit in a cozy cafe on İstiklal Caddesi, which is full of Beyoğlu lovers, and watch people with good music. I am sure you will enjoy it too.</string>
     <string name="s_havanotf8">The Bosphorus is the first destination that comes to mind when talking about raki and fish in Istanbul. It is useful to sit at the table before sunset to watch the city bathed in the rain.</string>
+    <string name="no_internetconnection">You don\'t have an internet connection, but you can still benefit from Tripist. You can continue exploring Istanbul at full speed.
+        When you connect to the internet, you can benefit from our beautiful travel advice and make your trip more enjoyable :)</string>
     <!-- notificaiton array -->
     <string-array name="morning_good">
         <item>@string/goodmorningnotification</item>
@@ -190,6 +192,7 @@ You can have your afternoon tea or evening coffee in the outdoor cafes built at 
     </string-array>
     <string-array name="night">
         <item>@string/gecenotf</item>
+
 
     </string-array>
 

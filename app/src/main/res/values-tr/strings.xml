@@ -100,5 +100,7 @@ Avrupanın en güzel gece kulupleri dışarda seni bekliyor.</string>
     <string name="s_havanotf6"> Sıcacık çay ve çıtır bir simit; ya da güzel bir kahve. Önünüzde İstanbul’un gri-puslu ama eşsiz güzellikteki boğazı. Vapur’a binip karşıya yakaya geçmek için yeterde artar bile. </string>
     <string name="s_havanotf7"> Yağmur da olsa çamur da olsa Beyoğlu sevdalıları ile dolup taşan İstiklal Caddesi‘nde sıcacık bir kafede oturup güzel bir müzik eşliğinde insanları izlemek.  Eminim sen de oldukça keyif alacaksın.</string>
     <string name="s_havanotf8"> Boğaz, İstanbul’da rakı-balık denince akla gelen ilk istikamet.Yağmurda yıkanan kenti izleyebilmek için masaya gün batmadan oturmakta fayda var.</string>
-
+    <string name="no_internetconnection">İnternet bağlantınız yok ama hala Tripist\'den yararlanabilir
+        İstanbul\'u keşfetmeye son hız devam edebilirsiniz. İnternet\'e bağlandığınızda birbirinden güzel
+        seyahat tavsiyelerimizden yararlanabilir, seyahatinizi daha keyifli hale getirebilirsiniz :)</string>
 </resources>
