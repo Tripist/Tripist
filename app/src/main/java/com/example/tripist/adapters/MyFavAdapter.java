@@ -3,17 +3,13 @@ package com.example.tripist.adapters;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -22,30 +18,21 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripist.R;
-import com.example.tripist.controller.categories.Bazaar_MarketsCategory;
-import com.example.tripist.controller.navigation.HomeFragment;
-import com.example.tripist.controller.navigation.MyFavouritesFragment;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.models.BazaarMarkets;
-import com.example.tripist.models.MyFavourites;
-import com.example.tripist.models.Parks;
-import com.example.tripist.models.Places;
-import com.google.android.material.snackbar.Snackbar;
+import com.example.tripist.models.Categories;
 
 import java.util.ArrayList;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlaceHolder> {
     //Definition adapter variables
-    private ArrayList<Places> itemList;
+    private ArrayList<Categories> itemList;
     Context context;
     SQLiteDatabase database;
     DatabaseHelper databaseHelper;
 
     // Constructor
-    public MyFavAdapter(ArrayList<Places> placeList, Context context) {
+    public MyFavAdapter(ArrayList<Categories> placeList, Context context) {
         this.itemList = placeList;
         this.context = context;
     }
@@ -83,7 +70,7 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
 
     @Override   //Binding data to UI
     public void onBindViewHolder(@NonNull MyFavAdapter.CardviewPlaceHolder holder, int position) {
-        Places item = itemList.get(position);
+        Categories item = itemList.get(position);
         holder.isim.setText(item.getName());
         holder.img.setImageResource(context.getResources()
                 .getIdentifier(item.getImage(), "drawable", context.getPackageName()));

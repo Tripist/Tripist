@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".controller.navigation.MyFavouritesFragment" >
+    tools:context=".navigation.MyFavouritesFragment" >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar3"

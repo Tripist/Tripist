@@ -5,9 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
-import com.example.tripist.adapters.MyFavAdapter;
+import com.example.tripist.models.Categories;
 import com.example.tripist.models.Foods;
-import com.example.tripist.models.Places;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -15,18 +14,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-import static com.example.tripist.controller.navigation.SettingsFragment.appLanguage;
-import static com.example.tripist.database.LocalizationHelper.EnLanguage;
-import static com.example.tripist.database.LocalizationHelper.FoodsApp_language;
-import static com.example.tripist.database.LocalizationHelper.MyLocApp_language;
-import static com.example.tripist.database.LocalizationHelper.app_language;
+import static com.example.tripist.controller.LocalizationController.EnLanguage;
+import static com.example.tripist.controller.LocalizationController.FoodsApp_language;
+import static com.example.tripist.controller.LocalizationController.app_language;
 
 public class KategorieDao {
+    SQLiteDatabase database;
+    ArrayList<Categories> lstPlaces;
     //Adding data to arraylist from database
-    public ArrayList<Places> Mylocations(DatabaseHelper databaseHelper) {
-        ArrayList<Places> lstPlaces = new ArrayList<>();
+
+    public ArrayList<Categories> MylocationsList(DatabaseHelper databaseHelper) {
+        lstPlaces = new ArrayList<>();
         lstPlaces.clear();
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
         int nameIx = app_language();
@@ -42,7 +42,7 @@ public class KategorieDao {
             Double latitude = Double.parseDouble(latitudeFromDatabase);
             Double longitude = Double.parseDouble(longitudeFromDatabase);
 
-            Places place = new Places(nameFromDatabase, latitude, longitude);
+            Categories place = new Categories(nameFromDatabase, latitude, longitude);
 
 
             lstPlaces.add(place);
@@ -53,43 +53,11 @@ public class KategorieDao {
         return lstPlaces;
     }
 
-    public ArrayList<Places> Historical_Places(DatabaseHelper databaseHelper) {
 
-        ArrayList<Places> lstPlaces = new ArrayList<>();
+    public ArrayList<Categories> KategorieList(DatabaseHelper databaseHelper, String tablename) {
+        lstPlaces = new ArrayList<>();
         lstPlaces.clear();
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM historical_places", null);
-
-        int nameIx = app_language();
-        int latitudeIx = cursor.getColumnIndex("latitude");
-        int longitudeIx = cursor.getColumnIndex("longitude");
-        int imageIX = cursor.getColumnIndex("image");
-
-        while (cursor.moveToNext()) {
-
-            String nameFromDatabase = cursor.getString(nameIx);
-            String latitudeFromDatabase = cursor.getString(latitudeIx);
-            String longitudeFromDatabase = cursor.getString(longitudeIx);
-            String image = cursor.getString(imageIX);
-
-            Double latitude = Double.parseDouble(latitudeFromDatabase);
-            Double longitude = Double.parseDouble(longitudeFromDatabase);
-
-            Places place = new Places(nameFromDatabase, latitude, longitude, image);
-
-            lstPlaces.add(place);
-
-        }
-
-        cursor.close();
-        return lstPlaces;
-    }
-
-    public ArrayList<Places> KategorieList(DatabaseHelper databaseHelper, String tablename) {
-
-        ArrayList<Places> lstPlaces = new ArrayList<>();
-        lstPlaces.clear();
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " ", null);
 
         int nameIx = app_language();
@@ -106,7 +74,7 @@ public class KategorieDao {
             Double latitude = Double.parseDouble(latitudeFromDatabase);
             Double longitude = Double.parseDouble(longitudeFromDatabase);
 
-            Places place = new Places(nameFromDatabase, latitude, longitude, image);
+            Categories place = new Categories(nameFromDatabase, latitude, longitude, image);
 
 
             lstPlaces.add(place);
@@ -117,11 +85,11 @@ public class KategorieDao {
         return lstPlaces;
     }
 
-    public ArrayList<Places> MyFavourites(DatabaseHelper databaseHelper) {
+    public ArrayList<Categories> MyFavouritesList(DatabaseHelper databaseHelper) {
 
-        ArrayList<Places> lstPlaces = new ArrayList<>();
+        lstPlaces = new ArrayList<>();
         lstPlaces.clear();
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_favourites", null);
 
         int nameIx = app_language();
@@ -138,7 +106,7 @@ public class KategorieDao {
             Double latitude = Double.parseDouble(latitudeFromDatabase);
             Double longitude = Double.parseDouble(longitudeFromDatabase);
 
-            Places place = new Places(nameFromDatabase, latitude, longitude, image);
+            Categories place = new Categories(nameFromDatabase, latitude, longitude, image);
 
 
             lstPlaces.add(place);
@@ -152,7 +120,7 @@ public class KategorieDao {
     public ArrayList<Foods> FoodsList(DatabaseHelper databaseHelper) {
         ArrayList<Foods> lstPlaces = new ArrayList<>();
         lstPlaces.clear();
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM foods", null);
 
 
@@ -173,7 +141,7 @@ public class KategorieDao {
 
     //Adding home,airport,hotel Location in my location table
     public void addMylocations(DatabaseHelper databaseHelper, String name, Double latitude, Double longitude) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
@@ -186,7 +154,7 @@ public class KategorieDao {
     }
     //Adding others Location in my location table
     public void addMylocationsOthers(DatabaseHelper databaseHelper, String name, Double latitude, Double longitude) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
 
@@ -202,7 +170,7 @@ public class KategorieDao {
     public void addMarker(DatabaseHelper databaseHelper, GoogleMap mMap, String tablename) {
 
         mMap.clear();
-        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " ", null);
 
         int nameIx = app_language();
@@ -225,7 +193,7 @@ public class KategorieDao {
     //Adding a marker to the map of my locations page
     public void add_MyLocMarker(DatabaseHelper databaseHelper, GoogleMap mMap) {
 
-        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
         int nameIx = app_language();
@@ -249,23 +217,23 @@ public class KategorieDao {
 
     // //delete place in database table
     public void deletePlace(DatabaseHelper databaseHelper, String name) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         if (EnLanguage()) {
             //if the application language is English, remove the data from the "name" column
-            db.delete("my_locations", "name=?", new String[]{name});
+            database.delete("my_locations", "name=?", new String[]{name});
         } else {
             //if the application language is not English(Turkish), remove the data from the "isim" column
-            db.delete("my_locations", "isim=?", new String[]{name});
+            database.delete("my_locations", "isim=?", new String[]{name});
         }
 
-        db.close();
+        database.close();
 
     }
 
     //Update place in database table
     public void updatePlace(DatabaseHelper databaseHelper, String name, String newName) {
         String newNamee = newName.substring(0, 1).toUpperCase() + newName.substring(1);
-        SQLiteDatabase dbx = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         //if the application language is English
@@ -273,15 +241,15 @@ public class KategorieDao {
         //if the application language is Turkish
         values.put("isim", newNamee);
 
-        dbx.update("my_locations", values, "name=?", new String[]{name});
-        dbx.close();
+        database.update("my_locations", values, "name=?", new String[]{name});
+        database.close();
 
     }
 
     //fav function
     public void fav(DatabaseHelper databaseHelper, String name, String tablename) {
 
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         if (EnLanguage()) {
             Cursor cursor = database.rawQuery("SELECT * FROM " + tablename + " where name=?", new String[]{name});
@@ -336,7 +304,7 @@ public class KategorieDao {
     //fav function for foods
     public void foodFav(DatabaseHelper databaseHelper, String name, String tablename) {
 
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         if (EnLanguage()) {
@@ -387,22 +355,22 @@ public class KategorieDao {
 
     //remove from favorites
     public void unfav(DatabaseHelper databaseHelper, String name) {
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
 
         if (EnLanguage()) {
             //if the application language is English, remove the data from the "name" column
-            db.delete("my_favourites", "name=?", new String[]{name});
+            database.delete("my_favourites", "name=?", new String[]{name});
         } else {
             //If the application language is not English (Turkish), remove the data from the "isim" column
-            db.delete("my_favourites", "isim=?", new String[]{name});
+            database.delete("my_favourites", "isim=?", new String[]{name});
         }
 
-        db.close();
+        database.close();
     }
 
     //Checking the searched data in my favourites table
     public boolean DataExists(DatabaseHelper databaseHelper, String fieldValue) {
-        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        database = databaseHelper.getReadableDatabase();
         if (EnLanguage()) {
             //if the application language is English, get the data from the "name" column
             Cursor cursor = database.rawQuery("SELECT * FROM my_favourites where name=?", new String[]{fieldValue});
@@ -434,7 +402,7 @@ public class KategorieDao {
 
     //Checking the searched data in my locations table
     public boolean MyLocationsDataExists(DatabaseHelper databaseHelper, String fieldValue) {
-        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        database = databaseHelper.getReadableDatabase();
         if (EnLanguage()) {
             //if the application language is English, get the data from the "name" column
             Cursor cursor = database.rawQuery("SELECT * FROM my_locations where name=?", new String[]{fieldValue});
@@ -466,9 +434,9 @@ public class KategorieDao {
     }
 
     //refresh the my_locations table in database
-    public void refreshTable(DatabaseHelper databaseHelper, ArrayList<Places> mList) {
+    public void refreshTable(DatabaseHelper databaseHelper, ArrayList<Categories> mList) {
         mList.clear();
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM my_locations", null);
 
         int nameIx = app_language();
@@ -484,7 +452,7 @@ public class KategorieDao {
             Double latitude = Double.parseDouble(latitudeFromDatabase);
             Double longitude = Double.parseDouble(longitudeFromDatabase);
 
-            Places place = new Places(nameFromDatabase, latitude, longitude);
+            Categories place = new Categories(nameFromDatabase, latitude, longitude);
 
 
             mList.add(place);
@@ -495,7 +463,7 @@ public class KategorieDao {
 
     /// Add data to database
     public void add_religions(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO religions(name,latitude,longitude,image,isim) VALUES ('Suleymaniye Mosque', '41.016177', '28.964153','suleymaniyemin','Süleymaniye Camii')," +
                 "('Blue Mosque', '41.005321', '28.976725','sultanahmet','Sultanahmet Camii'),('Eyüp Sultan Mosque', '41.048080','28.933879','eyupsultanmosque','Eyüp Sultan Camii')," +
                 "('Corlulu Ali Pasa Medresesi', '41.008986', '28.968498','corlulualipasamedresesi','Corlulu Ali Pasa Medresesi')," +
@@ -512,7 +480,7 @@ public class KategorieDao {
     }
 
     public void add_parks(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO parks_gardens(name,latitude,longitude,image,isim) VALUES ('Yıldız Park', '41.049273', '29.015274','yildizpark','Yıldız Parkı')," +
                 "('Emirgan Park', '41.108846', '29.053083','emirgankorusu','Emirgan Parkı')," +
                 "('Gulhane Park', '41.013328', '28.981384','gulhanepark','Gülhane Parkı'),('Şile Saklıgöl', '41.1194696', '29.591484', 'sakligol','Şile Saklıgöl')," +
@@ -531,7 +499,7 @@ public class KategorieDao {
 
 
     public void add_bazaarmarkets(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO bazaar_markets(name,latitude,longitude,image,isim) VALUES ('Spice Bazaar', '41.016536', '28.970594','spicebazaar','Mısır Çarşısı')," +
                 "('Eminönü Bazaar', '41.018297', '28.970953','eminonubazaar','Eminönü Çarşısı'),('Grand Bazaar', '41.010673', '28.968063','grandbazaar','Kapalı Çarşı')," +
                 "('Bakirkoy Bit Pazarı Ve Sanatkarlar Çarşısı', '40.979889', '28.874933','bakirkoy_bitpazari','Bakirkoy Bit Pazarı Ve Sanatkarlar Çarşısı')," +
@@ -546,7 +514,7 @@ public class KategorieDao {
     }
 
     public void add_historicalplaces(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO historical_places (name, latitude, longitude,image,isim) VALUES ('Hagia Sophia Mosque' , '41.008587', '28.980170','ayasofya','Ayasofya Camii')," +
                 "('Beylerbeyi Palace', '41.042673', '29.039887','beylerbeyimin','Beylerbeyi Sarayı'),('Galata Tower', '41.025676', '28.974129','galatamin','Galata Kulesi')," +
                 "('Hidiv Kasrı', '41.104619', '29.075520','hidivmin','Hidiv Kasrı'),('Dolmabahce Palace', '41.039168', '29.000454','dolmabahcemin','Dolmabahçe Sarayı')," +
@@ -569,7 +537,7 @@ public class KategorieDao {
     }
 
     public void add_islandsandbeachs(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO island_beaches (name, latitude, longitude,image,isim) VALUES ('Büyükada', '40.856003', '29.119722','buyukada','Büyükada')," +
                 "('Heybeliada' ,'40.873304', '29.089633','heybeliada','Heybeliada'),('Kınalıada', '40.909127', '29.053049','kinaliada','Kınalıada')," +
                 "('Sedef Island', '40.850309', '29.146068','sedefisland','Sedef Adası'),('Burgaz Island', '40.879934', '29.068489','burgazada','Burgazada')," +
@@ -585,7 +553,7 @@ public class KategorieDao {
     }
 
     public void add_museums(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO museums(name,latitude,longitude,image,isim)  VALUES ('Tekfur Palace Museum', '41.033806', '28.940487','tekfurpalacemuseum','Tekfur Sarayı Müzesi')," +
                 "('Rahmi Koc Museum', '41.041822', '28.949923','rahmikocmuseum','Rahmi Koç Müzesi'),('Topkapi Palace Museum', '41.011681', '28.983690','topkapimuseum','Topkapi Sarayı Müzesi')," +
                 "('Istanbul Modern Art Museum', '41.030076', '28.973875','modern','Istanbul Modern Sanat Müzesi'),('Basilica Cistern', '41.008538', '28.978500','yerebatan_sarnici','Yerebatan Sarnıcı')," +
@@ -604,7 +572,7 @@ public class KategorieDao {
     }
 
     public void add_squares(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO squares (name, latitude, longitude,image,isim) VALUES ('Taksim Square', '41.036991', '28.985081','taksim','Taksim Meydanı')," +
                 "('Kadıköy Square', '40.992127', '29.023861','kadikoy_square','Kadıköy Meydanı'),('Sultanahmet Square', '41.006661', '28.976174','sultanahmet_square','Sultanahmet Meydanı')," +
                 "('Eminönü Square', '41.017447', '28.970301','eminonu','Eminönü Meydanı')," + "('Beyazıt Square', '41.010470' , '28.963896','beyazitsquare','Beyazıt Meydanı')," +
@@ -618,7 +586,7 @@ public class KategorieDao {
     }
 
     public void add_food(DatabaseHelper databaseHelper) {
-        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
         String toCompile = "INSERT INTO foods(name,image,isim)  VALUES ('Fish and Bread','fishandbread','Balık Ekmek'),('Acıbadem Cookies','acibademcookie','Acıbadem Kurabiyesi')," +
                 "('Black Sea Pita','blackseapita','Karadeniz Pidesi'),('Kanlıca Yogurt','kanlicayogurt','Kanlıca Yoğurt'),('Coupe Grillée','kupgriye','Kup Griye'),('Stuffed Mussels','stuffedmussels','Midye dolma'),('Ortaköy Baked Potato','ortakoybakedpotato','Ortaköy Kumpir')," +
                 "('Wet Burger','wetburger','Islak Hamburger'),('Doner','doner','Döner'),('Tantuni','tantuni','Tantuni'),('Waffle','waffle','Waffle'),('Borek','borek','Börek'),('Ottoman Paste','macun','Osmanlı Macun'),('Turkish Bagel','simit','Simit')," +

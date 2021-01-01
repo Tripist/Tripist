@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.models.Places;
+import com.example.tripist.models.Categories;
 import com.example.tripist.R;
 
 import java.util.ArrayList;
@@ -25,13 +25,13 @@ import java.util.ArrayList;
 public class My_LocationsAdapter extends RecyclerView.Adapter<My_LocationsAdapter.MyViewHolder> {
     //Definition adapter variables
     Context mContext;
-    ArrayList<Places> mList;
+    ArrayList<Categories> mList;
     Dialog myDialog, dialog_edit, delete_alert;
     SQLiteDatabase database;
     DatabaseHelper databaseHelper;
 
     // Constructor
-    public My_LocationsAdapter(@NonNull Context mContext, ArrayList<Places> mList, SQLiteDatabase database) {
+    public My_LocationsAdapter(@NonNull Context mContext, ArrayList<Categories> mList, SQLiteDatabase database) {
         this.mContext = mContext;
         this.mList = mList;
         this.database = database;

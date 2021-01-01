@@ -20,18 +20,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.models.Places;
+import com.example.tripist.models.Categories;
 
 import java.util.ArrayList;
 
 
 public class SquaresAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder> {
         //Definition adapter variables
-        private ArrayList<Places> itemList;
+        private ArrayList<Categories> itemList;
         Context context;
         DatabaseHelper databaseHelper;
         // Constructor
-        public SquaresAdapter(ArrayList<Places> placeList, Context context) {
+        public SquaresAdapter(ArrayList<Categories> placeList, Context context) {
                 this.itemList = placeList;
                 this.context = context;
             }
@@ -94,7 +94,7 @@ public class SquaresAdapter extends RecyclerView.Adapter<com.example.tripist.ada
          //Binding data to UI
         @Override
         public void onBindViewHolder(@NonNull com.example.tripist.adapters.SquaresAdapter.CardviewPlaceHolder holder, int position) {
-            Places item = itemList.get(position);
+            Categories item = itemList.get(position);
             holder.isim.setText(item.getName());
             holder.img.setImageResource(context.getResources()
                     .getIdentifier(item.getImage(), "drawable", context.getPackageName()));

@@ -8,9 +8,8 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.tripist.controller.BottomNav;
-import com.example.tripist.controller.categories.MuseumsCategory;
-import com.example.tripist.controller.categories.ParksCategory;
+import com.example.tripist.navigation.BottomNavigationActivity;
+import com.example.tripist.categories.Museums_Category;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -21,9 +20,9 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class GoogleIconTest {
-    public ActivityTestRule<MuseumsCategory> mActivitiyTestRule = new ActivityTestRule<>(MuseumsCategory.class);
+    public ActivityTestRule<Museums_Category> mActivitiyTestRule = new ActivityTestRule<>(Museums_Category.class);
 
-    public IntentsTestRule<BottomNav> intentsTestRule = new IntentsTestRule<>(BottomNav.class);
+    public IntentsTestRule<BottomNavigationActivity> intentsTestRule = new IntentsTestRule<>(BottomNavigationActivity.class);
 
 
     @Rule

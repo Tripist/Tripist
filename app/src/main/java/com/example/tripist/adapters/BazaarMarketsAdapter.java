@@ -3,7 +3,6 @@ package com.example.tripist.adapters;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,20 +20,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.models.BazaarMarkets;
-import com.example.tripist.models.Places;
+import com.example.tripist.models.Categories;
 
 import java.util.ArrayList;
 
 
 public class BazaarMarketsAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.BazaarMarketsAdapter.CardviewPlaceHolder> {
         //Definition adapter variables
-        private ArrayList<Places> itemList;
+        private ArrayList<Categories> itemList;
         Context context;
         DatabaseHelper databaseHelper;
 
         // Constructor
-        public BazaarMarketsAdapter(ArrayList<Places> placeList, Context context) {
+        public BazaarMarketsAdapter(ArrayList<Categories> placeList, Context context) {
             this.itemList = placeList;
             this.context = context;
         }
@@ -97,7 +95,7 @@ public class BazaarMarketsAdapter extends RecyclerView.Adapter<com.example.tripi
         //Binding data to UI
         @Override
         public void onBindViewHolder(@NonNull com.example.tripist.adapters.BazaarMarketsAdapter.CardviewPlaceHolder holder, int position) {
-           Places item = itemList.get(position);
+           Categories item = itemList.get(position);
             holder.isim.setText(item.getName());
             holder.img.setImageResource(context.getResources()
                     .getIdentifier(item.getImage(), "drawable", context.getPackageName()));
