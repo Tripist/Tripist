@@ -10,17 +10,13 @@ import androidx.test.espresso.action.GeneralClickAction;
 import androidx.test.espresso.action.Press;
 import androidx.test.espresso.action.Tap;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
-import androidx.test.rule.ActivityTestRule;
 
-import com.example.tripist.controller.BottomNav;
-import com.example.tripist.controller.categories.FoodsCategory;
+import com.example.tripist.navigation.BottomNavigationActivity;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.RuleChain;
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -34,7 +30,7 @@ import static org.hamcrest.Matchers.allOf;
 public class MyLocationTest {
 
     @Rule
-    public IntentsTestRule<BottomNav> intentsTestRule = new IntentsTestRule<>(BottomNav.class);
+    public IntentsTestRule<BottomNavigationActivity> intentsTestRule = new IntentsTestRule<>(BottomNavigationActivity.class);
 
     @Test
     public void MyLocationTest() {

@@ -20,19 +20,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.models.Places;
+import com.example.tripist.models.Categories;
 
 import java.util.ArrayList;
 
 
 public class HistoricalPlacesAdapter extends RecyclerView.Adapter<com.example.tripist.adapters.HistoricalPlacesAdapter.CardviewPlaceHolder> {
         //Definition adapter variables
-        private ArrayList<Places> itemList;
+        private ArrayList<Categories> itemList;
         Context context;
         DatabaseHelper databaseHelper;
 
         // Constructor
-        public HistoricalPlacesAdapter(ArrayList<Places> placeList, Context context) {
+        public HistoricalPlacesAdapter(ArrayList<Categories> placeList, Context context) {
             this.itemList = placeList;
             this.context = context;
         }
@@ -95,7 +95,7 @@ public class HistoricalPlacesAdapter extends RecyclerView.Adapter<com.example.tr
         //Binding data to UI
         @Override
         public void onBindViewHolder(@NonNull com.example.tripist.adapters.HistoricalPlacesAdapter.CardviewPlaceHolder holder, int position) {
-            Places item = itemList.get(position);
+            Categories item = itemList.get(position);
             holder.isim.setText(item.getName());
             holder.img.setImageResource(context.getResources()
                     .getIdentifier(item.getImage(), "drawable", context.getPackageName()));

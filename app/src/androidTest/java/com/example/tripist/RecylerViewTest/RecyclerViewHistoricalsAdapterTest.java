@@ -4,26 +4,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
-import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
 
 import com.example.tripist.R;
-import com.example.tripist.adapters.MuseumsAdapter;
-import com.example.tripist.controller.BottomNav;
-import com.example.tripist.controller.OnBoarding;
-import com.example.tripist.controller.SplashScreen;
-import com.example.tripist.controller.categories.Bazaar_MarketsCategory;
-import com.example.tripist.controller.categories.FoodsCategory;
-import com.example.tripist.controller.categories.HistoricalPlacesCategory;
-import com.example.tripist.controller.categories.Island_BeachesCategory;
-import com.example.tripist.controller.categories.MuseumsCategory;
-import com.example.tripist.controller.categories.ParksCategory;
-import com.example.tripist.controller.categories.ReligionsCategory;
-import com.example.tripist.controller.categories.SquaresCategory;
+import com.example.tripist.navigation.BottomNavigationActivity;
+import com.example.tripist.categories.HistoricalPlaces_Category;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
@@ -39,9 +27,9 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 public class RecyclerViewHistoricalsAdapterTest {
 
 
-    public ActivityTestRule<HistoricalPlacesCategory> mActivitiyTestRule = new ActivityTestRule<>(HistoricalPlacesCategory.class);
+    public ActivityTestRule<HistoricalPlaces_Category> mActivitiyTestRule = new ActivityTestRule<>(HistoricalPlaces_Category.class);
 
-    public IntentsTestRule<BottomNav> intentsTestRule = new IntentsTestRule<>(BottomNav.class);
+    public IntentsTestRule<BottomNavigationActivity> intentsTestRule = new IntentsTestRule<>(BottomNavigationActivity.class);
 
     @Rule
     public RuleChain chain = RuleChain
@@ -51,7 +39,7 @@ public class RecyclerViewHistoricalsAdapterTest {
     @Test
     public void recyclerScrollandItemTestHistoricals(){
         //it checks, during scrolling; whether error occurs or not
-        //Historical Places
+        //Historical Categories
 
         onView(withId(R.id.historical_button)).perform(click());
         RecyclerView recyclerView = mActivitiyTestRule.getActivity().findViewById(R.id.historical_rv);

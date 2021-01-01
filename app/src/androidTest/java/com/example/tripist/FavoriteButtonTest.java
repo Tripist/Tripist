@@ -1,7 +1,5 @@
 package com.example.tripist;
 
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteStatement;
 import android.os.SystemClock;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,28 +8,23 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.intent.rule.IntentsTestRule;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.tripist.controller.BottomNav;
-import com.example.tripist.controller.categories.FoodsCategory;
-import com.example.tripist.controller.categories.MuseumsCategory;
-import com.example.tripist.controller.categories.ParksCategory;
-import com.example.tripist.database.DatabaseHelper;
+import com.example.tripist.navigation.BottomNavigationActivity;
+import com.example.tripist.categories.Foods_Category;
 
-import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.RuleChain;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 public class FavoriteButtonTest {
 
-    public ActivityTestRule<FoodsCategory> mActivitiyTestRule = new ActivityTestRule<>(FoodsCategory.class);
+    public ActivityTestRule<Foods_Category> mActivitiyTestRule = new ActivityTestRule<>(Foods_Category.class);
 
-    public IntentsTestRule<BottomNav> intentsTestRule = new IntentsTestRule<>(BottomNav.class);
+    public IntentsTestRule<BottomNavigationActivity> intentsTestRule = new IntentsTestRule<>(BottomNavigationActivity.class);
 
 
     @Rule

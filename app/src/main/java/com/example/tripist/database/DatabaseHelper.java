@@ -1,23 +1,14 @@
 package com.example.tripist.database;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteStatement;
-
-import com.example.tripist.models.Places;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class    DatabaseHelper extends SQLiteOpenHelper {
 
     // Constructor
     public DatabaseHelper(Context context) {
-        super(context,"Places", null, 1);
+        super(context,"Categories", null, 1);
     }
 
 

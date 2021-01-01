@@ -7,23 +7,23 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.tripist.controller.navigation.HomeFragment"
+        android:name="com.example.tripist.navigation.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_myfavourites"
-        android:name="com.example.tripist.controller.navigation.MyFavouritesFragment"
+        android:name="com.example.tripist.navigation.MyFavouritesFragment"
         android:label="@string/title_myfavourites"
         tools:layout="@layout/fragment_myfavourites" />
 
     <fragment
         android:id="@+id/navigation_mylocation"
-        android:name="com.example.tripist.controller.navigation.MyLocationsFragment"
+        android:name="com.example.tripist.navigation.MyLocationsFragment"
         android:label="@string/title_mylocations"
         tools:layout="@layout/fragment_mylocations" />
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.example.tripist.controller.navigation.SettingsFragment"
+        android:name="com.example.tripist.navigation.SettingsFragment"
         android:label="SettingsFragment" />
 </navigation>

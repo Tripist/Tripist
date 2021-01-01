@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:id="@+id/butunsf"
-    tools:context=".controller.navigation.HomeFragment">
+    tools:context=".navigation.HomeFragment">
 
     <ImageView
         android:id="@+id/imageView"
