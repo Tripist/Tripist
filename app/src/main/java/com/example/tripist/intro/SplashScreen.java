@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.tripist.R;
+import com.example.tripist.R.anim;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.navigation.BottomNavigationActivity;
@@ -22,7 +23,7 @@ import static com.example.tripist.controller.LocalizationController.loadLocale;
 
 public class SplashScreen extends AppCompatActivity {
     //Time to open the homepage
-    private static int SPLASH_TIMER = 5000;
+    private static int SPLASH_TIMER = 2500;
     //Variables defined
     SQLiteDatabase database;
     Animation topAnim, bottomAnim;
@@ -40,8 +41,8 @@ public class SplashScreen extends AppCompatActivity {
         getSupportActionBar().hide();
 
         //Animations
-        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        topAnim = AnimationUtils.loadAnimation(this, anim.top_anim);
+        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
 
 
         //Hooks

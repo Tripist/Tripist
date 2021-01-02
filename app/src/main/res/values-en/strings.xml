@@ -52,6 +52,7 @@
     <string name="myairport">My Airport</string>
     <string name="myhotel">My Hotel</string>
     <string name="others">Others</string>
+    <string name="delete">Delete</string>
     <!--Onboarding -->
     <string name="second_slide_titel">Find Destination</string>
     <string name="third_slide_titel">Get Information</string>
