@@ -39,6 +39,7 @@
     <string name="delete_question">Silmek istediğinize emin misiniz?</string>
     <string name="cancel">İptal</string>
     <string name="dil_secenegi">Dil Seçiniz</string>
+    <string name="delete">Sil</string>
 
     <string name="update_toast">Başarıyla güncellendi</string>
     <string name="blankname">İsim boş olamaz</string>

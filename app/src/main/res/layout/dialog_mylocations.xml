@@ -7,8 +7,8 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
-        android:layout_width="300dp"
-        android:layout_height="320dp"
+        android:layout_width="320dp"
+        android:layout_height="340dp"
         android:background="@drawable/alert_myloc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,9 +37,9 @@
 
             <Button
                 android:id="@+id/item_delete_button"
-                android:layout_width="130dp"
+                android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="28dp"
                 android:background="@drawable/radius"
                 android:drawableLeft="@drawable/ic_baseline_delete_24"
@@ -49,18 +49,18 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="26dp"
                 android:singleLine="true"
-                android:text="Delete"
+                android:text="@string/delete"
                 android:textAllCaps="false"
                 android:textColor="@color/colorwhite"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
                 android:id="@+id/item_update_button"
-                android:layout_width="130dp"
+                android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginBottom="28dp"
                 android:background="@drawable/radius"
                 android:drawableLeft="@drawable/ic_baseline_edit_24"
@@ -73,7 +73,7 @@
                 android:text="@string/edit"
                 android:textAllCaps="false"
                 android:textColor="@color/colorwhite"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 

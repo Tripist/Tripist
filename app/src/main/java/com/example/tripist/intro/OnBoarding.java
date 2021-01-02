@@ -114,7 +114,7 @@ public class OnBoarding extends AppCompatActivity {
             skip.setVisibility(View.VISIBLE);
         }
         else{
-            animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_animation);
+            animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
             letsGetStarted.setVisibility(View.VISIBLE);
             next.setVisibility(View.INVISIBLE);
             skip.setVisibility(View.INVISIBLE);
