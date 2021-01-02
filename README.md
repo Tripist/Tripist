@@ -7,12 +7,13 @@ Eine mobile Reiseführer-App für Istanbul
 Bevor wir uns auf eine Reise begeben, gibt es hierzu viele Websites, auf denen wir Informationen im Internet hierzu finden können, aber es erfordert viel Recherche. Eine Mobile Anwendung, mit der wir diese Informationen einfacher und vollständiger erhalten können, ist für alle nützlicher. Ein solcher Reiseführer ist in einer Stadt wie Istanbul, die überfüllt ist und viele Touristen anzieht, unverzichtbar. Nicht nur die Touristen, sondern auch die in Istanbul lebenden Menschen können aufgrund der geschäftigen Arbeitszeiten keine Zeit finden, genügend Nachforschungen anzustellen. Wenn wir daran denken, einen bestimmten Stadtteil zu besuchen, hielten wir es daher für sehr vorteilhaft, dass es sehr nützlich ist, eine Mobile Anwendung zu haben, in der wir unsere Zeit gut verbringen, die uns darüber informiert, was wir dort tun sollen.
 
 ## Projektmanagement
-| Abteilung | Abteilungsleiter |
-| --- | --- |
-| Frontend | Büşra Sarı **(Teamsprecher)** |
-| Backend | Tuğba Öğünçmert, Kemal Berke Ak |
-| Dokumentation | Şevval Arslan |
-| Tester | Asım Tatar |
+|Mitglieder |
+| --- |
+|Büşra Sarı **(Teamsprecher)** |
+|Tuğba Öğünçmert| 
+|Kemal Berke Ak|
+|Şevval Arslan|
+|Asım Tatar|
 
 Die Planung der Projektaufgaben wird in Bezug auf die agile Entwicklungmethodik "Scrum" gemacht.
 Bei der Sprintplanung wurden die Anforderungen an Meilensteine ​​zugrunde gelegt. Die detaillierte Planung befindet sich in der Datei INF303-[Tripist]-Sprint-Plan. Unsere Sprint Plan enthält Informationen wie die Aufgaben, die während des gesamten Projekts ausgeführt werden müssen, die Daten, an denen diese Aufgaben abgeschlossen sind, und die verantwortliche Person.
