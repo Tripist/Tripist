@@ -593,7 +593,7 @@ public class KategorieDao {
                 "('Pickle Juice','picklejuice','Turşu Suyu'),('Iskender','iskender','İskender'),('Kokoreç','kokorec','Kokoreç'),('Chicken and Rice','chickenandrice','Tavuk Pilav')," +
                 "('Dürüm','durum','Dürüm'),('Halka Tatlısı','halka','Halka Tatlısı'),('Baklava','baklava','Baklava'),('Corn','corn','Mısır'),('Chesnuts','kestane','Kestane')," +
                 "('Boza','boza','Boza'),('Köfte Sucuk Ekmek','koftesucukekmek','Köfte Sucuk Ekmek'),('Turkish Breakfast','turkishbreakfast','Türk Kahvaltısı'),('Çiğ Köfte','cigkofte','Çiğ Köfte')," +
-                "('Turkish Puddings','pudding','Türk Pudingi'),('Turkish Coffee','turkishcoffee','Türk Kahvesi'),('Turkish Ice Cream','dondurma','Dondurma'),('Turnip Juice','salgam','Şalgam'),('Ayran','ayran','Ayran')," +
+                "('Turkish Puddings','pudding','Türk Sütlü Tatlıları'),('Turkish Coffee','turkishcoffee','Türk Kahvesi'),('Turkish Ice Cream','dondurma','Dondurma'),('Turnip Juice','salgam','Şalgam suyu'),('Ayran','ayran','Ayran')," +
                 "('Turkish Delight','lokum','Türk Lokumu'),('Rakı','raki','Rakı')";
         SQLiteStatement sqLiteStatement = database.compileStatement(toCompile);
         String sil = "DELETE FROM foods Where id Not in (SELECT MIN(id) from foods Group by name)";
