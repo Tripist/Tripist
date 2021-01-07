@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         databaseHelper = new DatabaseHelper(this);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
@@ -64,7 +64,7 @@ public class SplashScreen extends AppCompatActivity {
                 onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
                 boolean isFirstTime = onBoardingScreen.getBoolean("firstTime", true);
 
-                if(isFirstTime){
+                if (isFirstTime) {
 
                     SharedPreferences.Editor editor = onBoardingScreen.edit();
                     editor.putBoolean("firstTime", false);
@@ -72,8 +72,7 @@ public class SplashScreen extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), OnBoarding.class);
                     startActivity(intent);
                     finish();
-                }
-                else{
+                } else {
                     Intent intent = new Intent(getApplicationContext(), BottomNavigationActivity.class);
                     startActivity(intent);
                     finish();
@@ -83,8 +82,8 @@ public class SplashScreen extends AppCompatActivity {
             }
         }, SPLASH_TIMER);
 
-       loadLocale(this);
-       // TABLE DATA
+        loadLocale(this);
+        // TABLE DATA
         new KategorieDao().add_religions(databaseHelper);
         new KategorieDao().add_bazaarmarkets(databaseHelper);
         new KategorieDao().add_historicalplaces(databaseHelper);
@@ -96,7 +95,6 @@ public class SplashScreen extends AppCompatActivity {
 
 
     }
-
 
 
 }

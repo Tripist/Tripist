@@ -1,11 +1,6 @@
 package com.example.tripist.maps;
 
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -16,10 +11,15 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
+import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Categories;
-import com.example.tripist.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -27,12 +27,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MyFavourites_Map extends FragmentActivity implements OnMapReadyCallback  {
+public class MyFavourites_Map extends FragmentActivity implements OnMapReadyCallback {
     //Definition Variables
-    private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
     DatabaseHelper databaseHelper;
+    private GoogleMap mMap;
 
     @Override   //First Creation
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +50,8 @@ public class MyFavourites_Map extends FragmentActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         String my_favourites = "my_favourites";
-        new KategorieDao().addMarker(databaseHelper,mMap,my_favourites);
-        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
+        new KategorieDao().addMarker(databaseHelper, mMap, my_favourites);
+        new KategorieDao().add_MyLocMarker(databaseHelper, mMap);
 
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
@@ -93,42 +93,41 @@ public class MyFavourites_Map extends FragmentActivity implements OnMapReadyCall
         }
     }
 
-        // checking according to permission
+    // checking according to permission
 
-        @Override
-        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-            if (grantResults.length > 0) {
-                if (requestCode == 100) {
-                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (grantResults.length > 0) {
+            if (requestCode == 100) {
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
-                        Intent intent = getIntent();
-                        String info = intent.getStringExtra("info");
+                    Intent intent = getIntent();
+                    String info = intent.getStringExtra("info");
 
-                        if (info.matches("new")) {
-                            Location last_location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    if (info.matches("new")) {
+                        Location last_location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                            if (last_location != null) {
+                        if (last_location != null) {
 
-                                LatLng user_last_location = new LatLng(last_location.getLatitude(), last_location.getLongitude());
-                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 15));
+                            LatLng user_last_location = new LatLng(last_location.getLatitude(), last_location.getLongitude());
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(user_last_location, 15));
 
-                            } else {
+                        } else {
 
-                                Categories place = (Categories) intent.getSerializableExtra("place");
-                                LatLng latLng = new LatLng(place.latitude, place.longitude);
-                                String place_Name = place.name;
-                                mMap.addMarker(new MarkerOptions().position(latLng).title(place_Name));
-                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-                            }
-
+                            Categories place = (Categories) intent.getSerializableExtra("place");
+                            LatLng latLng = new LatLng(place.latitude, place.longitude);
+                            String place_Name = place.name;
+                            mMap.addMarker(new MarkerOptions().position(latLng).title(place_Name));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
                         }
+
                     }
                 }
             }
         }
-
+    }
 
 
 }

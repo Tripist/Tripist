@@ -4,11 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class    DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Constructor
     public DatabaseHelper(Context context) {
-        super(context,"Categories", null, 1);
+        super(context, "Categories", null, 1);
     }
 
 

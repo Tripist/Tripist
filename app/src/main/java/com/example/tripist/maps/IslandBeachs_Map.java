@@ -1,10 +1,5 @@
 package com.example.tripist.maps;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -15,10 +10,15 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
+import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Categories;
-import com.example.tripist.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,12 +26,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class IslandBeachs_Map extends FragmentActivity implements OnMapReadyCallback  {
+public class IslandBeachs_Map extends FragmentActivity implements OnMapReadyCallback {
     //Definition Variables
-    private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
     DatabaseHelper databaseHelper;
+    private GoogleMap mMap;
 
     @Override  //First Creation
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class IslandBeachs_Map extends FragmentActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         String island_beaches = "island_beaches";
-        new KategorieDao().addMarker(databaseHelper,mMap,island_beaches);
-        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
+        new KategorieDao().addMarker(databaseHelper, mMap, island_beaches);
+        new KategorieDao().add_MyLocMarker(databaseHelper, mMap);
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {
@@ -91,7 +91,8 @@ public class IslandBeachs_Map extends FragmentActivity implements OnMapReadyCall
         }
 
     }
-     // checking according to permission
+
+    // checking according to permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -124,7 +125,6 @@ public class IslandBeachs_Map extends FragmentActivity implements OnMapReadyCall
             }
         }
     }
-
 
 
 }

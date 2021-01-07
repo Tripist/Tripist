@@ -27,8 +27,8 @@ import okhttp3.Response;
 
 public class WeatherController {
 
-        //to get weather data for Istanbul
-    public static void weather(final TextView weather_text,final ImageView weather_image,final TextView notification_text,final FragmentActivity activity)  {
+    //to get weather data for Istanbul
+    public static void weather(final TextView weather_text, final ImageView weather_image, final TextView notification_text, final FragmentActivity activity) {
 
 
         OkHttpClient client = new OkHttpClient();
@@ -48,6 +48,7 @@ public class WeatherController {
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
                 }
+
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
 
@@ -67,10 +68,10 @@ public class WeatherController {
 
                         String temps = Math.round(Temperature) + " °C";
 
-                      //  to change the notification message
+                        //  to change the notification message
                         weather_text.setText(temps);
-                        setWeather_image(weather_image, icons,activity);
-                        setNotification_text(notification_text, Temperature, icons,activity);
+                        setWeather_image(weather_image, icons, activity);
+                        setNotification_text(notification_text, Temperature, icons, activity);
                         System.out.println(icons + Temperature);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -83,8 +84,9 @@ public class WeatherController {
 
 
     }
-        // change the imageview according to the weather conditions
-    public static void setWeather_image(final ImageView imageView, final String value,final FragmentActivity context) {
+
+    // change the imageview according to the weather conditions
+    public static void setWeather_image(final ImageView imageView, final String value, final FragmentActivity context) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -152,13 +154,14 @@ public class WeatherController {
             }
         });
     }
-     // Change notification message based on time and weather
-    public static void setNotification_text(final TextView notification_text, final Double Temperature, final String icons,final FragmentActivity activity) {
-       activity.runOnUiThread(new Runnable() {
+
+    // Change notification message based on time and weather
+    public static void setNotification_text(final TextView notification_text, final Double Temperature, final String icons, final FragmentActivity activity) {
+        activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
-                int currentHour = Calendar.getInstance().getTime().getHours() ;
+                int currentHour = Calendar.getInstance().getTime().getHours();
                 switch (icons) {
                     case "01d":
                     case "01n":
@@ -166,24 +169,21 @@ public class WeatherController {
                     case "02n":
                     case "03d":
                     case "03n":
-                        if(currentHour <= 10){
+                        if (currentHour <= 10) {
                             List<String> morning_good = Arrays.asList(activity.getResources().getStringArray(R.array.morning_good));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(morning_good.get(random.nextInt(morning_good.size())));
-                        }
-                        else if (currentHour <= 16){
+                        } else if (currentHour <= 16) {
                             List<String> noon_good = Arrays.asList(activity.getResources().getStringArray(R.array.noon_good));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(noon_good.get(random.nextInt(noon_good.size())));
-                        }
-                        else if (currentHour <= 20){
+                        } else if (currentHour <= 20) {
                             List<String> afternoon_good = Arrays.asList(activity.getResources().getStringArray(R.array.afternoon_good));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(afternoon_good.get(random.nextInt(afternoon_good.size())));
-                        }
-                        else if (currentHour <= 24){
+                        } else if (currentHour <= 24) {
                             List<String> night = Arrays.asList(activity.getResources().getStringArray(R.array.night));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(night.get(random.nextInt(night.size())));
                         }
                         break;
@@ -194,24 +194,21 @@ public class WeatherController {
                     case "11d":
                     case "11n":
 
-                        if(currentHour <= 10){
+                        if (currentHour <= 10) {
                             List<String> morning_good = Arrays.asList(activity.getResources().getStringArray(R.array.morning_rain));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(morning_good.get(random.nextInt(morning_good.size())));
-                        }
-                        else if (currentHour <= 16){
+                        } else if (currentHour <= 16) {
                             List<String> noon_good = Arrays.asList(activity.getResources().getStringArray(R.array.noon_rain));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(noon_good.get(random.nextInt(noon_good.size())));
-                        }
-                        else if (currentHour <= 20){
+                        } else if (currentHour <= 20) {
                             List<String> afternoon_good = Arrays.asList(activity.getResources().getStringArray(R.array.afternoon_rain));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(afternoon_good.get(random.nextInt(afternoon_good.size())));
-                        }
-                        else if (currentHour <= 24){
+                        } else if (currentHour <= 24) {
                             List<String> night = Arrays.asList(activity.getResources().getStringArray(R.array.night));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(night.get(random.nextInt(night.size())));
                         }
                         break;
@@ -221,29 +218,24 @@ public class WeatherController {
                     case "13n":
                     case "50d":
                     case "50n":
-                        if(currentHour <= 10){
+                        if (currentHour <= 10) {
                             List<String> morning_bad = Arrays.asList(activity.getResources().getStringArray(R.array.morning_bad));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(morning_bad.get(random.nextInt(morning_bad.size())));
-                        }
-                        else if (currentHour <= 16){
+                        } else if (currentHour <= 16) {
                             List<String> noon_bad = Arrays.asList(activity.getResources().getStringArray(R.array.noon_bad));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(noon_bad.get(random.nextInt(noon_bad.size())));
-                        }
-                        else if (currentHour <= 20){
+                        } else if (currentHour <= 20) {
                             List<String> afternoon_bad = Arrays.asList(activity.getResources().getStringArray(R.array.afternoon_bad));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(afternoon_bad.get(random.nextInt(afternoon_bad.size())));
-                        }
-                        else if (currentHour <= 24){
+                        } else if (currentHour <= 24) {
                             List<String> night = Arrays.asList(activity.getResources().getStringArray(R.array.night));
-                            Random random =new Random();
+                            Random random = new Random();
                             notification_text.setText(night.get(random.nextInt(night.size())));
                         }
                         break;
-
-
 
 
                 }

@@ -12,19 +12,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.tripist.R;
-import com.example.tripist.intro.OnBoarding;
 import com.example.tripist.controller.LocalizationController;
+import com.example.tripist.intro.OnBoarding;
 
 import java.util.Locale;
 
 import static com.example.tripist.controller.LocalizationController.showChangeLanguageDialog;
 
-public class SettingsFragment  extends Fragment {
+public class SettingsFragment extends Fragment {
     //Definition variables
+    public static String appLanguage = Locale.getDefault().getLanguage();
     Button show_onboarding_button;
     Button button3;
     LocalizationController localizationController;
-    public static String appLanguage = Locale.getDefault().getLanguage();
 
     @Nullable
     @Override   //ui views of components
@@ -43,7 +43,7 @@ public class SettingsFragment  extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showChangeLanguageDialog(v,getActivity());
+                showChangeLanguageDialog(v, getActivity());
             }
         });
 

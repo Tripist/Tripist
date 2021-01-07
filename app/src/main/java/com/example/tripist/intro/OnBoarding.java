@@ -1,8 +1,5 @@
 package com.example.tripist.intro;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -12,6 +9,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.tripist.R;
 import com.example.tripist.adapters.SliderAdapter;
@@ -29,6 +29,50 @@ public class OnBoarding extends AppCompatActivity {
     Button skip;
     Animation animation;
     int currentPos;
+    //Sliding pages
+    ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        //Visibility of buttons
+        @Override
+        public void onPageSelected(int position) {
+            addDots(position);
+            currentPos = position;
+            if (position == 0) {
+                letsGetStarted.setVisibility(View.INVISIBLE);
+                next.setVisibility(View.VISIBLE);
+                skip.setVisibility(View.VISIBLE);
+            } else if (position == 1) {
+                letsGetStarted.setVisibility(View.INVISIBLE);
+                next.setVisibility(View.VISIBLE);
+                skip.setVisibility(View.VISIBLE);
+            } else if (position == 2) {
+                letsGetStarted.setVisibility(View.INVISIBLE);
+                next.setVisibility(View.VISIBLE);
+                skip.setVisibility(View.VISIBLE);
+            } else if (position == 3) {
+                letsGetStarted.setVisibility(View.INVISIBLE);
+                next.setVisibility(View.VISIBLE);
+                skip.setVisibility(View.VISIBLE);
+            } else {
+                animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
+                letsGetStarted.setVisibility(View.VISIBLE);
+                next.setVisibility(View.INVISIBLE);
+                skip.setVisibility(View.INVISIBLE);
+                letsGetStarted.setAnimation(animation);
+            }
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +80,10 @@ public class OnBoarding extends AppCompatActivity {
         getSupportActionBar().hide();
 
         //Hooks
-        viewPager =  findViewById(R.id.slider);
+        viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
         letsGetStarted = (Button) findViewById(R.id.next_button);
-        next = (Button)findViewById(R.id.next_btn);
+        next = (Button) findViewById(R.id.next_btn);
         skip = (Button) findViewById(R.id.skip_button);
 
         //Call Adapter
@@ -50,26 +94,30 @@ public class OnBoarding extends AppCompatActivity {
         addDots(0);
         viewPager.addOnPageChangeListener(changeListener);
     }
+
     //Go to homepage
-    public void skip(View view){
+    public void skip(View view) {
         startActivity(new Intent(getApplicationContext(), BottomNavigationActivity.class));
         finish();
     }
+
     //Go to homepage at the end of Onboarding pages
-    public void letsGetStarted(View view){
+    public void letsGetStarted(View view) {
         startActivity(new Intent(getApplicationContext(), BottomNavigationActivity.class));
     }
+
     //Navigate in Onboardinng pages
-    public void next(View view){
+    public void next(View view) {
         viewPager.setCurrentItem(currentPos + 1);
     }
+
     //indicates which page it is on
-    private void addDots(int position){
+    private void addDots(int position) {
 
         dots = new TextView[5];
         dotsLayout.removeAllViews();
 
-        for(int i=0; i<dots.length; i++){
+        for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(66);
@@ -77,57 +125,11 @@ public class OnBoarding extends AppCompatActivity {
             dotsLayout.addView(dots[i]);
         }
 
-        if(dots.length > 0){
+        if (dots.length > 0) {
             dots[position].setTextColor(getResources().getColor(R.color.colorDots));
         }
 
     }
-    //Sliding pages
-    ViewPager.OnPageChangeListener changeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-        //Visibility of buttons
-        @Override
-        public void onPageSelected(int position) {
-        addDots(position);
-        currentPos = position;
-        if(position == 0){
-            letsGetStarted.setVisibility(View.INVISIBLE);
-            next.setVisibility(View.VISIBLE);
-            skip.setVisibility(View.VISIBLE);
-        }
-        else if(position == 1){
-            letsGetStarted.setVisibility(View.INVISIBLE);
-            next.setVisibility(View.VISIBLE);
-            skip.setVisibility(View.VISIBLE);
-        }
-        else if(position == 2){
-            letsGetStarted.setVisibility(View.INVISIBLE);
-            next.setVisibility(View.VISIBLE);
-            skip.setVisibility(View.VISIBLE);
-        }
-        else if(position == 3){
-            letsGetStarted.setVisibility(View.INVISIBLE);
-            next.setVisibility(View.VISIBLE);
-            skip.setVisibility(View.VISIBLE);
-        }
-        else{
-            animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
-            letsGetStarted.setVisibility(View.VISIBLE);
-            next.setVisibility(View.INVISIBLE);
-            skip.setVisibility(View.INVISIBLE);
-            letsGetStarted.setAnimation(animation);
-        }
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
 
 
 }
