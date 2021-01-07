@@ -47,6 +47,7 @@ public class ApplicationUsageTest {
                                 0),
                         isDisplayed()));
         appCompatButton.perform(click());
+        //skip button in OnBoarding Screen has clicked.
 
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.navigation_settings), withContentDescription("Settings"),
@@ -57,6 +58,7 @@ public class ApplicationUsageTest {
                                 3),
                         isDisplayed()));
         bottomNavigationItemView.perform(click());
+        //Settings page has opened.
 
         ViewInteraction appCompatButton2 = onView(
                 allOf(withId(R.id.button2), withText("Application Usage"),
@@ -68,6 +70,7 @@ public class ApplicationUsageTest {
                                 0),
                         isDisplayed()));
         appCompatButton2.perform(click());
+        //ApplicationUsage button has clicked.
 
         ViewInteraction appCompatButton3 = onView(
                 allOf(withId(R.id.next_btn), withText("Next"),

@@ -8,6 +8,7 @@ import androidx.test.espresso.ViewAction;
 import org.hamcrest.Matcher;
 
 public class MyViewAction {
+    //Overrided Class for Clicking childviews on RecyclerViews.
 
     public static ViewAction clickChildViewWithId(final int id) {
         return new ViewAction() {
