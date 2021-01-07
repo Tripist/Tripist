@@ -1,10 +1,5 @@
 package com.example.tripist.maps;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentActivity;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -21,11 +16,16 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
+import com.example.tripist.R;
+import com.example.tripist.controller.LocalizationController;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
-import com.example.tripist.controller.LocalizationController;
 import com.example.tripist.models.Categories;
-import com.example.tripist.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -38,13 +38,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallback , GoogleMap.OnMapLongClickListener {
+public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMapLongClickListener {
     //Definition  Variables
-    private GoogleMap mMap;
     LocationManager locationManager;
     LocationListener locationListener;
     DatabaseHelper databaseHelper;
     LocalizationController localizationController;
+    private GoogleMap mMap;
+
     @Override//First Creation
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMapLongClickListener(this);
-        new KategorieDao().add_MyLocMarker(databaseHelper,mMap);
+        new KategorieDao().add_MyLocMarker(databaseHelper, mMap);
         Intent intent = getIntent();
         String info = intent.getStringExtra("info");
         if (info.matches("new")) {
@@ -104,6 +105,7 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
 
         }
     }
+
     // checking according to permission
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -179,7 +181,7 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
         builder.setTitle(place.name);
 
         builder.setItems(new CharSequence[]
-                        {(String)getText(R.string.myhotel), (String)getText(R.string.myhome),(String) getText(R.string.myairport),(String) getText(R.string.others)},
+                        {(String) getText(R.string.myhotel), (String) getText(R.string.myhome), (String) getText(R.string.myairport), (String) getText(R.string.others)},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String a = place.name;
@@ -188,29 +190,26 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
                         switch (which) {
                             case 0:
                                 String myhotel = (String) getText(R.string.myhotel);
-                                if(new KategorieDao().MyLocationsDataExists(databaseHelper,myhotel)== false){
+                                if (new KategorieDao().MyLocationsDataExists(databaseHelper, myhotel) == false) {
                                     add_myhotel(myhotel, b, c);
-                                }
-                                else{
+                                } else {
                                     Toast.makeText(getApplicationContext(), myhotel + " " + getResources().getString(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
                                 break;
 
                             case 1:
-                                String myhome =(String) getText(R.string.myhome);
-                                if(new KategorieDao().MyLocationsDataExists(databaseHelper,myhome)== false){
+                                String myhome = (String) getText(R.string.myhome);
+                                if (new KategorieDao().MyLocationsDataExists(databaseHelper, myhome) == false) {
                                     add_myblabla(myhome, b, c);
-                                }
-                                else{
+                                } else {
                                     Toast.makeText(getApplicationContext(), myhome + " " + getResources().getString(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
                                 break;
                             case 2:
-                                String myairport =(String) getText(R.string.myairport);
-                                if(new KategorieDao().MyLocationsDataExists(databaseHelper,myairport)== false){
+                                String myairport = (String) getText(R.string.myairport);
+                                if (new KategorieDao().MyLocationsDataExists(databaseHelper, myairport) == false) {
                                     add_myairport(myairport, b, c);
-                                }
-                                else{
+                                } else {
                                     Toast.makeText(getApplicationContext(), myairport + " " + getResources().getString(R.string.already_exist_toast), Toast.LENGTH_SHORT).show();
                                 }
 
@@ -222,15 +221,16 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
 
                     }
                 });
-             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                 @Override
-                 public void onClick(DialogInterface dialog, int which) {
-                     dialog.cancel();
-                 }
-             });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
         builder.create().show();
     }
-     //adding  others location from user input
+
+    //adding  others location from user input
     public void add_others(final String name, final Double latitude, final Double longitude) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -245,11 +245,10 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                         (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
                 String userLocationInput = edittext.getText().toString();
-                String userLocationInputname = userLocationInput.substring(0,1).toUpperCase() + userLocationInput.substring(1);
-                new KategorieDao().addMylocationsOthers(databaseHelper,userLocationInputname,latitude,longitude);
+                String userLocationInputname = userLocationInput.substring(0, 1).toUpperCase() + userLocationInput.substring(1);
+                new KategorieDao().addMylocationsOthers(databaseHelper, userLocationInputname, latitude, longitude);
 
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
 
 
             }
@@ -274,8 +273,8 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
                 LatLng latLng = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                         (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
-                new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
+                new KategorieDao().addMylocations(databaseHelper, name, latitude, longitude);
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
             }
 
         });
@@ -299,7 +298,7 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
                 LatLng latLng = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                         (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
-                new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
+                new KategorieDao().addMylocations(databaseHelper, name, latitude, longitude);
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
             }
 
@@ -314,7 +313,8 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
 
         alert.show();
     }
-        // adding  airport location
+
+    // adding  airport location
     public void add_myairport(final String name, final Double latitude, final Double longitude) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(name);
@@ -323,7 +323,7 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
                 LatLng latLng = new LatLng(latitude, longitude);
                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker
                         (BitmapDescriptorFactory.HUE_BLUE)).alpha(0.7f).title(name).position(latLng));
-                new KategorieDao().addMylocations(databaseHelper,name,latitude,longitude);
+                new KategorieDao().addMylocations(databaseHelper, name, latitude, longitude);
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.saved_toast), Toast.LENGTH_LONG).show();
             }
 
@@ -338,13 +338,6 @@ public class MyLocations_Map extends FragmentActivity implements OnMapReadyCallb
 
         alert.show();
     }
-
-
-
-
-
-
-
 
 
 }

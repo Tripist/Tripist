@@ -26,10 +26,10 @@ import java.util.ArrayList;
 
 public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlaceHolder> {
     //Definition adapter variables
-    private ArrayList<Categories> itemList;
     Context context;
     SQLiteDatabase database;
     DatabaseHelper databaseHelper;
+    private ArrayList<Categories> itemList;
 
     // Constructor
     public MyFavAdapter(ArrayList<Categories> placeList, Context context) {
@@ -95,28 +95,25 @@ public class MyFavAdapter extends RecyclerView.Adapter<MyFavAdapter.CardviewPlac
         public CardviewPlaceHolder(View view) {
             super(view);
 
-            card = (CardView)view.findViewById(R.id.cardf);
+            card = (CardView) view.findViewById(R.id.cardf);
             isim = view.findViewById(R.id.isimf);
             img = view.findViewById(R.id.imgf);
             fav = view.findViewById(R.id.favf);
             google = view.findViewById(R.id.googlef);
-           fav.setOnClickListener(this);
+            fav.setOnClickListener(this);
         }
+
         @Override   //remove
         public void onClick(View view) {
             final String name = isim.getText().toString();
             int position = (int) view.getTag();
-           // Toast.makeText(view.getContext(),Integer.toString(position),Toast.LENGTH_SHORT).show();
-            new KategorieDao().unfav(databaseHelper,name);
+            // Toast.makeText(view.getContext(),Integer.toString(position),Toast.LENGTH_SHORT).show();
+            new KategorieDao().unfav(databaseHelper, name);
             itemList.remove(position);
             notifyDataSetChanged();
 
         }
     }
-
-
-
-
 
 
 }

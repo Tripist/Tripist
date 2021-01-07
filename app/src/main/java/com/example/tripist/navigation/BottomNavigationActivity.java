@@ -2,20 +2,20 @@ package com.example.tripist.navigation;
 
 import android.os.Bundle;
 
-import com.example.tripist.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.tripist.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class BottomNavigationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       // Actionbar hide
+        // Actionbar hide
         getSupportActionBar().hide();
 
         super.onCreate(savedInstanceState);

@@ -15,10 +15,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tripist.R;
 import com.example.tripist.database.DatabaseHelper;
 import com.example.tripist.database.KategorieDao;
 import com.example.tripist.models.Categories;
-import com.example.tripist.R;
 
 import java.util.ArrayList;
 
@@ -72,21 +72,6 @@ public class My_LocationsAdapter extends RecyclerView.Adapter<My_LocationsAdapte
     public int getItemCount() {
 
         return mList.size();
-    }
-
-    //Card view Properties
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView text_mylocation;
-        public CardView item_mylocation;
-
-        public MyViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            item_mylocation = itemView.findViewById(R.id.item_mylocation);
-            text_mylocation = itemView.findViewById(R.id.text_mylocation);
-        }
-
-
     }
 
     //Dialog init
@@ -180,6 +165,21 @@ public class My_LocationsAdapter extends RecyclerView.Adapter<My_LocationsAdapte
             }
         });
         myDialog.show();
+    }
+
+    //Card view Properties
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        public TextView text_mylocation;
+        public CardView item_mylocation;
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            item_mylocation = itemView.findViewById(R.id.item_mylocation);
+            text_mylocation = itemView.findViewById(R.id.text_mylocation);
+        }
+
+
     }
 
 

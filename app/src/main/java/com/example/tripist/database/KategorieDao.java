@@ -152,6 +152,7 @@ public class KategorieDao {
         database.insertOrThrow("my_locations", null, values);
         database.close();
     }
+
     //Adding others Location in my location table
     public void addMylocationsOthers(DatabaseHelper databaseHelper, String name, Double latitude, Double longitude) {
         database = databaseHelper.getWritableDatabase();
@@ -190,6 +191,7 @@ public class KategorieDao {
         cursor.close();
 
     }
+
     //Adding a marker to the map of my locations page
     public void add_MyLocMarker(DatabaseHelper databaseHelper, GoogleMap mMap) {
 

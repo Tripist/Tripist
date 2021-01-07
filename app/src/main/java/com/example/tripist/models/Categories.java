@@ -4,17 +4,18 @@ import java.io.Serializable;
 
 public class Categories implements Serializable {
     //Definition variables
-    public String name ;
+    public String name;
     public Double latitude;
     public Double longitude;
     public String image;
 
     // Constructor
-    public Categories(String name, Double latitude, Double longitude){
+    public Categories(String name, Double latitude, Double longitude) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
     // Constructor
     public Categories(String name, Double latitude, Double longitude, String image) {
         this.name = name;
@@ -22,6 +23,7 @@ public class Categories implements Serializable {
         this.longitude = longitude;
         this.image = image;
     }
+
     // Constructor
     public Categories(String name, String image) {
         this.name = name;
@@ -45,7 +47,9 @@ public class Categories implements Serializable {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() { return longitude; }
+    public Double getLongitude() {
+        return longitude;
+    }
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;

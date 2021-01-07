@@ -17,7 +17,7 @@ import static com.example.tripist.navigation.SettingsFragment.appLanguage;
 public class LocalizationController {
 
     // setting the application language
-    public static void setLocale(String lang, Context activity){
+    public static void setLocale(String lang, Context activity) {
         Locale locale = new Locale(lang);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -28,55 +28,57 @@ public class LocalizationController {
         editor.apply();
 
     }
+
     // loading the selected language
-    public static void loadLocale(Context context){
+    public static void loadLocale(Context context) {
         SharedPreferences prefs = context.getSharedPreferences("Settings", context.MODE_PRIVATE);
         String language = prefs.getString("My_Lang", "");
         System.out.println(language);
-        setLocale(language,context);
+        setLocale(language, context);
     }
+
     //database column of data according to selected language
-    public static int app_language(){
-        if(appLanguage == "en"){
+    public static int app_language() {
+        if (appLanguage == "en") {
             return 1;
-        }
-        else{
+        } else {
             return 5;
         }
     }
-    public static int MyLocApp_language(){
-        if(appLanguage == "en"){
+
+    public static int MyLocApp_language() {
+        if (appLanguage == "en") {
             return 1;
-        }
-        else{
+        } else {
             return 4;
         }
     }
-    public static int FoodsApp_language(){
-        if(appLanguage == "en"){
+
+    public static int FoodsApp_language() {
+        if (appLanguage == "en") {
             return 1;
-        }
-        else{
+        } else {
             return 3;
         }
     }
-    public static boolean EnLanguage(){
 
-        if(appLanguage == "en"){
+    public static boolean EnLanguage() {
+
+        if (appLanguage == "en") {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
 
     }
-        // dialog for change language
+
+    // dialog for change language
     public static void showChangeLanguageDialog(final View v, final Activity context) {
         //TODO: On Android 6.0.1, when you try to change the language, it automatically sets the language to English
         //TODO: On all other Android versions (7.1.1+) it is kind of buggy, setLocale must be configured properly
         String türkce = "Türkçe";
         String english = "English";
-        final String[] listItems = {türkce,english };
+        final String[] listItems = {türkce, english};
         final AlertDialog.Builder mBuilder = new AlertDialog.Builder(context);
         mBuilder.setTitle(R.string.dil_secenegi);
         mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
