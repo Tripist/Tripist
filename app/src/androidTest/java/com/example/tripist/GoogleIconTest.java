@@ -32,6 +32,7 @@ public class GoogleIconTest {
 
     @Test
     public void googleIconTest() {
+        //one Item selected from Museum Category, and Google icon has clicked.
 
         onView(withId(R.id.museum_button)).perform(click());
         RecyclerView recyclerView = mActivitiyTestRule.getActivity().findViewById(R.id.museum_rv);

@@ -82,6 +82,7 @@ public class LanguageTest {
                                 0)))
                 .atPosition(0);
         appCompatCheckedTextView.perform(click());
+        //Language of App is changed.
 
         ViewInteraction bottomNavigationItemView2 = onView(
                 allOf(withId(R.id.navigation_home), withContentDescription("Anasayfa"),
@@ -93,12 +94,9 @@ public class LanguageTest {
                         isDisplayed()));
         bottomNavigationItemView2.perform(click());
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.textView), withText("Tarihi Yerler"),
-                        withParent(allOf(withId(R.id.gridLayout),
-                                withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
-                        isDisplayed()));
-        textView.check(matches(withText("Tarihi Yerler")));
+        //TextView Assertions added. When the language of Application has changed.
+        onView(withId(R.id.textView)).check(matches(withText("Tarihi \n Yerler")));
+
     }
 
     private static Matcher<View> childAtPosition(
