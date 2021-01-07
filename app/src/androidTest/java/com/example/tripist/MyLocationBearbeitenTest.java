@@ -19,6 +19,7 @@ import org.junit.Test;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.longClick;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -27,13 +28,13 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
-public class MyLocationTest {
+public class MyLocationBearbeitenTest {
 
     @Rule
     public IntentsTestRule<BottomNavigationActivity> intentsTestRule = new IntentsTestRule<>(BottomNavigationActivity.class);
 
     @Test
-    public void MyLocationTest() {
+    public void MyLocationBearbeitenTest() {
 
         onView(withId(R.id.navigation_mylocation)).perform(click());
         onView(withId(R.id.mymap_fab)).perform(click());
@@ -57,10 +58,15 @@ public class MyLocationTest {
         SystemClock.sleep(1500);
         onView(withId(R.id.imageView3)).perform(click());
         SystemClock.sleep(1000);
-        onView(withId(R.id.item_delete_button)).perform(click());
+        //new location added
+
+        onView(withId(R.id.item_update_button)).perform(click());
+        onView(withId(R.id.editTextTextPersonName2)).perform(typeText("My Home"));
         SystemClock.sleep(1000);
-        onView(withId(R.id.deleteYes_button)).perform(click());
-        SystemClock.sleep(2000);
+        onView(withId(R.id.editYes_button)).perform(click());
+        SystemClock.sleep(1500);
+        //location edited
+
 
 
     }
